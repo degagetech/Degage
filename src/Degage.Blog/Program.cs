@@ -15,6 +15,7 @@ namespace Degage.Blog
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
+            //test
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(String[] args) =>

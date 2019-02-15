@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7A372E6D-353B-4F60-8183-F6A88BA8D037}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Degage.Timer.Windows</RootNamespace>
+    <AssemblyName>Degage.Timer.Windows</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BaseControl.Designer.cs">
+      <DependentUpon>BaseControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerMode\BaseTriggerModeEditControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TriggerMode\BaseTriggerModeEditControl.Designer.cs">
+      <DependentUpon>BaseTriggerModeEditControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerMode\JobYearTriggerModeEditControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TriggerMode\JobYearTriggerModeEditControl.Designer.cs">
+      <DependentUpon>JobYearTriggerModeEditControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerMode\JobMonthTriggerModeEditControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TriggerMode\JobMonthTriggerModeEditControl.Designer.cs">
+      <DependentUpon>JobMonthTriggerModeEditControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerMode\JobDayTriggerModeEditControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TriggerMode\JobDayTriggerModeEditControl.Designer.cs">
+      <DependentUpon>JobDayTriggerModeEditControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerMode\JobHourTriggerModeEditControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TriggerMode\JobHourTriggerModeEditControl.Designer.cs">
+      <DependentUpon>JobHourTriggerModeEditControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerMode\JobMinuteTriggerModeEditControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TriggerMode\JobMinuteTriggerModeEditControl.Designer.cs">
+      <DependentUpon>JobMinuteTriggerModeEditControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerMode\JobSecondTriggerModeEditControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TriggerMode\JobSecondTriggerModeEditControl.Designer.cs">
+      <DependentUpon>JobSecondTriggerModeEditControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JobTaskControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="JobTaskControl.Designer.cs">
+      <DependentUpon>JobTaskControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerMode\JobTriggerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TriggerMode\JobTriggerControl.Designer.cs">
+      <DependentUpon>JobTriggerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TriggerMode\JobTriggerModeEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TriggerMode\JobTriggerModeEditForm.Designer.cs">
+      <DependentUpon>JobTriggerModeEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JobViewContainerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="JobViewContainerControl.Designer.cs">
+      <DependentUpon>JobViewContainerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Line.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BaseControl.resx">
+      <DependentUpon>BaseControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerMode\BaseTriggerModeEditControl.resx">
+      <DependentUpon>BaseTriggerModeEditControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerMode\JobDayTriggerModeEditControl.resx">
+      <DependentUpon>JobDayTriggerModeEditControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerMode\JobHourTriggerModeEditControl.resx">
+      <DependentUpon>JobHourTriggerModeEditControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerMode\JobMinuteTriggerModeEditControl.resx">
+      <DependentUpon>JobMinuteTriggerModeEditControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerMode\JobMonthTriggerModeEditControl.resx">
+      <DependentUpon>JobMonthTriggerModeEditControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerMode\JobSecondTriggerModeEditControl.resx">
+      <DependentUpon>JobSecondTriggerModeEditControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JobTaskControl.resx">
+      <DependentUpon>JobTaskControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerMode\JobTriggerControl.resx">
+      <DependentUpon>JobTriggerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TriggerMode\JobTriggerModeEditForm.resx">
+      <DependentUpon>JobTriggerModeEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JobViewContainerControl.resx">
+      <DependentUpon>JobViewContainerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Line.resx">
+      <DependentUpon>Line.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="TriggerMode\JobYearTriggerModeEditControl.resx">
+      <DependentUpon>JobYearTriggerModeEditControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="logo.ico" />
+    <Content Include="TriggerModeExplain.txt" />
+    <None Include="Resources\start_16x16.png" />
+    <None Include="Resources\schedule_ignore_16x16.png" />
+    <None Include="Resources\schedule_queue_16x16.png" />
+    <None Include="Resources\schedule_parallel_16x16.png" />
+    <None Include="Resources\edit_16x16.png" />
+    <None Include="Resources\delete_jobtask_16x16.png" />
+    <None Include="Resources\add_jobtask_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Degage.Timer\Degage.Timer.csproj">
+      <Project>{4cbf6752-c41c-43f2-a79f-d0ba67983722}</Project>
+      <Name>Degage.Timer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,169 @@
+{
+  "Name": "默认绩效模板",
+  "TemplateFilePath": "DefaultTemplate.docx",
+  "DataEditorType": "WorkPerformance.DefaultTemplateDataEditorForm,WorkPerformance",
+  "PlaceholderFormat": "$#{0}#$",
+  "SchemaItems": [
+    {
+      "Explain": "姓名",
+      "Name": "Name",
+      "ItemType": 0,
+      "TableSchemaItemColumns": null,
+      "TableIndex": null,
+      "FillSchema": {
+        "Id": "Name",
+        "RowIndex": null
+      },
+      "ExtractSchema": {
+        "ExtractRegex": "(?<=姓名：)[\\S]+",
+        "RowIndex": null
+      }
+    },
+    {
+      "Explain": "部门",
+      "Name": "Department",
+      "ItemType": 0,
+      "TableIndex": null,
+      "FillSchema": {
+        "Id": "Department"
+      },
+      "ExtractSchema": {
+        "ExtractRegex": "(?<=部门：)[\\S]+"
+      }
+    },
+    {
+      "Explain": "月份",
+      "Name": "Month",
+      "ItemType": 0,
+      "FillSchema": {
+        "Id": "Month"
+      },
+      "ExtractSchema": {
+        "ExtractRegex": "(?<=月份：)[\\S]+"
+      }
+    },
+    {
+      "Explain": "自我鉴定",
+      "Name": "SelfAssessment",
+      "ItemType": 0,
+      "FillSchema": {
+        "Id": "SelfAssessment"
+      },
+      "ExtractSchema": {
+        "ExtractRegex": "(?<=自我鉴定)[\\w\\W]+?(?=签名)"
+      }
+    },
+    {
+      "Explain": "项目管理中心审核意见",
+      "Name": "CenterAuditOpinion",
+      "ItemType": 0,
+      "FillSchema": {
+        "Id": "CenterAuditOpinion"
+      },
+      "ExtractSchema": {
+        "ExtractRegex": "(?<=项目管理中心审核意见)[\\w\\W]+?(?=签名)"
+      }
+    },
+    {
+      "Explain": "直属上级审核意见",
+      "Name": "DirectSupervisorOpinion",
+      "ItemType": 0,
+      "FillSchema": {
+        "Id": "DirectSupervisorOpinion"
+      },
+      "ExtractSchema": {
+        "ExtractRegex": "(?<=直属上级审核意见)[\\w\\W]+?(?=签名)"
+      }
+    },
+    {
+      "Explain": "分管领导审批意见",
+      "Name": "ChargeSupervisorOpinion",
+      "ItemType": 0,
+      "FillSchema": {
+        "Id": "ChargeSupervisorOpinion"
+      },
+      "ExtractSchema": {
+        "ExtractRegex": "(?<=分管领导审批意见)[\\w\\W]+?(?=签名)"
+      }
+    },
+    {
+      "Explain": "项目经理/产品经理（主管领导）意见",
+      "Name": "ManagerOpinion",
+      "ItemType": 0,
+      "FillSchema": {
+        "Id": "ManagerOpinion"
+      },
+      "ExtractSchema": {
+        "ExtractRegex": "(?<=项目经理/产品经理（主管领导）意见)[\\w\\W]+?(?=签名)"
+      }
+    },
+    {
+      "Explain": "人力资源部/总经理复核意见",
+      "Name": "GeneralManagerOpinion",
+      "ItemType": 0,
+      "FillSchema": {
+        "Id": "GeneralManagerOpinion"
+      },
+      "ExtractSchema": {
+        "ExtractRegex": "(?<=人力资源部/总经理复核意见)[\\w\\W]+?(?=签名)"
+      }
+    },
+    {
+      "Explain": "本月基本工作任务",
+      "Name": "BaseTask",
+      "ItemType": 1,
+      "TableIndex": 0,
+      "TableSchemaItemColumns": [
+        "序号",
+        "任务明细",
+        "自评(完成/未完成)",
+        "未完成原因",
+        "部门负责人意见"
+      ],
+      "FillSchema": {
+        "RowIndex": 2
+      },
+      "ExtractSchema": {
+        "RowIndex": 2
+      }
+    },
+    {
+      "Explain": "本月新增任务",
+      "Name": "MonthAddTask",
+      "ItemType": 1,
+      "TableIndex": 0,
+      "TableSchemaItemColumns": [
+        "序号",
+        "任务明细",
+        "工时",
+        "自评(完成/未完成)",
+        "未完成原因",
+        "部门负责人意见"
+      ],
+      "FillSchema": {
+        "RowIndex": 5
+      },
+      "ExtractSchema": {
+        "RowIndex": 3
+      }
+    },
+    {
+      "Explain": "下月工作任务计划",
+      "Name": "NextMonthPlan",
+      "ItemType": 1,
+      "TableIndex": 0,
+      "TableSchemaItemColumns": [
+        "序号",
+        "任务明细",
+        "评判标准（职员填写评判标准）",
+        "部门负责人意见（须明确加/扣分细则）"
+      ],
+      "FillSchema": {
+        "RowIndex": 8
+      },
+      "ExtractSchema": {
+        "RowIndex": 3
+      }
+    }
+  ]
+}

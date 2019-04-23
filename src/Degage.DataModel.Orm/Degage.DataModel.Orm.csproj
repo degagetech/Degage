@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>DegageTech</Authors>
+    <Product>DegageTech</Product>
+    <PackageId>Degage.DataModel.Orm.MySql</PackageId>
+    <PackageIconUrl>https://s.gravatar.com/avatar/d64f81dd0b642f88b8b7902028d38e36?s=80&amp;r=g</PackageIconUrl>
+    <Description>提供对 MySql 数据库的数据访问能力，并简化数据访问的代码。</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;MySql</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup Condition="$(DefineConstants.Contains('MySql'))">
+    <PackageReference Include="MySql.Data" Version="8.0.15" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(DefineConstants.Contains('Oracle'))">
+    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="2.18.6" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(DefineConstants.Contains('SQLServer'))">
+    <PackageReference Include="System.Data.SqlClient" Version="4.6.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(DefineConstants.Contains('SQLite'))">
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.110" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="MySql\" />
+  </ItemGroup>
+
+</Project>

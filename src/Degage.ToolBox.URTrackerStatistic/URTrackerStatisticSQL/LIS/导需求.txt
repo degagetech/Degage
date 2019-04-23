@@ -1,0 +1,17 @@
+
+----------------------导需求的脚本-----------------------
+select e.[Name] 所属项目,isnull(a.Select2,g.name) 模块,a.ProblemID 单号id,convert(varchar(10),a.CreateTime,120) 建单时间, 
+c.DisplayName 建单人,f.DisplayName 当前处理人,a.Title 标题,a.BigText1 内容描述,b.StateName 状态,h.TypeName 类别,a.Float1 工作量H
+  from Pts_Problems a (NOLOCK)
+  LEFT JOIN  pts_problemstate b(NOLOCK) ON a.ProblemStateID=b.ProblemStateID
+  LEFT JOIN Accounts_Users  c(NOLOCK) ON a.CreateUserID=c.UserID
+  LEFT JOIN Pts_Projects e (NOLOCK) ON a.OriginProjectID=e.ProjectID
+  LEFT JOIN Accounts_Users f(NOLOCK) ON f.UserID = a.AssignedTo
+  LEFT JOIN Pts_ProblemCatalogs g(NOLOCK) ON a.ProblemCatalogID=g.ProblemCatalogID
+  left join Pts_ProblemType h(nolock) on a.OriginProjectID=h.ProjectID and a.ProblemTypeID=h.ProblemTypeID
+  left join  Pts_Projects d on a.ProjectID=d.ProjectID
+  WHERE (a.Select1 LIKE '%梧州市红十字会医院%'
+   --or a.Select1 LIKE '%清远妇幼保健院%'
+   ) and a.CreateTime>'2017-06-01'
+    AND d.ProjectID IN ('32','33','40','45','52','56')
+order BY e.[Name],a.Select2,CreateTime

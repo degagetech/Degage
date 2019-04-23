@@ -5,7 +5,11 @@ VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Degage", "Degage\Degage.csproj", "{201825F8-63CA-43E1-8E27-D09A9DFCA9A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Degage.TestUnit", "Degage.TestUnit\Degage.TestUnit.csproj", "{6E27EED0-BA0E-490F-BA04-0C5A4455EF8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Degage.TestUnit", "Degage.TestUnit\Degage.TestUnit.csproj", "{6E27EED0-BA0E-490F-BA04-0C5A4455EF8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Degage.Native.Windows", "Degage.Native.Windows\Degage.Native.Windows.csproj", "{D96B1DC8-3923-4A2C-B07C-E47A54812D77}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Native", "Native", "{37EE724C-8DA9-4FC3-9506-E718DA8EAFDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +25,16 @@ Global
 		{6E27EED0-BA0E-490F-BA04-0C5A4455EF8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E27EED0-BA0E-490F-BA04-0C5A4455EF8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E27EED0-BA0E-490F-BA04-0C5A4455EF8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D96B1DC8-3923-4A2C-B07C-E47A54812D77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D96B1DC8-3923-4A2C-B07C-E47A54812D77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D96B1DC8-3923-4A2C-B07C-E47A54812D77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D96B1DC8-3923-4A2C-B07C-E47A54812D77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D96B1DC8-3923-4A2C-B07C-E47A54812D77} = {37EE724C-8DA9-4FC3-9506-E718DA8EAFDB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CFDB6BD4-06C3-49D2-BF87-C4B5945C89EA}

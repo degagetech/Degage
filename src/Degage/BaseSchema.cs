@@ -10,4 +10,5 @@ namespace Degage
     /// </summary>
     public abstract class BaseSchema { }
 
+
 }

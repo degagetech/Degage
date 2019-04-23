@@ -40,7 +40,7 @@ namespace Degage.Extension
         }
 
         /// <summary>
-        ///HandyUtil-Extension: 判断字符串是空引用，或者完全是由空白字符组成的
+        ///判断字符串是空引用，或者完全是由空白字符组成的
         /// </summary>
         public static Boolean IsNullOrWhiteSpace(this String str)
         {

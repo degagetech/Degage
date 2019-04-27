@@ -30,17 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
-            this.symbol1 = new Symbol();
+            this.symbol1 = new Degage.DataModel.Schema.Toolbox.Symbol();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.symbol2 = new Symbol();
-            this.symbol3 = new Symbol();
+            this.symbol2 = new Degage.DataModel.Schema.Toolbox.Symbol();
+            this.symbol3 = new Degage.DataModel.Schema.Toolbox.Symbol();
             this.label3 = new System.Windows.Forms.Label();
             this._lblEmail = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this._lblGitHub = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.symbol4 = new Symbol();
+            this.symbol4 = new Degage.DataModel.Schema.Toolbox.Symbol();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this._toolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -149,9 +149,9 @@
             this._lblGitHub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
             this._lblGitHub.Location = new System.Drawing.Point(130, 105);
             this._lblGitHub.Name = "_lblGitHub";
-            this._lblGitHub.Size = new System.Drawing.Size(270, 17);
+            this._lblGitHub.Size = new System.Drawing.Size(244, 17);
             this._lblGitHub.TabIndex = 8;
-            this._lblGitHub.Text = "https://github.com/WangLangJing/Handiness";
+            this._lblGitHub.Text = "https://github.com/DegageTech/Degage";
             this._toolTip.SetToolTip(this._lblGitHub, "此工具的源码地址");
             this._lblGitHub.Click += new System.EventHandler(this._lblGitHub_Click);
             // 

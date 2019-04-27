@@ -35,10 +35,14 @@ namespace Degage.DataModel.Schema.Toolbox
            {
                var source = s as ColumnSchemaExtend;
                var target = t as ColumnSchemaExtend;
-               return ((s.Name == t.Name) &&
-               (source.Length == source.Length) &&
+               var lengthCompare = source.Length== target.Length;
+
+               var result= ((s.Name == t.Name) &&
                (source.IsNullable == target.IsNullable) &&
                (source.DbTypeString == target.DbTypeString));
+
+               result &= lengthCompare;
+               return result;
            }));
 
 
@@ -81,15 +85,18 @@ namespace Degage.DataModel.Schema.Toolbox
 
             //比较层1
             var sourceTopSchemas = sourceSchemas.Select(t => t.ObjectSchema).ToList();
-            var targetTopSchemas = targetSchemas.Select(t => t.ObjectSchema).ToList(); 
+            var targetTopSchemas = targetSchemas.Select(t => t.ObjectSchema).ToList();
 
             var topSchemaDifferenceInfos = CompareObjectSchemas(sourceTopSchemas, targetTopSchemas, out var topChangeFlag);
-            var topSchemaDifferenceTypeTable = topSchemaDifferenceInfos.ToDictionary(t => t.Schema, t => t.DifferenceType);
+            var topSchemaDifferenceTypeTable = topSchemaDifferenceInfos.ToDictionary(t => t.Schema);
 
             differenceInfos.AddRange(topSchemaDifferenceInfos);
 
-            Dictionary<String, SchemaInfoTuple> targetSchemaInfoTable = targetSchemas.ToDictionary(t => t.ObjectSchema.Name);
-
+            Dictionary<String, SchemaInfoTuple> targetSchemaInfoTable = new Dictionary<String, SchemaInfoTuple>();
+            foreach (var schema in targetSchemas)
+            {
+                targetSchemaInfoTable.Add(schema.ObjectSchema.Name, schema);
+            }
 
             //比较层2
             foreach (var sourceSchema in sourceSchemas)
@@ -108,20 +115,33 @@ namespace Degage.DataModel.Schema.Toolbox
                                 sourceSchema.ColumnSchemas.Cast<IObjectSchema>(),
                                 targetSchema?.ColumnSchemas.Cast<IObjectSchema>(), out var changeFlag);
                             differenceInfos.AddRange(columnDifferenceInfos);
-                            //如果第二层的信息发生了变化
-                            if (changeFlag && topSchemaDifferenceTypeTable[sourceSchema.ObjectSchema] != SchemaDifferenceType.Delete)
+                            //将变化中删除的列添加至目标结构中
+                            var deletedColumnSchemas = columnDifferenceInfos.Where(t => t.DifferenceType == SchemaDifferenceType.Delete).Select(t => t.Schema).Cast<ColumnSchemaExtend>();
+                            targetSchema?.ColumnSchemas.AddRange(deletedColumnSchemas);
+                            //如果第二层的信息发生了变化，则信息所属的父结点也应该被标记为变化
+                            //改变可能是删除、新增、修改。当改变是新增与修改时，表中一定会存在
+                            if (changeFlag)
                             {
-                                topSchemaDifferenceTypeTable[sourceSchema.ObjectSchema] = SchemaDifferenceType.Modify;
+                                if (topSchemaDifferenceTypeTable[targetSchema.ObjectSchema].DifferenceType != SchemaDifferenceType.Delete)
+                                {
+                                    topSchemaDifferenceTypeTable[targetSchema.ObjectSchema].DifferenceType = SchemaDifferenceType.Modify;
+                                }
                             }
                             //比较索引
                             var indexDifferenceInfos = SchemaAssistor.CompareObjectSchemas(
                                sourceSchema.IndexColumnSchemas.Cast<IObjectSchema>(),
                                targetSchema?.IndexColumnSchemas.Cast<IObjectSchema>(), out changeFlag);
                             differenceInfos.AddRange(indexDifferenceInfos);
+                            //将变化中删除的索引添加至目标结构中
+                            var deletedIndexColumnSchemas = indexDifferenceInfos.Where(t => t.DifferenceType == SchemaDifferenceType.Delete).Select(t => t.Schema).Cast<IndexSchema>();
+                            targetSchema?.IndexColumnSchemas.AddRange(deletedIndexColumnSchemas);
                             //如果第二层的信息发生了变化
-                            if (changeFlag && topSchemaDifferenceTypeTable[sourceSchema.ObjectSchema] != SchemaDifferenceType.Delete)
+                            if (changeFlag)
                             {
-                                topSchemaDifferenceTypeTable[sourceSchema.ObjectSchema] = SchemaDifferenceType.Modify;
+                                if (topSchemaDifferenceTypeTable[targetSchema.ObjectSchema].DifferenceType != SchemaDifferenceType.Delete)
+                                {
+                                    topSchemaDifferenceTypeTable[targetSchema.ObjectSchema].DifferenceType = SchemaDifferenceType.Modify;
+                                }
                             }
                         }
                         break;
@@ -132,10 +152,16 @@ namespace Degage.DataModel.Schema.Toolbox
                                 sourceSchema.ColumnSchemas.Cast<IObjectSchema>(),
                                 targetSchema?.ColumnSchemas.Cast<IObjectSchema>(), out var changeFlag);
                             differenceInfos.AddRange(columnDifferenceInfos);
-
-                            if (changeFlag && topSchemaDifferenceTypeTable[sourceSchema.ObjectSchema] != SchemaDifferenceType.Delete)
+                            //将变化中删除的列添加至目标结构中
+                            var deletedIndexColumnSchemas = columnDifferenceInfos.Where(t => t.DifferenceType == SchemaDifferenceType.Delete).Select(t => t.Schema).Cast<ColumnSchemaExtend>();
+                            targetSchema?.ColumnSchemas.AddRange(deletedIndexColumnSchemas);
+                            //如果第二层的信息发生了变化
+                            if (changeFlag)
                             {
-                                topSchemaDifferenceTypeTable[sourceSchema.ObjectSchema] = SchemaDifferenceType.Modify;
+                                if (topSchemaDifferenceTypeTable[targetSchema.ObjectSchema].DifferenceType != SchemaDifferenceType.Delete)
+                                {
+                                    topSchemaDifferenceTypeTable[targetSchema.ObjectSchema].DifferenceType = SchemaDifferenceType.Modify;
+                                }
                             }
                         }
                         break;
@@ -153,7 +179,7 @@ namespace Degage.DataModel.Schema.Toolbox
                 }
             }
 
-            //获取新增的结构信息，上面的遍历是以源结构为集合的，所以目标结构新增的信息是不是遍历到的
+            //获取新增的结构信息，上面的遍历是以源结构为集合的，所以目标结构新增的信息是遍历不到的
             var addSchemaInfos = topSchemaDifferenceInfos.Where(t => t.DifferenceType == SchemaDifferenceType.Add);
             foreach (var addSchema in addSchemaInfos)
             {
@@ -213,13 +239,17 @@ namespace Degage.DataModel.Schema.Toolbox
             sourceSchemas = sourceSchemas ?? new List<IObjectSchema>();
             targetSchemas = targetSchemas ?? new List<IObjectSchema>();
 
-            Dictionary<String, IObjectSchema> targetSchemaInfoTable = targetSchemas.ToDictionary(t => t.Name);
+            Dictionary<String, IObjectSchema> targetSchemaInfoTable = new Dictionary<String, IObjectSchema>();
+            foreach (var schema in targetSchemas)
+            {
+                targetSchemaInfoTable.Add(schema.Name, schema);
+            }
 
             foreach (var sourceSchema in sourceSchemas)
             {
+                //此结构在比较目标中不存在，则标记为删除
                 if (!targetSchemaInfoTable.ContainsKey(sourceSchema.Name))
                 {
-                    //此结构在比较目标中被删除
                     SchemaDifferenceInfo deletedInfo = new SchemaDifferenceInfo
                     {
                         Schema = sourceSchema,

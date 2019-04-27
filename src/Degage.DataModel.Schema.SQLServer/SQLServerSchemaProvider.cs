@@ -4,6 +4,11 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Threading.Tasks;
 using System.Data.Common;
+
+#if NETSTANDARD2_0
+using System.Composition;
+#endif
+
 #if NET40
 using System.ComponentModel.Composition;
 #endif
@@ -11,6 +16,9 @@ using System.ComponentModel.Composition;
 namespace Degage.DataModel.Schema.SQLServer
 {
 #if NET40
+    [Export(typeof(ISchemaProvider))]
+#endif
+#if NETSTANDARD2_0
     [Export(typeof(ISchemaProvider))]
 #endif
     public partial class SQLServerSchemaProvider : ISchemaProvider
@@ -74,7 +82,7 @@ namespace Degage.DataModel.Schema.SQLServer
                             INNER JOIN   sysobjects d ON a.id= d.id and d.xtype= 'U' AND d.name<>'dtproperties'
                             LEFT JOIN   syscomments e   ON a.cdefault= e.id
                             LEFT JOIN   sys.extended_properties g  ON a.id= g.major_id   AND a.colid= g.minor_id
-                            LEFT JOIN   sys.extended_properties f  ON d.id= f.major_id  AND f.minor_id= 0 WHERE d.name=" + "'{0}'";
+                            LEFT JOIN   sys.extended_properties f  ON d.id= f.major_id  AND f.minor_id= 0 WHERE d.name=" + "'{0}'"+ " AND g.class_desc='OBJECT_OR_COLUMN'";
 
 
 

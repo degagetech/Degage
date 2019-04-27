@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataShowForm));
             this._dgvDataShow = new Degage.DataModel.DbSchemaViewer.DataGridViewEx();
             ((System.ComponentModel.ISupportInitialize)(this._dgvDataShow)).BeginInit();
             this.SuspendLayout();
             // 
             // _dgvDataShow
             // 
-            this._dgvDataShow.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this._dgvDataShow.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this._dgvDataShow.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this._dgvDataShow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._dgvDataShow.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -55,6 +56,7 @@
             this.ClientSize = new System.Drawing.Size(1071, 582);
             this.Controls.Add(this._dgvDataShow);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DataShowForm";
             this.Text = "DataShowForm";

@@ -35,5 +35,34 @@ namespace Degage.DataModel.Schema.Toolbox
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// 因确认操作而执行的窗体关闭
+        /// </summary>
+        protected void ConfirmClose()
+        {
+            if (this.Modal)
+            {
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                this.Close();
+            }
+        }
+        /// <summary>
+        /// 因取消操作而执行的窗体关闭
+        /// </summary>
+        protected void CancelClose()
+        {
+            if (this.Modal)
+            {
+                this.DialogResult = DialogResult.Cancel;
+            }
+            else
+            {
+                this.Close();
+            }
+        }
     }
 }

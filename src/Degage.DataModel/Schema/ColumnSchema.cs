@@ -24,7 +24,7 @@ namespace Degage.DataModel.Schema
         /// <summary>
         /// 长度
         /// </summary>
-        public Int32 Length { get; set; }
+        public Int32? Length { get; set; }
 
         /// <summary>
         /// 是否可为空

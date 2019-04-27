@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -18,12 +19,12 @@ namespace Degage.DataModel.Schema.Toolbox
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
             Application.ThreadException += Application_ThreadException;
 
-            Application.Run(new SchemaExportForm());
+            Application.Run(new MainForm());
 
 
         }
 
-        private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        private static void Application_ThreadException(Object sender, System.Threading.ThreadExceptionEventArgs e)
         {
             MessageBox.Show(e.Exception.Message, "系统发生异常", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }

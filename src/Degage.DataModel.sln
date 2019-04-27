@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Degage.DataModel.Orm.Exampl
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ORMv1", "ORMv1", "{C71A4E59-AEC1-453B-AD38-8074B9722E36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Degage.DataModel.Schema", "Degage.DataModel.Schema\Degage.DataModel.Schema.csproj", "{6DA97DCC-2BA7-4EC0-9154-9FCAD863DA1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Degage.DataModel.Schema", "Degage.DataModel.Schema\Degage.DataModel.Schema.csproj", "{6DA97DCC-2BA7-4EC0-9154-9FCAD863DA1C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Degage.DataModel.DbSchemaViewer", "Degage.DataModel.DbSchemaViewer\Degage.DataModel.DbSchemaViewer.csproj", "{FAF616C4-7240-44CB-B3C0-B729ABE3B776}"
 EndProject
@@ -22,6 +22,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Degage.DataModel.Schema.SQLServer", "Degage.DataModel.Schema.SQLServer\Degage.DataModel.Schema.SQLServer.csproj", "{1129E784-909F-49FC-BB0B-3EADE026DFAC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Degage.DataModel.Schema.Toolbox", "Degage.DataModel.Schema.Toolbox\Degage.DataModel.Schema.Toolbox.csproj", "{37D83358-E516-47F5-96D2-532E2DE62897}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Degage.DataModel.Schema.MySql", "Degage.DataModel.Schema.MySql\Degage.DataModel.Schema.MySql.csproj", "{336EBAF4-AF31-42E4-80D8-857F7C26E6A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,10 @@ Global
 		{37D83358-E516-47F5-96D2-532E2DE62897}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37D83358-E516-47F5-96D2-532E2DE62897}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37D83358-E516-47F5-96D2-532E2DE62897}.Release|Any CPU.Build.0 = Release|Any CPU
+		{336EBAF4-AF31-42E4-80D8-857F7C26E6A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{336EBAF4-AF31-42E4-80D8-857F7C26E6A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{336EBAF4-AF31-42E4-80D8-857F7C26E6A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{336EBAF4-AF31-42E4-80D8-857F7C26E6A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

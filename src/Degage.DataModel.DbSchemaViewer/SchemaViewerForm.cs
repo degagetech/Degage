@@ -76,7 +76,7 @@ namespace Degage.DataModel.DbSchemaViewer
         {
             get
             {
-                return this._txtConnectionString.Text.Trim();
+                return this._cbConnectionString.Text.Trim();
             }
         }
         public SchemaViewerForm()

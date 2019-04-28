@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="CodeTemplate"
+    targetNamespace="Degage.DataModel.Schema.Toolbox"
+    elementFormDefault="qualified"
+    xmlns="Degage.DataModel.Schema.Toolbox"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="CodeTemplate">
+    <xs:annotation>
+      <xs:documentation>代码模板配置</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="Name" type="xs:string"  minOccurs="1">
+          <xs:annotation>
+            <xs:documentation>模板的名称</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="ExtensionName" type="xs:string" minOccurs="1" >
+          <xs:annotation>
+            <xs:documentation>生成的代码文件的扩展名，例如：.cs</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Body" type="xs:string"  minOccurs="1">
+          <xs:annotation>
+            <xs:documentation> 模板的主体内容</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="PropertyCodeTemplates" minOccurs="1">
+          <xs:annotation>
+            <xs:documentation>属性代码模板的集合</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Item" type="PropertyCodeTemplateItem" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation>属性代码模板的项：</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="PropertyCodeTemplateItem">
+    <xs:annotation>
+      <xs:documentation>属性代码模板，表示生成模型类的时其属性使用的代码模板</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" minOccurs="1" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>属性代码模板名称</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Content" minOccurs="1" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>模板的主体内容</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

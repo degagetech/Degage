@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeTemplate 
+   xmlns="Degage.DataModel.Schema.Toolbox"
+   xmlns:schemaLocation="Degage.DataModel.Schema.Toolbox CodeTemplate.xsd">
+  <Name>.NET 简易模板-XML</Name>
+  <Body>
+      using System;
+      namespace $NameSpace$
+      {
+          public class $ClassName$
+          {
+              #Properties#
+          }
+      }
+  </Body>
+  <ExtensionName>.cs</ExtensionName>
+  <PropertyCodeTemplates>
+    <Item>
+      <Name>Properties</Name>
+      <Content>
+           public $MapType$ $PropertyName$ {get;set;}
+      </Content>
+    </Item>
+  </PropertyCodeTemplates>
+</CodeTemplate>

@@ -1,0 +1,17 @@
+﻿{
+  "Name": ".Net-Oracle 类型映射",
+  "MapItems": [
+    {
+      "Condition": {
+        "DbType": "varchar"
+      },
+      "MapType": "String"
+    },
+    {
+      "Condition": {
+        "DbType": "int"
+      },
+      "MapType": "Int32"
+    }
+  ]
+}

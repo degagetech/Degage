@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TypeMap
+   xmlns="Degage.DataModel.Schema.Toolbox"
+   xmlns:schemaLocation="Degage.DataModel.Schema.Toolbox CodeTemplate.xsd">
+  <Name>.Net-SqlServer 类型映射</Name>
+  <MapItems>
+    <Item>
+      <Condition>
+        <DbType>varchar</DbType>
+      </Condition>
+      <MapType>String</MapType>
+    </Item>
+    <Item>
+      <Condition>
+        <DbType>int</DbType>
+      </Condition>
+      <MapType>Int32</MapType>
+    </Item>
+    <Item>
+      <Condition>
+        <DbType>float</DbType>
+      </Condition>
+      <MapType>Double</MapType>
+    </Item>
+    <Item>
+      <Condition>
+        <DbType>bit</DbType>
+      </Condition>
+      <MapType>Boolean</MapType>
+    </Item>
+    <Item>
+      <Condition>
+        <DbType>datetime</DbType>
+      </Condition>
+      <MapType>DateTime</MapType>
+    </Item>
+    <Item>
+      <Condition>
+        <DbType>nvarchar</DbType>
+      </Condition>
+      <MapType>String</MapType>
+    </Item>
+  </MapItems>
+</TypeMap>

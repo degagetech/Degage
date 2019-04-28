@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TypeMap"
+    targetNamespace="Degage.DataModel.Schema.Toolbox"
+    elementFormDefault="qualified"
+    xmlns="Degage.DataModel.Schema.Toolbox"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="TypeMap">
+    <xs:annotation>
+      <xs:documentation>描述数据库类库与 .NET 类型关系映射的配置</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="Name" type="xs:string"  minOccurs="1">
+          <xs:annotation>
+            <xs:documentation> 映射配置的名称</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="MapItems" minOccurs="1">
+          <xs:annotation>
+            <xs:documentation> 映射描述项的集合</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Item" type="TypeMapItem" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation>映射描述项：</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:complexType name="TypeMapItem">
+    <xs:annotation>
+      <xs:documentation>描述具体数据库类型与 .NET 类型的映射关系的项</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Condition" type="MapCondition">
+        <xs:annotation>
+          <xs:documentation>类型映射的条件：</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MapType" type="xs:string">
+        <xs:annotation>
+          <xs:documentation> 表示映射的 .NET  基本类型的名称</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  
+  
+  <xs:complexType name="MapCondition">
+    <xs:annotation>
+      <xs:documentation> 表示一组类型映射的条件</xs:documentation>
+    </xs:annotation>
+    <xs:all>
+      <xs:element name="DbType" type="xs:string" minOccurs="1">
+        <xs:annotation>
+          <xs:documentation> 表示数据库的源类型</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Length" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation> 列长度，Null 表示忽略此条件，* 表示关心但匹配任意长度</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="IsNullable" type="xs:boolean"  minOccurs="0">
+        <xs:annotation>
+          <xs:documentation> 是否可空，Null 表示忽略此条件</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
+  </xs:complexType>
+</xs:schema>

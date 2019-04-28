@@ -19,7 +19,7 @@ namespace Degage.DataModel.Schema.Toolbox
         {
             get
             {
-                return this._tbConnectionString.Text;
+                return this._cbConnectionString.Text;
             }
         }
         /// <summary>
@@ -58,7 +58,7 @@ namespace Degage.DataModel.Schema.Toolbox
             String connectionString = this.BuildDbConnectionString();
             if (!String.IsNullOrEmpty(connectionString))
             {
-                this._tbConnectionString.Text = connectionString;
+                this._cbConnectionString.Text = connectionString;
             }
         }
 
@@ -315,7 +315,7 @@ namespace Degage.DataModel.Schema.Toolbox
 
         private Boolean GetConnectionStirng(out String connectionString)
         {
-            connectionString = this._tbConnectionString.Text.Trim();
+            connectionString = this._cbConnectionString.Text.Trim();
             return !String.IsNullOrEmpty(connectionString);
         }
 
@@ -344,11 +344,6 @@ namespace Degage.DataModel.Schema.Toolbox
             _iListSchemaTree.Images.Add("tree_procedure", Resources.procedure);
             _iListSchemaTree.Images.Add("tree_function", Resources.function);
 
-
-#if DEBUG
-            //测试使用
-            this._tbConnectionString.Text = "Data Source=192.168.1.120;Initial Catalog=biobank;User ID=sa;Password=932444208wlj+";
-#endif
         }
 
         private async void ConnectionSchemaForm_Shown(object sender, EventArgs e)

@@ -1,0 +1,36 @@
+﻿{
+  "required": [ "Name", "Body", "ExtensionName", "PropertyCodeTemplates" ],
+  "title": "模板配置",
+  "properties": {
+    "Name": {
+      "description": "模板的名称",
+      "type": "string"
+    },
+    "Body": {
+      "description": "模板的主体内容",
+      "type": "string"
+    },
+    "ExtensionName": {
+      "type": "string",
+      "description": "生成的代码文件的扩展名，例如：.cs"
+    },
+    "PropertyCodeTemplates": {
+      "type": "array",
+      "description": "模型类属性使用的代码模板",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "title": "属性代码模板名称",
+            "type": "string"
+          },
+          "Content": {
+            "title": "模板的主体内容",
+              "type": "string"
+          }
+        }
+      
+      }
+    }
+  }
+}

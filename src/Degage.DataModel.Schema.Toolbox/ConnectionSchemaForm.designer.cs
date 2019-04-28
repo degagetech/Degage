@@ -29,15 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConnectionSchemaForm));
             this._labelProviderExplain = new System.Windows.Forms.Label();
-            this._waitSchemProvider = new WaitIndicator();
+            this._waitSchemProvider = new Degage.DataModel.Schema.Toolbox.WaitIndicator();
             this._btnEditorConnectionString = new System.Windows.Forms.Button();
-            this._tbConnectionString = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this._cbSchemaProvider = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -64,11 +63,12 @@
             this._lblLoadTypeSymbol = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this._btnOpen = new System.Windows.Forms.Button();
-            this._waitConnect = new WaitIndicator();
-            this._waitColumnSchemaLoad = new WaitIndicator();
+            this._waitConnect = new Degage.DataModel.Schema.Toolbox.WaitIndicator();
+            this._waitColumnSchemaLoad = new Degage.DataModel.Schema.Toolbox.WaitIndicator();
             this._btnCompare = new System.Windows.Forms.Button();
             this._btnCannel = new System.Windows.Forms.Button();
             this._toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this._cbConnectionString = new System.Windows.Forms.ComboBox();
             this._tabSchemaShow.SuspendLayout();
             this._pageColumnSchema.SuspendLayout();
             this._pnlColumnSchema.SuspendLayout();
@@ -102,7 +102,7 @@
             this._waitSchemProvider.Margin = new System.Windows.Forms.Padding(0);
             this._waitSchemProvider.Name = "_waitSchemProvider";
             this._waitSchemProvider.RollingSpeed = 60;
-            this._waitSchemProvider.RollPartBrushType = RollPartBrushType.Solid;
+            this._waitSchemProvider.RollPartBrushType = Degage.DataModel.Schema.Toolbox.RollPartBrushType.Solid;
             this._waitSchemProvider.RollPartLengthPercent = 40F;
             this._waitSchemProvider.RollPartWidthPercent = 20F;
             this._waitSchemProvider.Size = new System.Drawing.Size(20, 20);
@@ -122,16 +122,6 @@
             this._btnEditorConnectionString.Text = "编辑...";
             this._btnEditorConnectionString.UseVisualStyleBackColor = true;
             this._btnEditorConnectionString.Click += new System.EventHandler(this._btnEditorConnectionString_Click);
-            // 
-            // _tbConnectionString
-            // 
-            this._tbConnectionString.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this._tbConnectionString.BackColor = System.Drawing.Color.White;
-            this._tbConnectionString.Location = new System.Drawing.Point(88, 27);
-            this._tbConnectionString.Name = "_tbConnectionString";
-            this._tbConnectionString.Size = new System.Drawing.Size(716, 23);
-            this._tbConnectionString.TabIndex = 15;
             // 
             // label2
             // 
@@ -239,8 +229,8 @@
             // _dgvColumnSchema
             // 
             this._dgvColumnSchema.AllowUserToAddRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this._dgvColumnSchema.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this._dgvColumnSchema.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this._dgvColumnSchema.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -254,14 +244,14 @@
             this._colLength,
             this._colNullable,
             this._colExplain});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this._dgvColumnSchema.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this._dgvColumnSchema.DefaultCellStyle = dataGridViewCellStyle2;
             this._dgvColumnSchema.Location = new System.Drawing.Point(3, 4);
             this._dgvColumnSchema.Name = "_dgvColumnSchema";
             this._dgvColumnSchema.RowHeadersVisible = false;
@@ -306,8 +296,8 @@
             // _dgvIndexColumnSchema
             // 
             this._dgvIndexColumnSchema.AllowUserToAddRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this._dgvIndexColumnSchema.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this._dgvIndexColumnSchema.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this._dgvIndexColumnSchema.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this._dgvIndexColumnSchema.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -317,14 +307,14 @@
             this._colIndexName,
             this._colIndexColumnNames,
             this._colIndexDesc});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this._dgvIndexColumnSchema.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this._dgvIndexColumnSchema.DefaultCellStyle = dataGridViewCellStyle4;
             this._dgvIndexColumnSchema.Location = new System.Drawing.Point(3, 153);
             this._dgvIndexColumnSchema.Name = "_dgvIndexColumnSchema";
             this._dgvIndexColumnSchema.RowHeadersVisible = false;
@@ -428,7 +418,7 @@
             this._waitConnect.Margin = new System.Windows.Forms.Padding(0);
             this._waitConnect.Name = "_waitConnect";
             this._waitConnect.RollingSpeed = 60;
-            this._waitConnect.RollPartBrushType = RollPartBrushType.Solid;
+            this._waitConnect.RollPartBrushType = Degage.DataModel.Schema.Toolbox.RollPartBrushType.Solid;
             this._waitConnect.RollPartLengthPercent = 60F;
             this._waitConnect.RollPartWidthPercent = 30F;
             this._waitConnect.Size = new System.Drawing.Size(15, 15);
@@ -451,7 +441,7 @@
             this._waitColumnSchemaLoad.Margin = new System.Windows.Forms.Padding(0);
             this._waitColumnSchemaLoad.Name = "_waitColumnSchemaLoad";
             this._waitColumnSchemaLoad.RollingSpeed = 60;
-            this._waitColumnSchemaLoad.RollPartBrushType = RollPartBrushType.Solid;
+            this._waitColumnSchemaLoad.RollPartBrushType = Degage.DataModel.Schema.Toolbox.RollPartBrushType.Solid;
             this._waitColumnSchemaLoad.RollPartLengthPercent = 60F;
             this._waitColumnSchemaLoad.RollPartWidthPercent = 30F;
             this._waitColumnSchemaLoad.Size = new System.Drawing.Size(15, 15);
@@ -483,11 +473,30 @@
             this._btnCannel.UseVisualStyleBackColor = true;
             this._btnCannel.Click += new System.EventHandler(this._btnCannel_Click);
             // 
+            // _cbConnectionString
+            // 
+            this._cbConnectionString.BackColor = System.Drawing.Color.White;
+            this._cbConnectionString.Font = new System.Drawing.Font("微软雅黑", 10F);
+            this._cbConnectionString.FormattingEnabled = true;
+            this._cbConnectionString.Items.AddRange(new object[] {
+            "SQLServer:Data Source= ip ;Uid= user ;Pwd= password ;Initial Catalog= dbname ;",
+            "Oracle:Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST= ip )(" +
+                "PORT= port )))(CONNECT_DATA=(SERVICE_NAME= servicename )));User Id= user ;Passwo" +
+                "rd= password ",
+            "MySql:server= ip ;Port=port;Uid= root ;Pwd= password ;DataBase= dbname ;Pooling=t" +
+                "rue;charset=utf8;",
+            "SQLite:Data Source= path ;UTF8Encoding=True;"});
+            this._cbConnectionString.Location = new System.Drawing.Point(88, 24);
+            this._cbConnectionString.Name = "_cbConnectionString";
+            this._cbConnectionString.Size = new System.Drawing.Size(716, 27);
+            this._cbConnectionString.TabIndex = 39;
+            // 
             // ConnectionSchemaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(882, 467);
+            this.Controls.Add(this._cbConnectionString);
             this.Controls.Add(this._btnCannel);
             this.Controls.Add(this._btnCompare);
             this.Controls.Add(this._lblLoadTypeSymbol);
@@ -501,7 +510,6 @@
             this.Controls.Add(this._labelProviderExplain);
             this.Controls.Add(this._waitSchemProvider);
             this.Controls.Add(this._btnEditorConnectionString);
-            this.Controls.Add(this._tbConnectionString);
             this.Controls.Add(this.label2);
             this.Controls.Add(this._cbSchemaProvider);
             this.Controls.Add(this.label1);
@@ -531,7 +539,6 @@
         private System.Windows.Forms.Label _labelProviderExplain;
         private WaitIndicator _waitSchemProvider;
         private System.Windows.Forms.Button _btnEditorConnectionString;
-        private System.Windows.Forms.TextBox _tbConnectionString;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox _cbSchemaProvider;
         private System.Windows.Forms.Label label1;
@@ -563,5 +570,6 @@
         private System.Windows.Forms.Button _btnCannel;
         private System.Windows.Forms.ImageList _iListSchemaTree;
         private System.Windows.Forms.ToolTip _toolTip;
+        private System.Windows.Forms.ComboBox _cbConnectionString;
     }
 }

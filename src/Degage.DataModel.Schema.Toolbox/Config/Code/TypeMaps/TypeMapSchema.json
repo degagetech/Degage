@@ -1,0 +1,42 @@
+﻿{
+  "required": [ "Name", "MapItems" ],
+  "title": " 描述数据库类库与 .NET 类型关系映射的配置",
+  "properties": {
+    "Name": {
+      "description": "映射配置的名称",
+      "type": "string"
+    },
+    "MapItems": {
+      "type": "array",
+      "description": " 映射描述项的集合",
+      "items": {
+        "type": "object",
+        "required": [ "Condition", "MapType" ],
+        "properties": {
+          "Condition": {
+            "type": "object",
+            "description": "类型映射的条件",
+            "properties": {
+              "DbType": {
+                "description": "表示数据库的源类型",
+                "type": "string"
+              },
+              "Length": {
+                "description": "数据库类型的类型长度，若忽略则为空或 *",
+                "type": "string"
+              },
+              "IsNullable": {
+                "description": "是否可空，Null 表示忽略此条件",
+                "type": "boolean"
+              }
+            }
+          },
+          "MapType": {
+            "description": "表示映射的 .NET 基本类型的名称",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

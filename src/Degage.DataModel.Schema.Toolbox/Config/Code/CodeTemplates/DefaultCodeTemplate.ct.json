@@ -1,0 +1,11 @@
+﻿{
+  "Name": ".NET 简易-JSON",
+  "ExtensionName": ".cs",
+  "Body": "using System; $N$ namespace $NameSpace$ $N$ {public class $ClassName$ $N$ {$N$ #Properies# $N$} $N$}",
+  "PropertyCodeTemplates": [
+    {
+      "Name": "Properies",
+      "Content": "public $MapType$ $PropertyName$ {get;set;} $N$"
+    }
+  ]
+}

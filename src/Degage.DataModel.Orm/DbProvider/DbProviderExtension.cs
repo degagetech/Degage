@@ -7,8 +7,16 @@ using System.Text;
 
 namespace Degage.DataModel.Orm
 {
+    /// <summary>
+    /// 为 <see cref="DbProvider"/> 类型提供常用操作扩展
+    /// </summary>
     public static class DbProviderExtension
     {
+        public static Table<T> CreateTable<T>(this DbProvider dbProvider) where T : class
+        {
+            Table<T> table = new Table<T>(dbProvider);
+            return table;
+        }
         private static void ExceutePrepare(
            DbConnection connection,
            DbCommand command,
@@ -63,6 +71,29 @@ namespace Degage.DataModel.Orm
             return result;
         }
 
+        public static IDriver<T> Select<T>(this DbProvider provider) where T : class
+        {
+            Table<T> table = new Table<T>(provider);
+            return table.Select();
+        }
+
+        public static IDriver<T> Delete<T>(this DbProvider provider) where T : class
+        {
+            Table<T> table = new Table<T>(provider);
+            return table.Delete();
+        }
+
+        public static IDriver<T> Update<T>(this DbProvider provider, Expression<Func<T>> regenerator) where T : class
+        {
+            Table<T> table = new Table<T>(provider);
+            return table.Update(regenerator);
+        }
+
+        public static IDriver<T> Insert<T>(this DbProvider provider, T obj) where T : class
+        {
+            Table<T> table = new Table<T>(provider);
+            return table.Insert(obj);
+        }
 
         /// <summary>
         /// 执行指定的查询语句，并返回包含查询结果的<see cref="DataTable"/>对象
@@ -95,6 +126,100 @@ namespace Degage.DataModel.Orm
                 }
             }
             return table;
+        }
+        /// <summary>
+        /// 根据指定的条件表达式查询数据，若无返回一个元素个数为零的链表对象
+        /// </summary>
+        public static List<T> Load<T>(this DbProvider provider, Expression<Func<T, Boolean>> expression = null) where T : class
+        {
+            List<T> result = null;
+            Table<T> table = new Table<T>(provider);
+            IDriver<T> driver = table.Select();
+            if (expression != null)
+            {
+                driver = driver.Where(expression);
+            }
+            result = driver.ExecuteReader().ToList();
+
+            return result;
+        }
+        /// <summary>
+        /// 删除满足指定条件表达式的记录
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static Boolean Delete<T>(Expression<Func<T, Boolean>> expression, DbProvider provider) where T : class
+        {
+            Boolean success = false;
+            Table<T> table = new Table<T>(provider);
+            IDriver<T> driver = table.Delete().Where(expression);
+            success = driver.ExecuteNonQuery() > 0;
+            return success;
+        }
+
+
+        /// <summary>
+        /// 使用指定的更新表达式以及条件表达式更新记录
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="updater"></param>
+        /// <param name="expression"></param>
+        /// <param name="provider"></param>
+        /// <returns></returns>
+        public static Boolean Update<T>(
+            this DbProvider provider,
+            Expression<Func<T>> updater,
+            Expression<Func<T, Boolean>> expression
+            ) where T : class
+        {
+            Boolean success = false;
+            Table<T> table = new Table<T>(provider);
+            var driver = table.Update(updater);
+            driver.Where(expression);
+            success = driver.ExecuteNonQuery() > 0;
+            return success;
+        }
+        /// <summary>
+        /// 使用指定的条件表达式，更新对象到数据库中
+        /// 注意，此操作先将旧的记录删除，在使用新的数据插入一条记录
+        /// </summary>
+        public static Boolean UpdateByDelete<T>(this DbProvider provider, T obj, Expression<Func<T, Boolean>> expression) where T : class
+        {
+            Boolean success = false;
+            Table<T> table = new Table<T>(provider);
+            using (DbConnection connection = provider.DbConnection())
+            {
+                connection.Open();
+                DbTransaction transaction = connection.BeginTransaction();
+                try
+                {
+                    success = table.Delete().Where(expression).ExecuteNonQuery(connection, transaction) > 0;
+                    if (success)
+                    {
+                        success = table.Insert(obj).ExecuteNonQuery(connection, transaction) > 0;
+                    }
+                    transaction.Commit();
+                }
+                catch (Exception exc)
+                {
+                    success = false;
+                    transaction.Rollback();
+                    throw exc;
+                }
+            }
+            return success;
+        }
+        /// <summary>
+        /// 使用指定的条件表达式，更新对象到数据库中
+        /// 注意，此操作忽略字段为空的值的更新
+        /// </summary>
+        public static Boolean Update<T>(DbProvider provider, T obj, Expression<Func<T, Boolean>> expression) where T : class
+        {
+            Boolean success = false;
+            Table<T> table = new Table<T>(provider);
+            var driver = table.Update(obj).Where(expression);
+            success = driver.ExecuteNonQuery() > 0;
+            return success;
         }
     }
 }

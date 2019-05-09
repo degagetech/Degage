@@ -31,18 +31,34 @@ namespace Degage.FileSystem
         /// <summary>
         /// 文件块已创建
         /// </summary>
-        Created = 0,
+        Created = 0b00_00_00_00,
         /// <summary>
-        /// 文件块已创建并且已在存储介质上分配空间
+        /// 文件块已创建并且已分配空间
         /// </summary>
-        Allocated = 1,
+        Allocated = 0b00_00_00_01,
+        /// <summary>
+        /// 文件块完全被加载至内存
+        /// </summary>
+        Loaded = 0b00_00_00_10,
+        /// <summary>
+        /// 文件块当前可用
+        /// </summary>
+        Available = 0b00_00_01_00,
+        /// <summary>
+        /// 文件块可读
+        /// </summary>
+        CanRead = 0b00_00_10_00,
+        /// <summary>
+        /// 文件块可写
+        /// </summary>
+        CanWrite = 0b00_01_00_00,
         /// <summary>
         /// 文件块已被删除
         /// </summary>
-        Deleted = 2,
+        Deleted = 0b01_00_00_00,
         /// <summary>
         /// 文件块占用空间已被释放
         /// </summary>
-        Released = 3
+        Released = 0b10_00_00_00
     }
 }

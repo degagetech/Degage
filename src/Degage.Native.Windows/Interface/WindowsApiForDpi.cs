@@ -20,7 +20,7 @@ namespace Degage.Native.Windows
         public static NativeApiResult<Int32> SetProcessDpiAwareness(ProcessDPIAwareness dpiAwarenessValue)
         {
             NativeApiResult<Int32> result = null;
-            if (Environment.OSVersion.Version.Major >= 6)
+            if (Environment.OSVersion.Version.Major >= 6 && Environment.OSVersion.Version.Minor>=2)
             {
                 var setResult = SetProcessDpiAwarenessNative((Int32)dpiAwarenessValue);
                 result = NativeApiResult.Create(setResult, NativeApiResult.GetLastError());

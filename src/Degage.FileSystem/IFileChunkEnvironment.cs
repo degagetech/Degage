@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using System.IO;
 namespace Degage.FileSystem
 {
     /// <summary>
@@ -10,6 +10,7 @@ namespace Degage.FileSystem
     /// </summary>
     public interface IFileChunkEnvironment
     {
+        Stream LoadChunkDataStream(String chunkId);
         /// <summary>
         /// 通过指定的块标识获取文件块的元数据信息
         /// </summary>

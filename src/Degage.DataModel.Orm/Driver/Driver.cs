@@ -24,7 +24,7 @@ namespace Degage.DataModel.Orm
         public SQLComponent SQLComponent { get; set; } = new SQLComponent();
 
         /// <summary>
-        /// 使用指定 <see cref="Degage.DataModel.Orm.DbProvider"/> 初始化传动器
+        /// 使用指定 <see cref="QualityMgmtSystem.Orm.DbProvider"/> 初始化传动器
         /// </summary>
         /// <param name="dbProvider"></param>
         public Driver(DbProvider dbProvider)
@@ -48,14 +48,17 @@ namespace Degage.DataModel.Orm
                 this.CloseConnection();
             }
         }
-        public Int32 ExecuteNonQuery(DbConnection connection,DbTransaction transaction)
+        public Int32 ExecuteNonQuery(DbConnection connection, DbTransaction transaction)
         {
 
             Int32 affact = 0;
             try
             {
                 this.ExecutePrepare(connection);
-                this.Command.Transaction = transaction;
+                if (transaction != null)
+                {
+                    this.Command.Transaction = transaction;
+                }
                 affact = this.Command.ExecuteNonQuery();
             }
             finally
@@ -120,7 +123,8 @@ namespace Degage.DataModel.Orm
             }
         }
 
-        
+
+
         public ISelectVector<T> ExecuteReader(String connectionString = null)
         {
 
@@ -132,7 +136,7 @@ namespace Degage.DataModel.Orm
             ISelectVector<T> selectResultVector = ObjectFactory._.SelectVector<T>(this, connection);
             return selectResultVector;
         }
-        public ISelectVector<T> ExecuteReader(DbConnection connection,DbTransaction transaction)
+        public ISelectVector<T> ExecuteReader(DbConnection connection, DbTransaction transaction)
         {
             ISelectVector<T> selectResultVector = ObjectFactory._.SelectVector<T>(this, connection, transaction);
             return selectResultVector;
@@ -155,10 +159,31 @@ namespace Degage.DataModel.Orm
             return result;
         }
 
+        public Object ExecuteScalar(DbConnection connection, DbTransaction transaction)
+        {
+            Object result = null;
+            try
+            {
+                this.ExecutePrepare(connection);
+                if (transaction != null)
+                {
+                    this.Command.Transaction = transaction;
+                }
+                result = this.Command.ExecuteScalar();
+            }
+            finally
+            {
+                this.Command?.Parameters.Clear();
+                this.Command = null;
+                this.Connection = null;
+            }
+            return result;
+        }
+
         public IDriver<T> JoinOn<T1>(Expression<Func<T, T1, Boolean>> predicate) where T1 : class
         {
-            this.SQLComponent.AppendSQLFormat(CommonFormat.JOIN_ON_FORMAT,Table<T1>.Schema.TableName,String.Empty);
-             LambdaToSqlConverter<T>.JoinOn<T1>(this.DbProvider, predicate, this.SQLComponent);
+            this.SQLComponent.AppendSQLFormat(CommonFormat.JOIN_ON_FORMAT, Table<T1>.Schema.TableName, String.Empty);
+            LambdaToSqlConverter<T>.JoinOn<T1>(this.DbProvider, predicate, this.SQLComponent);
             return this;
         }
 
@@ -196,6 +221,19 @@ namespace Degage.DataModel.Orm
             return this;
         }
 
-     
+        public ISelectVector<T> ExecuteReader(DbTransaction transaction)
+        {
+            return this.ExecuteReader(transaction.Connection, transaction);
+        }
+
+        public Object ExecuteScalar(DbTransaction transaction)
+        {
+            return this.ExecuteScalar(transaction.Connection, transaction);
+        }
+
+        public Int32 ExecuteNonQuery(DbTransaction transaction)
+        {
+            return this.ExecuteNonQuery(transaction.Connection, transaction);
+        }
     }
 }

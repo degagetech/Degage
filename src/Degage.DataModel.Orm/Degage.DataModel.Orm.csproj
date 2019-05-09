@@ -30,8 +30,4 @@
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.110" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="MySql\" />
-  </ItemGroup>
-
 </Project>

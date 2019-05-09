@@ -173,5 +173,20 @@ namespace Degage.DataModel.Orm
             component.AppendSQLFormat(CommonFormat.BRACKET_FORMAT, inParaNames.ToString());
 
         }
+
+        public static List<T> ToList<T>(this IDriver<T> driver, String connectionString = null) where T : class
+        {
+            return driver.ExecuteReader().ToList();
+        }
+
+        public static List<T> ToList<T>(this IDriver<T> driver, DbConnection connection, DbTransaction transaction = null) where T : class
+        {
+            return driver.ExecuteReader(connection, transaction).ToList();
+        }
+
+        public static List<T> ToList<T>(this IDriver<T> driver, DbTransaction transaction) where T : class
+        {
+            return driver.ExecuteReader(transaction).ToList();
+        }
     }
 }

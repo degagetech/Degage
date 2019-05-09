@@ -60,6 +60,6 @@ namespace Degage.DataModel.Orm
         /// </summary>
         ISelectVector<T> ExecuteReader(String connectionString = null);
         ISelectVector<T> ExecuteReader(DbConnection connection,DbTransaction transaction=null);
-
+        ISelectVector<T> ExecuteReader(DbTransaction transaction);
     }
 }

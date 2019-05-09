@@ -5,8 +5,9 @@
 </p>
 
 <p align="center">
-  <a href="https://material-ui.com/" rel="noopener" target="_blank"><img width="150" src="DEGAGE_LOGO.png" alt="Degage Logo"></a></p>
+<img width="150" src="DEGAGE_LOGO.png" alt="Degage Logo">
 </p>
+
 
 <h1 align="center">DEGAGE 开发平台</h1>
 

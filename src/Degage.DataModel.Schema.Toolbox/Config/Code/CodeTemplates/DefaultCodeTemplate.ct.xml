@@ -4,9 +4,12 @@
    xmlns:schemaLocation="Degage.DataModel.Schema.Toolbox CodeTemplate.xsd">
   <Name>.NET 简易模板-XML</Name>
   <Body>
-      using System;
-      namespace $NameSpace$
-      {
+    using System;
+    namespace $NameSpace$
+    {
+          ///&lt;summary&gt;
+          /// $TableExplain$
+          ///&lt;/summary&gt;
           public class $ClassName$
           {
               #Properties#
@@ -18,6 +21,9 @@
     <Item>
       <Name>Properties</Name>
       <Content>
+           ///&lt;summary&gt;
+           /// $ColumnExplain$
+           ///&lt;/summary&gt;
            public $MapType$ $PropertyName$ {get;set;}
       </Content>
     </Item>

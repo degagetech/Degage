@@ -938,7 +938,10 @@ namespace Degage.DataModel.Schema.Toolbox
             config.ConnectionString = this._cbConnectionString.Text;
             config.ExcelExportConfigString = this._ctlExcelExportConfig.ExportConfigInfo();
             config.SelectExportType = this.CurrentExportType;
-            config.SelectedSchemaInfo = this.CheckedTableSchemas.Select(t => t.Name).ToList();
+            if (this.CheckedTableSchemas != null)
+            {
+                config.SelectedSchemaInfo = this.CheckedTableSchemas.Select(t => t.Name).ToList();
+            }
             config.Save(filePath);
             this.Cursor = Cursors.Default;
         }

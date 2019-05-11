@@ -12,6 +12,18 @@
         "DbType": "int"
       },
       "MapType": "Int32"
+    },
+    {
+      "Condition": {
+        "DbType": "datetime"
+      },
+      "MapType": "DateTime"
+    },
+    {
+      "Condition": {
+        "DbType": "tinyint"
+      },
+      "MapType": "Boolean"
     }
   ]
 }

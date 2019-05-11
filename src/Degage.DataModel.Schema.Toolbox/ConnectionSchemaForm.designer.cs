@@ -128,7 +128,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 29);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 17);
+            this.label2.Size = new System.Drawing.Size(74, 19);
             this.label2.TabIndex = 14;
             this.label2.Text = "连接字符串";
             // 
@@ -148,7 +148,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 67);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 17);
+            this.label1.Size = new System.Drawing.Size(74, 19);
             this.label1.TabIndex = 13;
             this.label1.Text = "结构提供源";
             // 
@@ -378,7 +378,7 @@
             this._lblLoadTypeSymbol.Image = global::Degage.DataModel.Schema.Toolbox.Properties.Resources.schema_load_database;
             this._lblLoadTypeSymbol.Location = new System.Drawing.Point(50, 109);
             this._lblLoadTypeSymbol.Name = "_lblLoadTypeSymbol";
-            this._lblLoadTypeSymbol.Size = new System.Drawing.Size(20, 17);
+            this._lblLoadTypeSymbol.Size = new System.Drawing.Size(21, 19);
             this._lblLoadTypeSymbol.TabIndex = 36;
             this._lblLoadTypeSymbol.Text = "   ";
             this._lblLoadTypeSymbol.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -388,7 +388,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 109);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 17);
+            this.label3.Size = new System.Drawing.Size(35, 19);
             this.label3.TabIndex = 32;
             this.label3.Text = "目录";
             // 
@@ -483,8 +483,8 @@
             "Oracle:Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST= ip )(" +
                 "PORT= port )))(CONNECT_DATA=(SERVICE_NAME= servicename )));User Id= user ;Passwo" +
                 "rd= password ",
-            "MySql:server= ip ;Port=port;Uid= root ;Pwd= password ;DataBase= dbname ;Pooling=t" +
-                "rue;charset=utf8;",
+            "MySql:server= ip ;Port= port ;Uid= root ;Pwd= password ;DataBase= dbname ;Pooling" +
+                "=true;charset=utf8;",
             "SQLite:Data Source= path ;UTF8Encoding=True;"});
             this._cbConnectionString.Location = new System.Drawing.Point(88, 24);
             this._cbConnectionString.Name = "_cbConnectionString";

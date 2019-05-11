@@ -185,7 +185,8 @@ namespace Degage.DataModel.Schema.Toolbox
             {
                 targeter.PointTo(exportFiles);
             }
-            directoryInfo.Delete(true);
+            //删除临时目录
+            Directory.Delete(directory,true);
         }
         private String ExtractPrpertySymbol(String match)
         {

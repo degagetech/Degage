@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this._cbSchemaProvider = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -130,7 +130,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(24, 78);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 17);
+            this.label1.Size = new System.Drawing.Size(74, 19);
             this.label1.TabIndex = 1;
             this.label1.Text = "结构提供源";
             // 
@@ -139,7 +139,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(24, 40);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 17);
+            this.label2.Size = new System.Drawing.Size(74, 19);
             this.label2.TabIndex = 2;
             this.label2.Text = "连接字符串";
             // 
@@ -186,15 +186,15 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(11, 11);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 17);
+            this.label3.Size = new System.Drawing.Size(35, 19);
             this.label3.TabIndex = 6;
             this.label3.Text = "目录";
             // 
             // _dgvColumnSchema
             // 
             this._dgvColumnSchema.AllowUserToAddRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this._dgvColumnSchema.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this._dgvColumnSchema.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this._dgvColumnSchema.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -208,14 +208,14 @@
             this._colLength,
             this._colNullable,
             this._colExplain});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this._dgvColumnSchema.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this._dgvColumnSchema.DefaultCellStyle = dataGridViewCellStyle2;
             this._dgvColumnSchema.Location = new System.Drawing.Point(3, 4);
             this._dgvColumnSchema.Name = "_dgvColumnSchema";
             this._dgvColumnSchema.RowHeadersVisible = false;
@@ -513,7 +513,7 @@
             this._tsmiHelp});
             this._stripMenu.Location = new System.Drawing.Point(0, 0);
             this._stripMenu.Name = "_stripMenu";
-            this._stripMenu.Size = new System.Drawing.Size(964, 25);
+            this._stripMenu.Size = new System.Drawing.Size(964, 27);
             this._stripMenu.TabIndex = 26;
             this._stripMenu.Text = "menuStrip1";
             // 
@@ -527,7 +527,7 @@
             this._tsmiLoadSchemaFromFile});
             this._stripItemFile.Name = "_stripItemFile";
             this._stripItemFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F)));
-            this._stripItemFile.Size = new System.Drawing.Size(58, 21);
+            this._stripItemFile.Size = new System.Drawing.Size(62, 23);
             this._stripItemFile.Text = "文件(&F)";
             // 
             // _stripReadConfig
@@ -535,7 +535,7 @@
             this._stripReadConfig.BackColor = System.Drawing.Color.WhiteSmoke;
             this._stripReadConfig.Name = "_stripReadConfig";
             this._stripReadConfig.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this._stripReadConfig.Size = new System.Drawing.Size(197, 22);
+            this._stripReadConfig.Size = new System.Drawing.Size(210, 24);
             this._stripReadConfig.Text = "读取配置(&R)";
             this._stripReadConfig.Click += new System.EventHandler(this._stripReadConfig_Click);
             // 
@@ -544,7 +544,7 @@
             this._stripItemSaveCurrentConfig.BackColor = System.Drawing.Color.WhiteSmoke;
             this._stripItemSaveCurrentConfig.Name = "_stripItemSaveCurrentConfig";
             this._stripItemSaveCurrentConfig.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this._stripItemSaveCurrentConfig.Size = new System.Drawing.Size(197, 22);
+            this._stripItemSaveCurrentConfig.Size = new System.Drawing.Size(210, 24);
             this._stripItemSaveCurrentConfig.Text = "保存配置(&S)";
             this._stripItemSaveCurrentConfig.Click += new System.EventHandler(this._stripItemSaveCurrentConfig_Click);
             // 
@@ -553,14 +553,14 @@
             this._stripItemAsConfig.BackColor = System.Drawing.Color.WhiteSmoke;
             this._stripItemAsConfig.Name = "_stripItemAsConfig";
             this._stripItemAsConfig.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this._stripItemAsConfig.Size = new System.Drawing.Size(197, 22);
+            this._stripItemAsConfig.Size = new System.Drawing.Size(210, 24);
             this._stripItemAsConfig.Text = "配置另存为(&A)";
             this._stripItemAsConfig.Click += new System.EventHandler(this._stripAsConfig_Click);
             // 
             // _tsmiSaveSchemaToFile
             // 
             this._tsmiSaveSchemaToFile.Name = "_tsmiSaveSchemaToFile";
-            this._tsmiSaveSchemaToFile.Size = new System.Drawing.Size(197, 22);
+            this._tsmiSaveSchemaToFile.Size = new System.Drawing.Size(210, 24);
             this._tsmiSaveSchemaToFile.Text = "保存结构到文件";
             this._tsmiSaveSchemaToFile.ToolTipText = "保存当前的结构信息到指定文件中";
             this._tsmiSaveSchemaToFile.Click += new System.EventHandler(this._tsmiSaveSchemaToFile_Click);
@@ -568,7 +568,7 @@
             // _tsmiLoadSchemaFromFile
             // 
             this._tsmiLoadSchemaFromFile.Name = "_tsmiLoadSchemaFromFile";
-            this._tsmiLoadSchemaFromFile.Size = new System.Drawing.Size(197, 22);
+            this._tsmiLoadSchemaFromFile.Size = new System.Drawing.Size(210, 24);
             this._tsmiLoadSchemaFromFile.Text = "加载结构从文件";
             this._tsmiLoadSchemaFromFile.ToolTipText = "加载结构信息从目标文件中";
             this._tsmiLoadSchemaFromFile.Click += new System.EventHandler(this._tsmiLoadSchemaFromFile_Click);
@@ -579,13 +579,13 @@
             this._tsmiCompareFromFile,
             this._tsmiCompareFromConnection});
             this._tsmiCompare.Name = "_tsmiCompare";
-            this._tsmiCompare.Size = new System.Drawing.Size(60, 21);
+            this._tsmiCompare.Size = new System.Drawing.Size(64, 23);
             this._tsmiCompare.Text = "比较(&C)";
             // 
             // _tsmiCompareFromFile
             // 
             this._tsmiCompareFromFile.Name = "_tsmiCompareFromFile";
-            this._tsmiCompareFromFile.Size = new System.Drawing.Size(210, 22);
+            this._tsmiCompareFromFile.Size = new System.Drawing.Size(223, 24);
             this._tsmiCompareFromFile.Text = "从文件中获取比较目标(&F)";
             this._tsmiCompareFromFile.ToolTipText = "从文件中获取比较目标的结构信息";
             this._tsmiCompareFromFile.Click += new System.EventHandler(this._tsmiCompareFromFile_Click);
@@ -593,7 +593,7 @@
             // _tsmiCompareFromConnection
             // 
             this._tsmiCompareFromConnection.Name = "_tsmiCompareFromConnection";
-            this._tsmiCompareFromConnection.Size = new System.Drawing.Size(210, 22);
+            this._tsmiCompareFromConnection.Size = new System.Drawing.Size(223, 24);
             this._tsmiCompareFromConnection.Text = "使用数据连接(&C)";
             this._tsmiCompareFromConnection.ToolTipText = "使用新的数据连接获取比较目标的结构信息";
             this._tsmiCompareFromConnection.Click += new System.EventHandler(this._tsmiCompareFromConnection_Click);
@@ -603,13 +603,13 @@
             this._tsmiHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this._tsmiAboutTool});
             this._tsmiHelp.Name = "_tsmiHelp";
-            this._tsmiHelp.Size = new System.Drawing.Size(61, 21);
+            this._tsmiHelp.Size = new System.Drawing.Size(65, 23);
             this._tsmiHelp.Text = "帮助(&H)";
             // 
             // _tsmiAboutTool
             // 
             this._tsmiAboutTool.Name = "_tsmiAboutTool";
-            this._tsmiAboutTool.Size = new System.Drawing.Size(124, 22);
+            this._tsmiAboutTool.Size = new System.Drawing.Size(130, 24);
             this._tsmiAboutTool.Text = "关于工具";
             this._tsmiAboutTool.Click += new System.EventHandler(this._tsmiAboutTool_Click);
             // 
@@ -628,7 +628,7 @@
             this._lblLoadTypeSymbol.Image = global::Degage.DataModel.Schema.Toolbox.Properties.Resources.schema_load_database;
             this._lblLoadTypeSymbol.Location = new System.Drawing.Point(49, 11);
             this._lblLoadTypeSymbol.Name = "_lblLoadTypeSymbol";
-            this._lblLoadTypeSymbol.Size = new System.Drawing.Size(20, 17);
+            this._lblLoadTypeSymbol.Size = new System.Drawing.Size(21, 19);
             this._lblLoadTypeSymbol.TabIndex = 27;
             this._lblLoadTypeSymbol.Text = "   ";
             this._lblLoadTypeSymbol.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -647,8 +647,8 @@
             // _dgvIndexColumnSchema
             // 
             this._dgvIndexColumnSchema.AllowUserToAddRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this._dgvIndexColumnSchema.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this._dgvIndexColumnSchema.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this._dgvIndexColumnSchema.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this._dgvIndexColumnSchema.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -658,14 +658,14 @@
             this._colIndexName,
             this._colIndexColumnNames,
             this._colIndexDesc});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this._dgvIndexColumnSchema.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this._dgvIndexColumnSchema.DefaultCellStyle = dataGridViewCellStyle4;
             this._dgvIndexColumnSchema.Location = new System.Drawing.Point(3, 153);
             this._dgvIndexColumnSchema.Name = "_dgvIndexColumnSchema";
             this._dgvIndexColumnSchema.RowHeadersVisible = false;
@@ -796,8 +796,8 @@
             "Oracle:Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST= ip )(" +
                 "PORT= port )))(CONNECT_DATA=(SERVICE_NAME= servicename )));User Id= user ;Passwo" +
                 "rd= password ",
-            "MySql:server= ip ;Port=port;Uid= root ;Pwd= password ;DataBase= dbname ;Pooling=t" +
-                "rue;charset=utf8;",
+            "MySql:server= ip ;Port= port ;Uid= root ;Pwd= password ;DataBase= dbname ;Pooling" +
+                "=true;charset=utf8;",
             "SQLite:Data Source= path ;UTF8Encoding=True;"});
             this._cbConnectionString.Location = new System.Drawing.Point(98, 36);
             this._cbConnectionString.Name = "_cbConnectionString";

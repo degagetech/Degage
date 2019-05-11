@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Degage.EnvironmentalMgmt", "Degage.EnvironmentalMgmt\Degage.EnvironmentalMgmt.csproj", "{BF458ACC-D256-4961-A53D-86B0B7C33ECE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Degage.EnvironmentalMgmt.Master", "Degage.EnvironmentalMgmt.Master\Degage.EnvironmentalMgmt.Master.csproj", "{8455990B-FA00-4B69-860B-8B0FDC6C1C56}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF458ACC-D256-4961-A53D-86B0B7C33ECE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF458ACC-D256-4961-A53D-86B0B7C33ECE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF458ACC-D256-4961-A53D-86B0B7C33ECE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF458ACC-D256-4961-A53D-86B0B7C33ECE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8455990B-FA00-4B69-860B-8B0FDC6C1C56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8455990B-FA00-4B69-860B-8B0FDC6C1C56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8455990B-FA00-4B69-860B-8B0FDC6C1C56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8455990B-FA00-4B69-860B-8B0FDC6C1C56}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EE1A7170-9A08-4D43-9121-CCCE65F6BC1D}
+	EndGlobalSection
+EndGlobal

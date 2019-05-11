@@ -129,6 +129,11 @@
     <Compile Include="Export\CodeExport\CodeSchemaExporter.cs" />
     <Compile Include="Export\CodeExport\CodeTemplateConfig.cs" />
     <Compile Include="Export\CodeExport\CodeExportConfig.cs" />
+    <Compile Include="Export\CodeExport\ContentSymbol\IsPrimaryKey.cs" />
+    <Compile Include="Export\CodeExport\ContentSymbol\ColumnName.cs" />
+    <Compile Include="Export\CodeExport\ContentSymbol\TableName.cs" />
+    <Compile Include="Export\CodeExport\ContentSymbol\TableExplain.cs" />
+    <Compile Include="Export\CodeExport\ContentSymbol\ColumnExplain.cs" />
     <Compile Include="Export\CodeExport\ContentSymbol\NewLine.cs" />
     <Compile Include="Export\CodeExport\ContentSymbol\FieldName.cs" />
     <Compile Include="Export\CodeExport\ContentSymbol\MapType.cs" />
@@ -401,7 +406,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties config_4code_4typemaps_4mysqltypemap_1tm_1json__JsonSchema="TypeMapSchema.json" config_4code_4typemaps_4typemapschema_1json__JsonSchema="http://json-schema.org/draft-04/schema" config_4code_4codetemplates_4codetemplateschema_1json__JsonSchema="http://json-schema.org/draft-04/schema" config_4code_4codetemplates_4defaultcodetemplate_1ct_1json__JsonSchema="CodeTemplateSchema.json" config_4code_4typemaps_4oracletypemap_1tm_1json__JsonSchema="TypeMapSchema.json" />
+      <UserProperties config_4code_4typemaps_4oracletypemap_1tm_1json__JsonSchema="TypeMapSchema.json" config_4code_4codetemplates_4defaultcodetemplate_1ct_1json__JsonSchema="CodeTemplateSchema.json" config_4code_4codetemplates_4codetemplateschema_1json__JsonSchema="http://json-schema.org/draft-04/schema" config_4code_4typemaps_4typemapschema_1json__JsonSchema="http://json-schema.org/draft-04/schema" config_4code_4typemaps_4mysqltypemap_1tm_1json__JsonSchema="TypeMapSchema.json" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

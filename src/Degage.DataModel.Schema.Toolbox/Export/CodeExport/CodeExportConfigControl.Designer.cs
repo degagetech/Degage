@@ -129,6 +129,7 @@
             this._flpContentSymbol.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this._flpContentSymbol.AutoScroll = true;
             this._flpContentSymbol.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this._flpContentSymbol.Location = new System.Drawing.Point(578, 44);
             this._flpContentSymbol.Name = "_flpContentSymbol";

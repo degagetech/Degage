@@ -24,172 +24,170 @@ namespace System.Linq.Expressions
            { "&",8},{ "^",9}, { "|",10},{ "&&",11},{ "||",12},
         };
 
-        public Expression GetExpressionEx(
-          String expStr,
-          IDictionary<String, ExpressionParameter> parameters,
-          String paraSymbol)
-        {
-            Expression expression = null;
-            Stack<String> expressionStack = new Stack<String>();
-            Stack<String> operatorStack = new Stack<String>();
-            StringBuilder expressionContainer = new StringBuilder();
-            for (Int32 i = 0; i < expStr.Length; ++i)
-            {
-                String c = expStr[i].ToString();
-                switch (c)
-                {
-                    case "(":
-                        {
-                               
-                        }
-                        break;
-                }
-                if (this.IsBinaryOperator(c))
-                {
-                    operatorStack.Push(c);
-                }
-                else
-                {
-                    expressionContainer.Append(c);
-                }
-
-            }
-
-            return expression;
-        }
-
-
-
         //public Expression GetExpressionEx(
         //  String expStr,
         //  IDictionary<String, ExpressionParameter> parameters,
-        //  String paraSymbol,
-        //   out String errorMessage)
+        //  String paraSymbol)
         //{
         //    Expression expression = null;
-        //    errorMessage = null;
-        //    ExpressionBuildErrorType errorType = ExpressionBuildErrorType.None;
-        //    Boolean isConfirmBinaryOperator = false;
-        //    Int32 lastBinaryOperatorIndex = -1;
-        //    Expression lastExpression = null;
-
-        //    Int32 currentLocation = 0;
-        //    StringBuilder stringExpressionContainer = new StringBuilder();
-        //    Int32 binaryOpVerifyMaxOffset = expStr.Length - 2;
-
-        //    //优先级处理
-        //    Stack<String> binaryOperatorStack = new Stack<String>();
-        //    Stack<String> stringExpressionStack = new Stack<String>();
-        //    Stack<BinaryExpression> binaryExpressionQueue = new Stack<BinaryExpression>();
-
+        //    Stack<String> expressionStack = new Stack<String>();
+        //    Stack<String> operatorStack = new Stack<String>();
+        //    StringBuilder expressionContainer = new StringBuilder();
         //    for (Int32 i = 0; i < expStr.Length; ++i)
         //    {
-        //        currentLocation = i;
-        //        var c = expStr[i];
-        //        var cStr = c.ToString();
-        //        String str = cStr;
-
-        //        //如果尚未临界字符串末尾，并且当前字符是二元运算符基础构成符号但本身不是二元运算符
-        //        //则判断当前字符与下一个字符是否构成二元运算符
-        //        if (!this.IsBinaryOperator(cStr) && this.IsBaseBinaryOperatorSymbol(c) && i <= binaryOpVerifyMaxOffset)
+        //        String c = expStr[i].ToString();
+        //        switch (c)
         //        {
-        //            var nextChar = expStr[i + 1];
-        //            str = c.ToString() + nextChar;
-        //        }
-
-        //        //如果本身是二元操作符，并且和下一个符号也能组合成二元操作符
-        //        if (this.IsBinaryOperator(cStr) && i <= binaryOpVerifyMaxOffset)
-        //        {
-        //            var nextChar = expStr[i + 1];
-        //            var tempstr = c.ToString() + nextChar;
-        //            if (this.IsBinaryOperator(tempstr))
-        //            {
-        //                str = tempstr;
-        //            }
-        //        }
-
-        //        if (this.IsBinaryOperator(str))
-        //        {
-        //            //如果连续出现二元运算符，则错误
-        //            if ((lastBinaryOperatorIndex + 1) == i)
-        //            {
-        //                errorType = ExpressionBuildErrorType.ContinuousBinaryOperator;
-        //                goto RETRUN;
-        //            }
-        //            //如果二元运算符处于字符串开始处，则错误
-        //            if (i == 0)
-        //            {
-        //                errorType = ExpressionBuildErrorType.IsNullBinaryOperateLeftObject;
-        //                goto RETRUN;
-        //            }
-        //            //如果二元运算符处于字符串结束处，则错误
-        //            if (i == binaryOpVerifyMaxOffset)
-        //            {
-        //                errorType = ExpressionBuildErrorType.IsNullBinaryOperateRightObject;
-        //                goto RETRUN;
-        //            }
-
-        //            var stringExpression = stringExpressionContainer.ToString();
-        //            stringExpressionStack.Push(stringExpression);
-        //            stringExpressionContainer.Clear();
-
-        //            i += (str.Length - 1);
-        //            lastBinaryOperatorIndex = i;
-        //            isConfirmBinaryOperator = true;
-
-        //            var preOperator = binaryOperatorStack.Peek();
-        //            //如果上一个二元操作符的优先级高于等于当前的，则构建一次表达式
-        //            if (preOperator != null && this.BinaryOperatorPriority(preOperator, str))
-        //            {
-        //                binaryOperatorStack.Pop();
-        //                //取出两个字符串表达式
-        //                var rightExpressionStr = stringExpressionStack.Pop();
-        //                var leftExpressionStr = stringExpressionStack.Pop();
-
-        //                var leftBuildResult = this.GetUnaryExpression(leftExpressionStr, parameters, paraSymbol);
-        //                var leftExpression = leftBuildResult.Item1;
-        //                if (leftExpression == null)
+        //            case "(":
         //                {
-        //                    errorMessage = leftExpressionStr;
-        //                    errorType = ExpressionBuildErrorType.InvalidUnaryExpression;
-        //                    goto RETRUN;
-        //                }
 
-        //                var rightBuildResult = this.GetUnaryExpression(rightExpressionStr, parameters, paraSymbol);
-        //                var rightExpression = rightBuildResult.Item1;
-        //                if (rightExpression == null)
-        //                {
-        //                    errorMessage = rightExpressionStr;
-        //                    errorType = ExpressionBuildErrorType.InvalidUnaryExpression;
-        //                    goto RETRUN;
         //                }
-
-        //                var binaryExpression = this.GetBinaryExpression(preOperator, leftExpression, rightExpression);
-        //                binaryExpressionQueue.Push(binaryExpression);
-        //            }
-        //            binaryOperatorStack.Push(str);
+        //                break;
+        //        }
+        //        if (this.IsBinaryOperator(c))
+        //        {
+        //            operatorStack.Push(c);
         //        }
         //        else
         //        {
-        //            stringExpressionContainer.Append(c);
+        //            expressionContainer.Append(c);
         //        }
 
-        //        if (i != (expStr.Length - 1)) continue;
+        //    }
 
-        //        binaryOperatorContainer.Clear();
-        //        stringExpressionContainer.Clear();
-        //        rightUnaryExpressionContainer.Clear();
-        //        isConfirmBinaryOperator = false;
-        //        continue;
-        //    }
-        //RETRUN:
-        //    if (errorType != ExpressionBuildErrorType.None)
-        //    {
-        //        errorMessage += this.GetBuildErrorDescription(errorType);
-        //        errorMessage = this.BuildErrorMessage(errorMessage, currentLocation);
-        //    }
         //    return expression;
         //}
+
+
+
+        public Expression GetExpressionEx(
+          String expStr,
+          IDictionary<String, ExpressionParameter> parameters,
+          String paraSymbol,
+           out String errorMessage)
+        {
+            Expression expression = null;
+            errorMessage = null;
+            ExpressionBuildErrorType errorType = ExpressionBuildErrorType.None;
+            Boolean isConfirmBinaryOperator = false;
+            Int32 lastBinaryOperatorIndex = -1;
+            Expression lastExpression = null;
+
+            Int32 currentLocation = 0;
+            StringBuilder stringExpressionContainer = new StringBuilder();
+            Int32 binaryOpVerifyMaxOffset = expStr.Length - 2;
+
+            //优先级处理
+            Stack<String> binaryOperatorStack = new Stack<String>();
+            Stack<String> stringExpressionStack = new Stack<String>();
+            Stack<BinaryExpression> binaryExpressionQueue = new Stack<BinaryExpression>();
+
+            for (Int32 i = 0; i < expStr.Length; ++i)
+            {
+                currentLocation = i;
+                var c = expStr[i];
+                var cStr = c.ToString();
+                String str = cStr;
+
+                //如果尚未临界字符串末尾，并且当前字符是二元运算符基础构成符号但本身不是二元运算符
+                //则判断当前字符与下一个字符是否构成二元运算符
+                if (!this.IsBinaryOperator(cStr) && this.IsBaseBinaryOperatorSymbol(c) && i <= binaryOpVerifyMaxOffset)
+                {
+                    var nextChar = expStr[i + 1];
+                    str = c.ToString() + nextChar;
+                }
+
+                //如果本身是二元操作符，并且和下一个符号也能组合成二元操作符
+                if (this.IsBinaryOperator(cStr) && i <= binaryOpVerifyMaxOffset)
+                {
+                    var nextChar = expStr[i + 1];
+                    var tempstr = c.ToString() + nextChar;
+                    if (this.IsBinaryOperator(tempstr))
+                    {
+                        str = tempstr;
+                    }
+                }
+
+                if (this.IsBinaryOperator(str))
+                {
+                    //如果连续出现二元运算符，则错误
+                    if ((lastBinaryOperatorIndex + 1) == i)
+                    {
+                        errorType = ExpressionBuildErrorType.ContinuousBinaryOperator;
+                        goto RETRUN;
+                    }
+                    //如果二元运算符处于字符串开始处，则错误
+                    if (i == 0)
+                    {
+                        errorType = ExpressionBuildErrorType.IsNullBinaryOperateLeftObject;
+                        goto RETRUN;
+                    }
+                    //如果二元运算符处于字符串结束处，则错误
+                    if (i == binaryOpVerifyMaxOffset)
+                    {
+                        errorType = ExpressionBuildErrorType.IsNullBinaryOperateRightObject;
+                        goto RETRUN;
+                    }
+
+                    var stringExpression = stringExpressionContainer.ToString();
+                    stringExpressionStack.Push(stringExpression);
+                    stringExpressionContainer.Clear();
+
+                    i += (str.Length - 1);
+                    lastBinaryOperatorIndex = i;
+                    isConfirmBinaryOperator = true;
+
+                    var preOperator = binaryOperatorStack.Peek();
+                    //如果上一个二元操作符的优先级高于等于当前的，则构建一次表达式
+                    if (preOperator != null && this.BinaryOperatorPriority(preOperator, str))
+                    {
+                        binaryOperatorStack.Pop();
+                        //取出两个字符串表达式
+                        var rightExpressionStr = stringExpressionStack.Pop();
+                        var leftExpressionStr = stringExpressionStack.Pop();
+
+                        var leftBuildResult = this.GetUnaryExpression(leftExpressionStr, parameters, paraSymbol);
+                        var leftExpression = leftBuildResult.Item1;
+                        if (leftExpression == null)
+                        {
+                            errorMessage = leftExpressionStr;
+                            errorType = ExpressionBuildErrorType.InvalidUnaryExpression;
+                            goto RETRUN;
+                        }
+
+                        var rightBuildResult = this.GetUnaryExpression(rightExpressionStr, parameters, paraSymbol);
+                        var rightExpression = rightBuildResult.Item1;
+                        if (rightExpression == null)
+                        {
+                            errorMessage = rightExpressionStr;
+                            errorType = ExpressionBuildErrorType.InvalidUnaryExpression;
+                            goto RETRUN;
+                        }
+
+                        var binaryExpression = this.GetBinaryExpression(preOperator, leftExpression, rightExpression);
+                        binaryExpressionQueue.Push(binaryExpression);
+                    }
+                    binaryOperatorStack.Push(str);
+                }
+                else
+                {
+                    stringExpressionContainer.Append(c);
+                }
+
+                if (i != (expStr.Length - 1)) continue;
+
+                stringExpressionContainer.Clear();
+                isConfirmBinaryOperator = false;
+                continue;
+            }
+        RETRUN:
+            if (errorType != ExpressionBuildErrorType.None)
+            {
+                errorMessage += this.GetBuildErrorDescription(errorType);
+                errorMessage = this.BuildErrorMessage(errorMessage, currentLocation);
+            }
+            return expression;
+        }
 
         /// <summary>
         /// 比较两个二元操作符的优先级
@@ -254,11 +252,13 @@ namespace System.Linq.Expressions
             return message;
         }
 #if NETSTANDARD2_0
-        private (Expression expression, String errorMessage) GetUnaryExpression(String expStr, IDictionary<String, ExpressionParameter> parameters,
+        private (Expression expression, String errorMessage) GetUnaryExpression(
+            String expStr, 
+            IDictionary<String, ExpressionParameter> parameters,
             String paraSymbol)
 #else
               private Tuple<Expression, String> GetUnaryExpression(String expStr, IDictionary<String, ExpressionParameter> parameters,
-            Char paraSymbol)
+            String paraSymbol)
 #endif
         {
             Expression expression = Expression.Constant(expStr, typeof(String));

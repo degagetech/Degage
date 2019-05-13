@@ -16,7 +16,7 @@ namespace Degage.TestUnit
             //    Assert.Fail(expression.Item2);
             //}
 
-            var expression = parser.GetExpressionEx("[apl]==32+2/8&&DAP==32||AD=98", null, '$',out var message);
+            var expression = parser.GetExpressionEx("[apl]==32+2/8&&DAP==32||AD=98", null, "$",out var message);
             if (expression == null)
             {
                 Assert.Fail(message);

@@ -26,6 +26,9 @@ namespace Degage.DataModel.Orm
         public const String IN = " IN ";
         public const String DISTINCT = " DISTINCT ";
         public const String AS = " AS ";
+        public const String IS = " IS ";
+        public const String NOT = " NOT ";
+        public const String NULL = " NULL ";
         /// <summary>
         /// 左括号
         /// </summary>

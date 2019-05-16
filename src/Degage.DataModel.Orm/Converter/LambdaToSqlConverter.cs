@@ -364,19 +364,35 @@ namespace Degage.DataModel.Orm
                         else
                         {
                             value = ExtractExpressionContainValue(binaryExpression.Right);
+
                             var colSchema = schema.GetColumnSchema(propertyName);
                             String columnName = colSchema.Name;
-                            String parameterName = dbProvider.Prefix + columnName + ParaCounter<T>.CountString;
                             columnName = OrmAssistor.BuildColumnName(colSchema, dbProvider.ConflictFreeFormat, schema.TableName);
-                            DbParameter parameter = dbProvider.DbParameter(
-                                 parameterName,
-                                 value ?? DBNull.Value,
-                                 colSchema.DbType
-                                );
-                            component.AppendSQL(columnName);
-                            component.AppendSQL(symbol);
-                            component.AppendSQL(parameter.ParameterName);
-                            component.AddParameter(parameter);
+                            var nodeType = binaryExpression.NodeType;
+                            //X.XX IS NULL || X.XX IS NOT NULL
+                            if (value == null && (nodeType == ExpressionType.Equal || nodeType == ExpressionType.NotEqual))
+                            {
+                                component.AppendSQL(columnName);
+                                component.AppendSQL(SqlKeyWord.IS);
+                                if (nodeType == ExpressionType.NotEqual)
+                                {
+                                    component.AppendSQL(SqlKeyWord.NOT);
+                                }
+                                component.AppendSQL(SqlKeyWord.NULL);
+                            }
+                            else
+                            {
+                                String parameterName = dbProvider.Prefix + colSchema.Name + ParaCounter<T>.CountString;
+                                DbParameter parameter = dbProvider.DbParameter(
+                                     parameterName,
+                                     value ?? DBNull.Value,
+                                     colSchema.DbType
+                                    );
+                                component.AppendSQL(columnName);
+                                component.AppendSQL(symbol);
+                                component.AppendSQL(parameter.ParameterName);
+                                component.AddParameter(parameter);
+                            }
                         }
 
                     }

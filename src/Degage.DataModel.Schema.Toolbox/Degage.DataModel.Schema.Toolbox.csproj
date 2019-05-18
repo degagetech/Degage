@@ -323,6 +323,9 @@
     <None Include="Config\Code\CodeTemplates\DefaultCodeTemplate.ct.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Config\Code\TypeMaps\MySqlJavascriptTypeMap.tm.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Config\Code\TypeMaps\OracleTypeMap.tm.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -358,6 +361,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Config\Code\CodeTemplates\JavascriptCodeTemplate.ct.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Config\Code\CodeTemplates\DefaultCodeTemplate.ct.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -406,7 +412,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties config_4code_4typemaps_4oracletypemap_1tm_1json__JsonSchema="TypeMapSchema.json" config_4code_4codetemplates_4defaultcodetemplate_1ct_1json__JsonSchema="CodeTemplateSchema.json" config_4code_4codetemplates_4codetemplateschema_1json__JsonSchema="http://json-schema.org/draft-04/schema" config_4code_4typemaps_4typemapschema_1json__JsonSchema="http://json-schema.org/draft-04/schema" config_4code_4typemaps_4mysqltypemap_1tm_1json__JsonSchema="TypeMapSchema.json" />
+      <UserProperties config_4code_4typemaps_4mysqltypemap_1tm_1json__JsonSchema="TypeMapSchema.json" config_4code_4typemaps_4typemapschema_1json__JsonSchema="http://json-schema.org/draft-04/schema" config_4code_4codetemplates_4codetemplateschema_1json__JsonSchema="http://json-schema.org/draft-04/schema" config_4code_4codetemplates_4defaultcodetemplate_1ct_1json__JsonSchema="CodeTemplateSchema.json" config_4code_4typemaps_4oracletypemap_1tm_1json__JsonSchema="TypeMapSchema.json" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

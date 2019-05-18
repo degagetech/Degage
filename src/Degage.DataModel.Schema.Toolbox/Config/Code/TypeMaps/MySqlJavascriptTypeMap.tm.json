@@ -1,0 +1,29 @@
+﻿{
+  "Name": "Javascript-MySql '类型映射'",
+  "MapItems": [
+    {
+      "Condition": {
+        "DbType": "varchar"
+      },
+      "MapType": "''"
+    },
+    {
+      "Condition": {
+        "DbType": "int"
+      },
+      "MapType": "0"
+    },
+    {
+      "Condition": {
+        "DbType": "datetime"
+      },
+      "MapType": "new Date()"
+    },
+    {
+      "Condition": {
+        "DbType": "tinyint"
+      },
+      "MapType": "false"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeTemplate 
+   xmlns="Degage.DataModel.Schema.Toolbox"
+   xmlns:schemaLocation="Degage.DataModel.Schema.Toolbox CodeTemplate.xsd">
+  <Name>Javascript 模型模板</Name>
+  <Body>
+
+    /**
+    *$TableExplain$
+    **/
+    class $ClassName$ {
+        constructor() {
+        #Properties#
+     }
+    }
+  </Body>
+  <ExtensionName>.cs</ExtensionName>
+  <PropertyCodeTemplates>
+    <Item>
+      <Name>Properties</Name>
+      <Content>
+        /**
+         *$ColumnExplain$
+        **/
+        this.$PropertyName$ = $MapType$;
+      </Content>
+    </Item>
+  </PropertyCodeTemplates>
+</CodeTemplate>

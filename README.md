@@ -11,7 +11,7 @@
 
 <h1 align="center">DEGAGE 开发平台</h1>
 <p style="display:inline">
-<a href="document/README_en_us.md" title="english description"><img src="https://img.shields.io/badge/language-EN--US-orange.svg?style=for-the-badge"/></a>
+<a href="document/README_en-US.md" title="english description"><img src="https://img.shields.io/badge/language-EN--US-orange.svg?style=for-the-badge"/></a>
 </p>
 
  DEGAGE 是一个为软件开发整个生命周期中提供各种各样工具、辅助的平台，我们希望无论在周期中从事何种工作的人，都可以享受到平台带来的便利。
@@ -29,7 +29,7 @@
 
 - [基础组件](#基础组件)
      - [基础类库](#基础类库)
-     - [数据模型](#数据模型)
+     - [数据模型](#数据模型) （10%）[📃](document/DATAMODEL_zh-CN.md "查看对于此章的详细描述")
          - [数据描述](#数据描述)
          - [数据访问](#数据访问)
            - [数据库](#数据库)

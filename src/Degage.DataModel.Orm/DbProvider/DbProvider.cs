@@ -16,15 +16,15 @@ namespace Degage.DataModel.Orm
         /// <summary>
         /// 创建 DbProvider 类的实例，并为其指定名称、关联的数据库连接字符串
         /// </summary>
-        /// <param name="name">DbProvider对象的名称</param>
+        /// <param name="friendlyName">友好名称</param>
         /// <param name="connectionString">DbProvider关联的连接字符串</param>
-        public DbProvider(String name, String connectionString)
+        public DbProvider(String friendlyName, String connectionString)
         {
-            if (String.IsNullOrEmpty(name))
+            if (String.IsNullOrEmpty(friendlyName))
             {
-                throw new ArgumentNullException(nameof(name));
+                throw new ArgumentNullException(nameof(friendlyName));
             }
-            this.Name = name;
+            this.Name = friendlyName;
             this.ConnectionString = connectionString;
 
         }

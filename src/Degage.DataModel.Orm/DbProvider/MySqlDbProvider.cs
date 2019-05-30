@@ -16,7 +16,7 @@ namespace Degage.DataModel.Orm
     public class MySqlDbProvider : DbProvider
     {
 
-        public MySqlDbProvider(String name, String connectionString) : base(name, connectionString)
+        public MySqlDbProvider(String friendlyName, String connectionString) : base(friendlyName, connectionString)
         {
 
         }

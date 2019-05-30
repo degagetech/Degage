@@ -18,10 +18,12 @@ namespace Degage.DataModel.Orm
         /// </summary>
         internal static Dictionary<String, String> _ExtendMethodFormatDict = new Dictionary<String, String>
         {
+#if SQLServer
             { KnownExtendMethodNames.Contains,"{0} LIKE '%'+{1}+'%' "},
             { KnownExtendMethodNames.Like,"{0} LIKE '%'+{1}+'%' "},
             { KnownExtendMethodNames.StartLike,"{0} LIKE {1}+'%' "},
             { KnownExtendMethodNames.EndLike,"{0} LIKE '%'+{1}"}
+#endif
         };
         public static Boolean IsMethodSupport(String methodName)
         {
@@ -86,7 +88,7 @@ namespace Degage.DataModel.Orm
                         }
                         else
                         {
-                            var convertExt = Expression.Convert(expression,typeof(Object));
+                            var convertExt = Expression.Convert(expression, typeof(Object));
                             var handler = (Func<Object>)Expression.Lambda(convertExt).Compile();
                             value = handler.Invoke();
                         }
@@ -247,7 +249,6 @@ namespace Degage.DataModel.Orm
             }
             String className = String.Empty;
             String propertyName = String.Empty;
-            String format = String.Empty;
             Object value = null;
             //调用类型本身提供的方法，方法表达式的调用对象就可提供成员信息
             MemberExpression memberExpression = callExpression.Object as MemberExpression;
@@ -263,7 +264,9 @@ namespace Degage.DataModel.Orm
             {
                 value = ExtractExpressionContainValue(callExpression.Arguments[0]);
             }
-            format = KnownExtendMethodNames.GetFormat(callExpression.Method.Name);
+#if SQLServer
+            String format = String.Empty;
+            format = KnownExtendMethodNames.GetFormat(methodName);
             propertyName = memberExpression.Member.Name;
             className = memberExpression.Member.DeclaringType.Name;
             SchemaCache schema = schemaDict[className];
@@ -281,6 +284,50 @@ namespace Degage.DataModel.Orm
             String sql = String.Format(format, columnName, parameter.ParameterName);
             component.AppendSQL(sql);
             component.AddParameter(parameter);
+#endif
+#if MySql
+            propertyName = memberExpression.Member.Name;
+            className = memberExpression.Member.DeclaringType.Name;
+            SchemaCache schema = schemaDict[className];
+            var strValue = value as String;
+            if (strValue == null)
+            {
+                throw new Exception("lambda expression error in Like method");
+            }
+            var colSchema = schema.GetColumnSchema(propertyName);
+            String columnName = colSchema.Name;
+            String parameterName = dbProvider.Prefix + columnName + ParaCounter<T>.CountString;
+            switch (methodName)
+            {
+                case KnownExtendMethodNames.Contains:
+                case KnownExtendMethodNames.Like:
+                    {
+                        strValue = $"%{strValue}%";
+                    }
+                    break;
+                case KnownExtendMethodNames.StartLike:
+                    {
+                        strValue = $"{strValue}";
+                    }
+                    break;
+                case KnownExtendMethodNames.EndLike:
+                    {
+                        strValue = $"{strValue}%";
+                    }
+                    break;
+
+            }
+            DbParameter parameter = dbProvider.DbParameter(
+                 parameterName,
+                 strValue,
+                 System.Data.DbType.String
+                );
+
+            columnName = OrmAssistor.BuildColumnName(colSchema, dbProvider.ConflictFreeFormat, schema.TableName);
+            String sql = $"{columnName} {SqlKeyWord.LIKE} {parameter.ParameterName}";
+            component.AppendSQL(sql);
+            component.AddParameter(parameter);
+#endif
         }
         /// <summary>
         /// 解析方法表达式

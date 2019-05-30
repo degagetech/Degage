@@ -6,9 +6,10 @@ namespace Degage.DataModel.Orm.Example
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Hello Degage-DataModel-Orm!");
 
 
-            Console.WriteLine("Hello Degage.DataModel.Orm!");
+
         }
     }
 }

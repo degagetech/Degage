@@ -1,12 +1,11 @@
-﻿
-using System;
+﻿using System;
 using System.Linq.Expressions;
 using System.Data;
 using System.Text;
 using System.Data.Common;
 using System.Collections;
 using System.Collections.Generic;
-
+using System.Linq;
 namespace Degage.DataModel.Orm
 {
     public static class DriverExtension
@@ -176,7 +175,7 @@ namespace Degage.DataModel.Orm
 
         public static List<T> ToList<T>(this IDriver<T> driver, String connectionString = null) where T : class
         {
-            return driver.ExecuteReader().ToList();
+            return driver.ExecuteReader(connectionString).ToList();
         }
 
         public static List<T> ToList<T>(this IDriver<T> driver, DbConnection connection, DbTransaction transaction = null) where T : class
@@ -188,5 +187,44 @@ namespace Degage.DataModel.Orm
         {
             return driver.ExecuteReader(transaction).ToList();
         }
+
+        public static T[] ToArray<T>(this IDriver<T> driver, DbTransaction transaction) where T : class
+        {
+            return driver.ExecuteReader(transaction).ToArray();
+        }
+
+        public static T[] ToArray<T>(this IDriver<T> driver, String connectionString = null) where T : class
+        {
+            return driver.ExecuteReader(connectionString).ToArray();
+        }
+
+        public static T[] ToArray<T>(this IDriver<T> driver, DbConnection connection, DbTransaction transaction = null) where T : class
+        {
+            return driver.ExecuteReader(connection, transaction).ToArray();
+        }
+
+        public static T ToFirstOrDefault<T>(this IDriver<T> driver, DbTransaction transaction) where T : class
+        {
+            return driver.ExecuteReader(transaction).ToList().FirstOrDefault();
+        }
+
+        public static T ToFirstOrDefault<T>(this IDriver<T> driver, String connectionString = null) where T : class
+        {
+            return driver.ExecuteReader(connectionString).ToList().FirstOrDefault();
+        }
+
+        /// <summary>
+        /// 使用当前 <see cref="IDriver{T}"/> 中的查询语句获取信息，并取出第一个，若无则返回 <see cref="{T}"/> 类型的默认值
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="driver"></param>
+        /// <param name="connection"></param>
+        /// <param name="transaction"></param>
+        /// <returns></returns>
+        public static T ToFirstOrDefault<T>(this IDriver<T> driver, DbConnection connection, DbTransaction transaction = null) where T : class
+        {
+            return driver.ExecuteReader(connection, transaction).ToList().FirstOrDefault();
+        }
+
     }
 }

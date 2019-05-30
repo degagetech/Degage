@@ -77,6 +77,13 @@ namespace Degage.DataModel.Orm
             return table.Select();
         }
 
+        public static IDriver<T> Query<T>(this DbProvider provider, String sql) where T : class
+        {
+            Table<T> table = new Table<T>(provider);
+            return table.SelectSQL<T>(sql);
+        }
+
+
         public static IDriver<T> Delete<T>(this DbProvider provider) where T : class
         {
             Table<T> table = new Table<T>(provider);
@@ -93,6 +100,50 @@ namespace Degage.DataModel.Orm
         {
             Table<T> table = new Table<T>(provider);
             return table.Insert(obj);
+        }
+        public static IDriver<T> BatchInsert<T>(this DbProvider provider, IEnumerable<T> obj) where T : class
+        {
+            Table<T> table = new Table<T>(provider);
+            return table.BatchInsert(obj);
+        }
+
+        public static List<T> ExecuteQuery<T>(this DbProvider dbProvider, String sql, DbParameter[] paras = null, DbConnection connection = null, DbTransaction transaction = null) where T : class
+        {
+            List<T> results = new List<T>();
+            if (String.IsNullOrEmpty(sql))
+            {
+                return results;
+            }
+            Boolean requiredDispose = connection == null;
+            DbDataReader dataReader = null;
+            try
+            {
+                connection = connection ?? dbProvider.DbConnection();
+                DbCommand command = dbProvider.DbCommand();
+                ExceutePrepare(connection, command, sql, paras);
+                if (transaction != null)
+                {
+                    command.Transaction = transaction;
+                }
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+                dataReader = command.ExecuteReader();
+                command.Parameters.Clear();
+                results = DataExtractor<T>.ToList(dataReader);
+
+            }
+            finally
+            {
+                dataReader?.Close();
+                if (requiredDispose)
+                {
+                    connection.Dispose();
+                }
+            }
+
+            return results;
         }
 
         /// <summary>
@@ -221,5 +272,7 @@ namespace Degage.DataModel.Orm
             success = driver.ExecuteNonQuery() > 0;
             return success;
         }
+
+
     }
 }

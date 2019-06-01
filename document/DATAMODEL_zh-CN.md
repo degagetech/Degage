@@ -54,7 +54,11 @@
   
   为此我已经做了一个工具从数据库中获取 *schema* 并将其转换至不同上下文中。您可以参考以下图示，并且在 [此处](https://github.com/DegageTech/Degage/tree/master/src/Degage.DataModel.Schema.Toolbox) 找到其代码，其所属与 *Degage.DataModel.sln*，工具具体的使用方式，请参考节: *"如何使用 Schema 工具"*。
   
-<img src="how to use toolbox  export  schema to codes.gif"/>
+<img src="pictrues/schema-toolbox/use-schema-toolbox-example.gif" />
+
+其导出信息的结果如下：
+
+<img src="pictrues/schema-toolbox/schema-toolbox-code-export-result-example.jpg" />
 
 #### 数据访问
   - 统一的数据访问模型  

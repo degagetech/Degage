@@ -10,6 +10,18 @@
     <Folder Include="Serialization\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Proxys\TextResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TextResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
 
-
+  <ItemGroup>
+    <EmbeddedResource Update="Proxys\TextResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TextResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>

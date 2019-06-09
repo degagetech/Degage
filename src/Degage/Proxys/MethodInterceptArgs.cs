@@ -9,10 +9,18 @@ namespace Degage.Proxys
     /// </summary>
     public class MethodInterceptArgs
     {
-        
+        public Object CorrelationState { get; set; }
         /// <summary>
-        /// 表示是否需要取消后续的拦截器的调用，并返回此次拦截结果
+        /// 表示是否此方法调用是否已处理
         /// </summary>
-        public Boolean Cancel { get; set; }
+        public Boolean Handled { get; set; }
+        /// <summary>
+        /// 停止方法调用，并抛出此异常
+        /// </summary>
+        public Exception AbortException { get; set; }
+        /// <summary>
+        /// 表示被代理方法的原始代理在执行时发生的异常是否已被处理
+        /// </summary>
+        public Boolean ExceptionHandled { get; set; }
     }
 }

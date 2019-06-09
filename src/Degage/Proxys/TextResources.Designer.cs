@@ -61,11 +61,38 @@ namespace Degage.Proxys {
         }
         
         /// <summary>
-        ///   查找类似 代理类型无效！ 的本地化字符串。
+        ///   查找类似 当前运行时不支持创建动态代理类！ 的本地化字符串。
         /// </summary>
-        internal static string ObjectFactoryProxyTypeInvaild {
+        internal static string E_CLRNotSupported {
             get {
-                return ResourceManager.GetString("ObjectFactoryProxyTypeInvaild", resourceCulture);
+                return ResourceManager.GetString("E_CLRNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 代理类型无效！只能为接口、抽象类、类。 的本地化字符串。
+        /// </summary>
+        internal static string E_ObjectFactoryProxyTypeInvaild {
+            get {
+                return ResourceManager.GetString("E_ObjectFactoryProxyTypeInvaild", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 {0}：此代理成员已被忽略，且尚未实现 的本地化字符串。
+        /// </summary>
+        internal static string EF_IgnoredProxiedMemberWithAbstract {
+            get {
+                return ResourceManager.GetString("EF_IgnoredProxiedMemberWithAbstract", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 被代理的方法未被正确处理：{0}。 的本地化字符串。
+        /// </summary>
+        internal static string EF_ProxiedMethodHandleErrorFormat {
+            get {
+                return ResourceManager.GetString("EF_ProxiedMethodHandleErrorFormat", resourceCulture);
             }
         }
     }

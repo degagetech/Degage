@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Degage.Proxys
+namespace Degage.Proxies
 {
     /// <summary>
     /// 忽略对此成员的代理

@@ -1,11 +1,11 @@
-﻿using Degage.Proxys;
+﻿using Degage.Proxies;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
-namespace Degage.TestUnit.Proxys
+namespace Degage.TestUnit.Proxies
 {
     [TestClass]
     public class ObjectProxyTest

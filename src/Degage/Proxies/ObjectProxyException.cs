@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace Degage.Proxys
+namespace Degage.Proxies
 {
     /// <summary>
     /// 表示在代理对象的过程中引发的异常

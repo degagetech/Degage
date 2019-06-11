@@ -50,8 +50,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Degage.TestUnit\Proxys\ObjectProxyTest.cs">
-      <Link>Proxys\ObjectProxyTest.cs</Link>
+    <Compile Include="..\Degage.TestUnit\Proxies\ObjectProxyTest.cs">
+      <Link>Proxies\ObjectProxyTest.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

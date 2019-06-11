@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace Degage.Proxys
+namespace Degage.Proxies
 {
     /// <summary>
     /// 用于处理对代理对象方法的调用

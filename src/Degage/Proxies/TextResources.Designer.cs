@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Degage.Proxys {
+namespace Degage.Proxies {
     using System;
     
     

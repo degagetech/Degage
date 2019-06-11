@@ -32,6 +32,14 @@ namespace Degage.FileSystem
             this._chunkItemTable = new ConcurrentDictionary<String, FileChunkItemInfo>();
         }
 
+        public FileChunkStorageInfo(IEnumerable<FileChunkItemInfo> itemInfos) : this()
+        {
+            foreach (var item in itemInfos)
+            {
+                this._chunkItemTable.TryAdd(item.FileId, item);
+            }
+        }
+
 
         /// <summary>
         /// 添加指定的 FileId 以及其关联的文件项信息，若存在则使用新的值更新

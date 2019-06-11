@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Degage.Proxys
+namespace Degage.Proxies
 {
     /// <summary>
     /// 提供方法拦截的参数信息，用于控制拦截行为

@@ -4,7 +4,7 @@ using System.Text;
 using System.Reflection.Emit;
 using System.Reflection;
 using System.Threading;
-namespace Degage.Proxys
+namespace Degage.Proxies
 {
     /// <summary>
     /// 提供基础代理辅助方法
@@ -112,7 +112,7 @@ namespace Degage.Proxys
 #endif
     }
     /// <summary>
-    /// 提供对指定类型的对象的代理能力
+    /// 提供对指定类型的各类成员的拦截能力
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class ObjectProxy<T> : BaseObjectProxy
@@ -302,7 +302,7 @@ namespace Degage.Proxys
                             }
                             methodGenericType = typeof(Action<>).MakeGenericType(parameterTypes);
                         }
-                        //如果没有参数，则不该使用 Action 的泛型版本
+                        //如果没有参数，则不使用 Action 的泛型版本
                         else
                         {
                             methodGenericType = typeof(Action);
@@ -319,7 +319,6 @@ namespace Degage.Proxys
                         parameterTypes[parameters.Length] = proxiedMethodInfo.ReturnParameter.ParameterType;
                         methodGenericType = typeof(Func<>).MakeGenericType(parameterTypes);
                     }
-
                     var ftn = proxiedMethodInfo.MethodHandle.GetFunctionPointer();
                     var baseMethod = (Delegate)Activator.CreateInstance(methodGenericType, proxy, ftn);
                     var result = baseMethod.DynamicInvoke(parameterValues);

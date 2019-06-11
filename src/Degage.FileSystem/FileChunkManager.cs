@@ -10,6 +10,11 @@ namespace Degage.FileSystem
     /// </summary>
     public class FileChunkManager
     {
-          
+        /// <summary>
+        /// 表示文件块承载环境
+        /// </summary>
+        public IFileChunkEnvironment Environment { get; private set; }
+
+
     }
 }

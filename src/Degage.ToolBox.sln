@@ -1,23 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.539
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Degage.ToolBox.WorkPerformance", "Degage.ToolBox.WorkPerformance\Degage.ToolBox.WorkPerformance.csproj", "{2BEEA9F7-BA3E-4EAC-8E2E-7548AE8AE93F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Degage.ToolBox.WorkPerformance", "Degage.ToolBox\Degage.ToolBox.WorkPerformance\Degage.ToolBox.WorkPerformance.csproj", "{2BEEA9F7-BA3E-4EAC-8E2E-7548AE8AE93F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Degage.ToolBox.URTrackerStatistic", "Degage.ToolBox.URTrackerStatistic\Degage.ToolBox.URTrackerStatistic.csproj", "{2ECF5517-3E5E-428C-9469-245C7C28D023}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Degage.ToolBox.Pdf", "Degage.ToolBox\Degage.ToolBox.Pdf\Degage.ToolBox.Pdf.csproj", "{D303BD2D-7BFE-4331-8AF5-75D529356649}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Degage.ToolBox.Pdf", "Degage.ToolBox.Pdf\Degage.ToolBox.Pdf.csproj", "{D303BD2D-7BFE-4331-8AF5-75D529356649}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Degage.ToolBox.OCR", "Degage.ToolBox.OCR\Degage.ToolBox.OCR.csproj", "{99D2CE5E-947A-484A-89CB-3CC757C9D359}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Degage.ToolBox.OCR", "Degage.ToolBox\Degage.ToolBox.OCR\Degage.ToolBox.OCR.csproj", "{99D2CE5E-947A-484A-89CB-3CC757C9D359}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OCR", "OCR", "{B70FA71D-ADAA-4A71-AC91-95F8D206EBE6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PDF", "PDF", "{AAA936D3-8924-4E1D-98BB-406E107D24EC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Degage.ToolBox.OCR.Core", "Degage.ToolBox.OCR.Core\Degage.ToolBox.OCR.Core.csproj", "{62ADBEC7-16BD-4E0C-AEC3-98EB86D61FC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Degage.ToolBox.OCR.Core", "Degage.ToolBox\Degage.ToolBox.OCR.Core\Degage.ToolBox.OCR.Core.csproj", "{62ADBEC7-16BD-4E0C-AEC3-98EB86D61FC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Degage.ToolBox.ColorPicker", "Degage.ToolBox.ColorPicker\Degage.ToolBox.ColorPicker.csproj", "{993A730E-68AC-4D5D-AC96-8EA8BC8E4A35}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Degage.ToolBox.ColorPicker", "Degage.ToolBox\Degage.ToolBox.ColorPicker\Degage.ToolBox.ColorPicker.csproj", "{993A730E-68AC-4D5D-AC96-8EA8BC8E4A35}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Degage", "Degage\Degage.csproj", "{0AB1B645-8B37-47FE-9635-A21DE8ACCB6D}"
 EndProject
@@ -33,10 +31,6 @@ Global
 		{2BEEA9F7-BA3E-4EAC-8E2E-7548AE8AE93F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BEEA9F7-BA3E-4EAC-8E2E-7548AE8AE93F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BEEA9F7-BA3E-4EAC-8E2E-7548AE8AE93F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2ECF5517-3E5E-428C-9469-245C7C28D023}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2ECF5517-3E5E-428C-9469-245C7C28D023}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2ECF5517-3E5E-428C-9469-245C7C28D023}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2ECF5517-3E5E-428C-9469-245C7C28D023}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D303BD2D-7BFE-4331-8AF5-75D529356649}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D303BD2D-7BFE-4331-8AF5-75D529356649}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D303BD2D-7BFE-4331-8AF5-75D529356649}.Release|Any CPU.ActiveCfg = Release|Any CPU

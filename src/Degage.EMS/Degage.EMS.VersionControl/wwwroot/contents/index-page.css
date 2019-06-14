@@ -1,0 +1,208 @@
+﻿body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    --top-row-height: 61px;
+    --bottom-row-height: 50px;
+}
+/*全局样式配置*/
+.normal-icon {
+    font-size: 20px;
+    color: #409EFF;
+}
+
+
+/*主页顶部*/
+
+.toprow {
+    min-height: var(--top-row-height);
+    max-height: var(--top-row-height);
+    padding-bottom: 8px;
+    background-color: #FFF;
+    margin-top: 5px;
+    border-bottom: 1px solid #dcdfe6;
+}
+
+
+.toprowcol {
+    line-height: var(--top-row-height);
+}
+.toprowcol-height {
+    line-height: var(--top-row-height);
+}
+.toprowcol-nav {
+    line-height: var(--top-row-height);
+}
+
+
+
+@media screen and (min-width: 776px) {
+    .toprowcol-menu {
+        align-self: center;
+        line-height: var(--top-row-height);
+        min-height: var(--top-row-height);
+        max-height: var(--top-row-height);
+        overflow-y: hidden;
+        overflow-x: hidden;
+    }
+}
+@media screen and (max-width: 776px) {
+    .toprowcol-menu {
+       display:none;
+    }
+}
+
+.toprowcol-search {
+    line-height: var(--top-row-height);
+    padding-right: 10px;
+    padding-left: 10px;
+    max-width: 250px;
+}
+
+.toprowcol-setting {
+    text-align: center;
+    line-height: var(--top-row-height);
+    min-height: var(--top-row-height);
+    max-height: var(--top-row-height);
+    overflow-y:hidden;
+    overflow-x:hidden;
+}
+
+/*圆形头像*/
+.setting-avatar {
+    display: flex;
+    border-radius: 50%;
+    align-items: flex-end;
+    justify-content: flex-end;
+    overflow: hidden;
+    float: right;
+    margin-right: 10px;
+    width: 55px;
+    height: 55px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+}
+
+
+.toprowcol-user {
+    cursor: pointer;
+    color: #409EFF;
+    display: inline;
+}
+
+.toprowcol-user-down {
+    font-size: 12px;
+}
+
+.toprowcol-message {
+    display: inline;
+}
+
+.toprowcol-message-icon {
+    font-size: 20px;
+    cursor: pointer;
+    color: #409EFF;
+}
+
+.toprowcol-message-badge {
+    margin-top: -15px;
+    margin-left: -10px;
+}
+
+/*主页中间内容*/
+.middlerow {
+    display: flex;
+    flex: 1;
+}
+
+.middlerow-left {
+    border-right: 1px solid #dcdfe6;
+    width: auto;
+}
+
+.middlerow-left-menu:not(.el-menu--collapse) {
+    width: 200px;
+    height: 100%;
+}
+
+.middlerow-left-menu {
+    border-right: 0px;
+    height: 100%;
+}
+
+.middlerow-right {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: auto;
+}
+
+.middlerow-right-container {
+    flex: 1;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.middlerow-right-tabs {
+    margin-top: 5px;
+    margin-left: 5px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.middlerow-right-tab-pane {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    height: 100%;
+}
+
+.middlerow-content-iframe {
+    display: block;
+    border: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    margin-top: 5px;
+    margin-left: 2px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+}
+
+/*主页底部内容*/
+.bottomrow {
+    height: var(--bottom-row-height);
+    padding: 0;
+    border-top: 1px solid #dcdfe6;
+    display: flex;
+    justify-content:space-between;
+}
+
+.bottomrow-left {
+    line-height: var(--bottom-row-height);
+    flex: 1
+}
+
+.bottomrow-center {
+    flex: 2
+}
+
+.bottomrow-right {
+    text-align:end;
+    display:inline;
+    padding-right:5px;
+    line-height: var(--bottom-row-height);
+}
+
+.nav-menu-item {
+  cursor:pointer;
+}
+.shortcuts-nav-menu-item {
+    cursor: pointer;
+}
+/******Tab 选项卡右键菜单样式*********/
+

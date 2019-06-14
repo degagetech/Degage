@@ -1,0 +1,84 @@
+﻿@page
+@using System.Globalization
+@using System.Text
+@model Degage.EMS.VersionControl.IndexModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>项目版本控制</title>
+    <meta charset="utf-8" />
+    <link href="~/contents/element-ui/index.css" rel="stylesheet" />
+    <link href="~/contents/element-ui/display.css" rel="stylesheet" />
+    <link href="~/contents/index-page.css" rel="stylesheet" />
+    <link href="~/contents/funciton-page.css" rel="stylesheet" />
+    <link href="~/contents/funciton-page-layout.css" rel="stylesheet" />
+    <link href="~/contents/icon-font/iconfont.css" rel="stylesheet" />
+    <link href="~/contents/icon-font/iconfont-import.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="toprow" class="toprow" style="display:flex;justify-content:space-between;margin-right:10px;">
+         <img src="~/resources/logo.png" style="margin-left:20px;" width="61" height="61" />
+    </div>
+
+
+    <div id="middlerow" class="middlerow">
+        <div id="project-content"  >
+           
+        </div>
+        <div style="margin:0;padding:0;">
+            <el-dialog id="fullDialog"
+                       top="5vh"
+                       :title="dialogTitle"
+                       :visible.sync="dialogFormVisible"
+                       custom-class="qms-dialog"
+                       fullscreen="true"
+                       v-on:closed="dialogFormClosedHandle"
+                       v-on:opened="dialogFormOpenedHandle">
+                <iframe id="fullPageIframe" class="middlerow-content-iframe"></iframe>
+            </el-dialog>
+        </div>
+    </div>
+
+    <div id="status-bar" class="bottomrow">
+        <div class="bottomrow-left">
+
+        </div>
+        <div class="bottomrow-center">
+        </div>
+        <div class="bottomrow-right">
+            <span class="normal-icon">
+                <span>{{hours}}:</span>
+                <span style="color:#87D37C;">{{minutes}}:</span>
+                <span>{{senconds}}</span>
+                <span>{{noon}}</span>
+            </span>
+        </div>
+    </div>
+</body>
+</html>
+<script src="~/scripts/vue.min.js"></script>
+<script src="~/scripts/element-ui/index.js"></script>
+<script src="~/scripts/jquery.min.js"></script>
+<script src="~/scripts/bscroll.min.js"></script>
+<script src="~/scripts/signalr/signalr.min.js"></script>
+<script src="~/scripts/lodash.js"></script>
+<script src="~/scripts/models.js"></script>
+<script src="~/scripts/utilities.js"></script>
+<script src="~/scripts/ui-common.js"></script>
+<script src="~/scripts/axios.min.js"></script>
+<script src="~/scripts/proxy.js"></script>
+
+<script>
+
+    if (window != top) {
+        top.location.href = location.href;
+    }
+</script>
+<script src="~/scripts/index-page.js"></script>
+
+
+

@@ -1,0 +1,57 @@
+﻿.qms-column-header-func-btn {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+
+.qms-dialog-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.qms-dialog {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.qms-content-iframe {
+    display: block;
+    border: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+}
+
+
+.qms-dialog-iframe-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.qms-dialog-iframe {
+    flex: 1;
+    display: block;
+    border: 0px;
+    padding: 0px;
+    width: 100%;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+}
+
+.qms-select {
+     display:inline;
+ 
+}
+.qms-autocomplete {
+    display: inline;
+}

@@ -6,13 +6,13 @@
         @if (!String.IsNullOrEmpty(ViewBag.Title))
         {
             <text>
-                文件管理 - @ViewBag.Title
+                版本控制 - @ViewBag.Title
             </text>
         }
         else
         {
             <text>
-                文件管理
+                版本控制
             </text>
         }
     </title>
@@ -36,7 +36,6 @@
 <script src="~/scripts/models.js"></script>
 <script src="~/scripts/utilities.js"></script>
 <script src="~/scripts/proxy.js"></script>
-<script src="~/scripts/proxy/file-management-proxy.js"></script>
 <script src="~/scripts/ui-common.js"></script>
 <script src="~/scripts/ui-components/qms-base.js"></script>
 @RenderSection("Scripts", false)

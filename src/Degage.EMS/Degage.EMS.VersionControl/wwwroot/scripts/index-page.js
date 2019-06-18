@@ -35,15 +35,6 @@ var fullDialogVueObj = new Vue(
             dialogFormClosedHandle: function () {
                 //退出全屏
                 exitFullscreen();
-                //刷新当前 tab 页面
-                if (middlerowRightVue.selectTabId !== null) {
-                    var iframe = $('#iframe-' + middlerowRightVue.selectTabId);
-                    var url = iframe.attr("src");
-                    if (url === this.fullPageAddress) {
-                        iframe.attr("src", url);
-                        middlerowRightVue.$message({ message: "正在刷新...", type: "info", duration: 500 });
-                    }
-                }
             },
             dialogFormOpenedHandle: function () {
                 if (!this.isAdjustedDialogSize) {
@@ -109,10 +100,6 @@ function openFullDialog(address, request, title) {
         return;
     }
 
-}
-//用于控制导航栏的展开与收缩
-function collapseNav() {
-    middlerowLeftVue.isCollapseNav = !middlerowLeftVue.isCollapseNav;
 }
 
 //此处代码用于使 iframe 框架高度充满容器剩余高度，应该置于 middlerow 容器渲染后

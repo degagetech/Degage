@@ -8,10 +8,19 @@
     <PackageIconUrl>https://s.gravatar.com/avatar/d64f81dd0b642f88b8b7902028d38e36?s=80&amp;r=g</PackageIconUrl>
     <Description>提供对 MySql 数据库的数据访问能力，并简化数据访问的代码。</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Configurations>Debug;Release;Debug-SQLite;Release-SQLite</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>TRACE;MySql</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-SQLite|AnyCPU'">
+    <DefineConstants>TRACE;SQLite</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-SQLite|AnyCPU'">
+    <DefineConstants>TRACE;SQLite</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup Condition="$(DefineConstants.Contains('MySql'))">

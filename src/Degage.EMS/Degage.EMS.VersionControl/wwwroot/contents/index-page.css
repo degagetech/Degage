@@ -77,10 +77,11 @@
     align-items: flex-end;
     justify-content: flex-end;
     overflow: hidden;
-    float: right;
-    margin-right: 10px;
-    width: 55px;
-    height: 55px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 8px;
+    width: 45px;
+    height: 45px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
 }
 

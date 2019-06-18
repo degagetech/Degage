@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Degage.EMS.VersionControl", "Degage.EMS\Degage.EMS.VersionControl\Degage.EMS.VersionControl.csproj", "{70BCEB9D-E333-46FE-963B-DAD3FDF4509C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Degage.EMS.VersionControl", "Degage.EMS\Degage.EMS.VersionControl\Degage.EMS.VersionControl.csproj", "{70BCEB9D-E333-46FE-963B-DAD3FDF4509C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Degage", "Degage\Degage.csproj", "{739C72C7-3CF5-409A-B89E-B7357560C5C5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Degage.DataModel.Orm", "Degage.DataModel.Orm\Degage.DataModel.Orm.csproj", "{6CE1D6EE-BBA1-42CB-899B-3C5C6706CE35}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{70BCEB9D-E333-46FE-963B-DAD3FDF4509C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70BCEB9D-E333-46FE-963B-DAD3FDF4509C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70BCEB9D-E333-46FE-963B-DAD3FDF4509C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{739C72C7-3CF5-409A-B89E-B7357560C5C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{739C72C7-3CF5-409A-B89E-B7357560C5C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{739C72C7-3CF5-409A-B89E-B7357560C5C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{739C72C7-3CF5-409A-B89E-B7357560C5C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CE1D6EE-BBA1-42CB-899B-3C5C6706CE35}.Debug|Any CPU.ActiveCfg = Debug-SQLite|Any CPU
+		{6CE1D6EE-BBA1-42CB-899B-3C5C6706CE35}.Debug|Any CPU.Build.0 = Debug-SQLite|Any CPU
+		{6CE1D6EE-BBA1-42CB-899B-3C5C6706CE35}.Release|Any CPU.ActiveCfg = Release-SQLite|Any CPU
+		{6CE1D6EE-BBA1-42CB-899B-3C5C6706CE35}.Release|Any CPU.Build.0 = Release-SQLite|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,4 +12,15 @@
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.8.3" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Degage.DataModel.Orm\Degage.DataModel.Orm.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="DataAccess\DataAccessors\" />
+    <Folder Include="DataAccess\Interfaces\" />
+  </ItemGroup>
+
 </Project>

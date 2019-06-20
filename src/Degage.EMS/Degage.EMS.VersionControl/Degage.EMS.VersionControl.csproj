@@ -17,10 +17,4 @@
     <ProjectReference Include="..\..\Degage.DataModel.Orm\Degage.DataModel.Orm.csproj" />
   </ItemGroup>
 
-
-  <ItemGroup>
-    <Folder Include="DataAccess\DataAccessors\" />
-    <Folder Include="DataAccess\Interfaces\" />
-  </ItemGroup>
-
 </Project>

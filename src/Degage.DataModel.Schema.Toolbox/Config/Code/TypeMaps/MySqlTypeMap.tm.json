@@ -9,6 +9,12 @@
     },
     {
       "Condition": {
+        "DbType": "nvarchar"
+      },
+      "MapType": "String"
+    },
+    {
+      "Condition": {
         "DbType": "int"
       },
       "MapType": "Int32"

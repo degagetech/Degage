@@ -421,7 +421,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties config_4code_4typemaps_4oracletypemap_1tm_1json__JsonSchema="TypeMapSchema.json" config_4code_4codetemplates_4defaultcodetemplate_1ct_1json__JsonSchema="CodeTemplateSchema.json" config_4code_4codetemplates_4codetemplateschema_1json__JsonSchema="http://json-schema.org/draft-04/schema" config_4code_4typemaps_4typemapschema_1json__JsonSchema="http://json-schema.org/draft-04/schema" config_4code_4typemaps_4mysqltypemap_1tm_1json__JsonSchema="TypeMapSchema.json" />
+      <UserProperties config_4code_4typemaps_4mysqltypemap_1tm_1json__JsonSchema="TypeMapSchema.json" config_4code_4typemaps_4typemapschema_1json__JsonSchema="http://json-schema.org/draft-04/schema" config_4code_4codetemplates_4codetemplateschema_1json__JsonSchema="http://json-schema.org/draft-04/schema" config_4code_4codetemplates_4defaultcodetemplate_1ct_1json__JsonSchema="CodeTemplateSchema.json" config_4code_4typemaps_4oracletypemap_1tm_1json__JsonSchema="TypeMapSchema.json" />
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.111.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.111.0\build\net45\System.Data.SQLite.Core.targets')" />

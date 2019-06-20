@@ -68,7 +68,6 @@ namespace Degage.DataModel.Schema.Toolbox
             foreach (var tupleInfo in exportSchemaTupleInfos)
             {
                 exportEventArgs.SchemaInfo = tupleInfo;
-                this.ExportProgressChanged?.Invoke(this, exportEventArgs);
                 CodeExportInfo exportInfo = new CodeExportInfo();
                 //Key 符号信息，Value 符号解析的结果
                 var symbolAnalysisTable = new Dictionary<String, String>();
@@ -168,6 +167,7 @@ namespace Degage.DataModel.Schema.Toolbox
                 exportInfo.FileName = codeExportConfig.SymbolModifier.Modify(tableSchema.Name, SymbolModifyType.ClassName) + codeExportConfig.CodeTemplateConfig.ExtensionName;
                 exportInfos.Add(exportInfo);
                 exportEventArgs.Current += 1;
+                this.ExportProgressChanged?.Invoke(this, exportEventArgs);
             }
 
 

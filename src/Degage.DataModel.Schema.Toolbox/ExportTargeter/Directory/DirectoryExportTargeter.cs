@@ -40,12 +40,12 @@ namespace Degage.DataModel.Schema.Toolbox
                 args.Total = exportFiles.Length;
                 foreach (var filePath in exportFiles)
                 {
-                    this.ExportTargetProcessed?.Invoke(this, args);
                     String fileName = Path.GetFileName(filePath);
                     args.FileName = fileName;
                     String newPath = Path.Combine(this.TargetDirectory, fileName);
                     File.Copy(filePath, newPath, true);
                     args.Current++;
+                    this.ExportTargetProcessed?.Invoke(this, args);
                 }
             }
 

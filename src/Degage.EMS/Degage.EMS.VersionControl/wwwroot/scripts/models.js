@@ -61,3 +61,14 @@ let MessageLevels =
     Error: { Value: 3, Desc: "错误" }
 };
 
+
+class ProjectInfo {
+    constructor() {
+        this.Id = '';
+        this.CurrentVersionId = '';
+        this.Title = '';
+        this.Description = '';
+        this.CreationTime = new Date();
+        this.LastAccessTime = new Date();
+    }
+}

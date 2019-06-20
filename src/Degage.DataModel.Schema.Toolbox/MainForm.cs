@@ -24,6 +24,7 @@ namespace Degage.DataModel.Schema.Toolbox
         public ISchemaExporter CurrentSchemaExporter { get; private set; }
         public String CurrentExportDirectory { get; private set; }
 
+        public ConnectionHistoryConfig ConnectionHistoryConfig { get; private set; }
         public TreeNode TableNodeHead { get; private set; }
         public TreeNode ViewNodeHead { get; private set; }
 
@@ -105,7 +106,7 @@ namespace Degage.DataModel.Schema.Toolbox
             this.InitSchemaTree();
 #if DEBUG
             //测试使用
-     
+
 #endif
 
         }
@@ -136,6 +137,7 @@ namespace Degage.DataModel.Schema.Toolbox
         {
             await this.LoadSchemaProviderAsync();
             await this.LoadExportTargetersAsync();
+            await this.LoadConnectionHistoryAsync();
             this.InitializeExportConfigControls();
 
             String desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -144,6 +146,17 @@ namespace Degage.DataModel.Schema.Toolbox
             this._sfdAsConfig.InitialDirectory = desktopPath;
 
             this.RenderSchemaLoadType(this.CurrentSchemaLoadType);
+        }
+        private async Task LoadConnectionHistoryAsync()
+        {
+            if (!File.Exists(ConnectionHistoryConfig.FilePath))
+            {
+                this.ConnectionHistoryConfig = new ConnectionHistoryConfig();
+                return;
+            }
+            this.ConnectionHistoryConfig = await Task.FromResult(
+                ConfigManager.LoadConfig<ConnectionHistoryConfig>(
+                    ConnectionHistoryConfig.FilePath));
         }
         private async Task LoadExportTargetersAsync()
         {
@@ -476,6 +489,12 @@ namespace Degage.DataModel.Schema.Toolbox
                 this._toolTip.SetToolTip(this._btnOpen, "关闭连接");
                 await Task.Run(() => this.CurrentSchemaProvider.Open(connectionString));
                 await this.LoadSchemaInfo(this.CurrentSchemaProvider);
+                //成功打开后，添加连接历史
+                var result = await Task.FromResult(this.SaveConnectionHistory(this.CurrentSchemaProvider.Name, connectionString));
+                if (!result.success)
+                {
+                    this.ShowTipInformation("连接历史未能保存！"+ result.message);
+                }
                 this._btnOpen.Image = Resources.connect_opened;
             }
             catch (ProviderConnectException exc)
@@ -488,6 +507,28 @@ namespace Degage.DataModel.Schema.Toolbox
                 this._waitConnect.IsRolled = false;
             }
         }
+        private (Boolean success, String message) SaveConnectionHistory(String providerName, String connectionString)
+        {
+            var historyItem = new ConnectionHistoryItem
+            {
+                ConnectionString = connectionString,
+                ProviderName = providerName
+            };
+           var old= this.ConnectionHistoryConfig.Historys.Where(t => t.ConnectionString == connectionString).FirstOrDefault();
+            if (old == null)
+            {
+                this.ConnectionHistoryConfig.Historys.Add(historyItem);
+                try
+                {
+                    ConfigManager.SaveConfig(this.ConnectionHistoryConfig, typeof(ConnectionHistoryConfig), ConnectionHistoryConfig.FilePath);
+                }
+                catch (Exception exc)
+                {
+                    return (false, exc.Message);
+                }
+            }
+            return (true, null);
+        }
         private void CloseConnection()
         {
             this.CurrentSchemaProvider.Close();
@@ -499,6 +540,7 @@ namespace Degage.DataModel.Schema.Toolbox
         {
             if (this.CurrentSchemaProvider != null)
             {
+                this._btnOpen.Enabled = false;
                 if (_isConnectOperating) return;
                 _isConnectOperating = true;
                 try
@@ -519,6 +561,7 @@ namespace Degage.DataModel.Schema.Toolbox
                 finally
                 {
                     _isConnectOperating = false;
+                    this._btnOpen.Enabled = true;
                 }
             }
         }
@@ -1223,9 +1266,21 @@ namespace Degage.DataModel.Schema.Toolbox
             }
         }
 
-        private void _tsmiCompareFromConnection_Click(object sender, EventArgs e)
+        private void _tsmiCompareFromConnection_Click(Object sender, EventArgs e)
         {
             this.CompareSchema(SchemaCompareTargetType.Connection);
+        }
+
+        private void _btnLookHistory_Click(Object sender, EventArgs e)
+        {
+            ConnectionStringHistoryForm form = new ConnectionStringHistoryForm(this.ConnectionHistoryConfig);
+            var result = form.ShowDialog();
+            if (DialogResult.OK == result)
+            {
+                this._cbConnectionString.Text = form.SelectedHistoryItem.ConnectionString;
+                this._cbSchemaProvider.Text = form.SelectedHistoryItem.ProviderName;
+                this.CloseConnection();
+            }
         }
     }
 

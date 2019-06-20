@@ -49,6 +49,7 @@ namespace Degage.DataModel.Schema.Toolbox
         }
         private static void ConfigLoadPropertyAnalysis(Object target, PropertyInfo prop)
         {
+      
             var configTag = TypeInfoProvider.GetConfigTag(prop);
             if (configTag != null)
             {

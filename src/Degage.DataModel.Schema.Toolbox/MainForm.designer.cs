@@ -81,6 +81,7 @@
             this._dialogOpenFile = new System.Windows.Forms.OpenFileDialog();
             this._lblLoadTypeSymbol = new System.Windows.Forms.Label();
             this._toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this._btnLookHistory = new System.Windows.Forms.Button();
             this._sfdSaveSchema = new System.Windows.Forms.SaveFileDialog();
             this._ofdLoadSchema = new System.Windows.Forms.OpenFileDialog();
             this._dgvIndexColumnSchema = new System.Windows.Forms.DataGridView();
@@ -130,7 +131,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(24, 78);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 19);
+            this.label1.Size = new System.Drawing.Size(68, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "结构提供源";
             // 
@@ -139,14 +140,14 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(24, 40);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 19);
+            this.label2.Size = new System.Drawing.Size(68, 17);
             this.label2.TabIndex = 2;
             this.label2.Text = "连接字符串";
             // 
             // _btnEditorConnectionString
             // 
             this._btnEditorConnectionString.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this._btnEditorConnectionString.Location = new System.Drawing.Point(875, 37);
+            this._btnEditorConnectionString.Location = new System.Drawing.Point(867, 37);
             this._btnEditorConnectionString.Name = "_btnEditorConnectionString";
             this._btnEditorConnectionString.Size = new System.Drawing.Size(63, 26);
             this._btnEditorConnectionString.TabIndex = 4;
@@ -186,7 +187,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(11, 11);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 19);
+            this.label3.Size = new System.Drawing.Size(32, 17);
             this.label3.TabIndex = 6;
             this.label3.Text = "目录";
             // 
@@ -513,7 +514,7 @@
             this._tsmiHelp});
             this._stripMenu.Location = new System.Drawing.Point(0, 0);
             this._stripMenu.Name = "_stripMenu";
-            this._stripMenu.Size = new System.Drawing.Size(964, 27);
+            this._stripMenu.Size = new System.Drawing.Size(964, 25);
             this._stripMenu.TabIndex = 26;
             this._stripMenu.Text = "menuStrip1";
             // 
@@ -527,7 +528,7 @@
             this._tsmiLoadSchemaFromFile});
             this._stripItemFile.Name = "_stripItemFile";
             this._stripItemFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F)));
-            this._stripItemFile.Size = new System.Drawing.Size(62, 23);
+            this._stripItemFile.Size = new System.Drawing.Size(58, 21);
             this._stripItemFile.Text = "文件(&F)";
             // 
             // _stripReadConfig
@@ -535,7 +536,7 @@
             this._stripReadConfig.BackColor = System.Drawing.Color.WhiteSmoke;
             this._stripReadConfig.Name = "_stripReadConfig";
             this._stripReadConfig.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this._stripReadConfig.Size = new System.Drawing.Size(210, 24);
+            this._stripReadConfig.Size = new System.Drawing.Size(197, 22);
             this._stripReadConfig.Text = "读取配置(&R)";
             this._stripReadConfig.Click += new System.EventHandler(this._stripReadConfig_Click);
             // 
@@ -544,7 +545,7 @@
             this._stripItemSaveCurrentConfig.BackColor = System.Drawing.Color.WhiteSmoke;
             this._stripItemSaveCurrentConfig.Name = "_stripItemSaveCurrentConfig";
             this._stripItemSaveCurrentConfig.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this._stripItemSaveCurrentConfig.Size = new System.Drawing.Size(210, 24);
+            this._stripItemSaveCurrentConfig.Size = new System.Drawing.Size(197, 22);
             this._stripItemSaveCurrentConfig.Text = "保存配置(&S)";
             this._stripItemSaveCurrentConfig.Click += new System.EventHandler(this._stripItemSaveCurrentConfig_Click);
             // 
@@ -553,14 +554,14 @@
             this._stripItemAsConfig.BackColor = System.Drawing.Color.WhiteSmoke;
             this._stripItemAsConfig.Name = "_stripItemAsConfig";
             this._stripItemAsConfig.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this._stripItemAsConfig.Size = new System.Drawing.Size(210, 24);
+            this._stripItemAsConfig.Size = new System.Drawing.Size(197, 22);
             this._stripItemAsConfig.Text = "配置另存为(&A)";
             this._stripItemAsConfig.Click += new System.EventHandler(this._stripAsConfig_Click);
             // 
             // _tsmiSaveSchemaToFile
             // 
             this._tsmiSaveSchemaToFile.Name = "_tsmiSaveSchemaToFile";
-            this._tsmiSaveSchemaToFile.Size = new System.Drawing.Size(210, 24);
+            this._tsmiSaveSchemaToFile.Size = new System.Drawing.Size(197, 22);
             this._tsmiSaveSchemaToFile.Text = "保存结构到文件";
             this._tsmiSaveSchemaToFile.ToolTipText = "保存当前的结构信息到指定文件中";
             this._tsmiSaveSchemaToFile.Click += new System.EventHandler(this._tsmiSaveSchemaToFile_Click);
@@ -568,7 +569,7 @@
             // _tsmiLoadSchemaFromFile
             // 
             this._tsmiLoadSchemaFromFile.Name = "_tsmiLoadSchemaFromFile";
-            this._tsmiLoadSchemaFromFile.Size = new System.Drawing.Size(210, 24);
+            this._tsmiLoadSchemaFromFile.Size = new System.Drawing.Size(197, 22);
             this._tsmiLoadSchemaFromFile.Text = "加载结构从文件";
             this._tsmiLoadSchemaFromFile.ToolTipText = "加载结构信息从目标文件中";
             this._tsmiLoadSchemaFromFile.Click += new System.EventHandler(this._tsmiLoadSchemaFromFile_Click);
@@ -579,13 +580,13 @@
             this._tsmiCompareFromFile,
             this._tsmiCompareFromConnection});
             this._tsmiCompare.Name = "_tsmiCompare";
-            this._tsmiCompare.Size = new System.Drawing.Size(64, 23);
+            this._tsmiCompare.Size = new System.Drawing.Size(60, 21);
             this._tsmiCompare.Text = "比较(&C)";
             // 
             // _tsmiCompareFromFile
             // 
             this._tsmiCompareFromFile.Name = "_tsmiCompareFromFile";
-            this._tsmiCompareFromFile.Size = new System.Drawing.Size(223, 24);
+            this._tsmiCompareFromFile.Size = new System.Drawing.Size(210, 22);
             this._tsmiCompareFromFile.Text = "从文件中获取比较目标(&F)";
             this._tsmiCompareFromFile.ToolTipText = "从文件中获取比较目标的结构信息";
             this._tsmiCompareFromFile.Click += new System.EventHandler(this._tsmiCompareFromFile_Click);
@@ -593,7 +594,7 @@
             // _tsmiCompareFromConnection
             // 
             this._tsmiCompareFromConnection.Name = "_tsmiCompareFromConnection";
-            this._tsmiCompareFromConnection.Size = new System.Drawing.Size(223, 24);
+            this._tsmiCompareFromConnection.Size = new System.Drawing.Size(210, 22);
             this._tsmiCompareFromConnection.Text = "使用数据连接(&C)";
             this._tsmiCompareFromConnection.ToolTipText = "使用新的数据连接获取比较目标的结构信息";
             this._tsmiCompareFromConnection.Click += new System.EventHandler(this._tsmiCompareFromConnection_Click);
@@ -603,13 +604,13 @@
             this._tsmiHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this._tsmiAboutTool});
             this._tsmiHelp.Name = "_tsmiHelp";
-            this._tsmiHelp.Size = new System.Drawing.Size(65, 23);
+            this._tsmiHelp.Size = new System.Drawing.Size(61, 21);
             this._tsmiHelp.Text = "帮助(&H)";
             // 
             // _tsmiAboutTool
             // 
             this._tsmiAboutTool.Name = "_tsmiAboutTool";
-            this._tsmiAboutTool.Size = new System.Drawing.Size(130, 24);
+            this._tsmiAboutTool.Size = new System.Drawing.Size(124, 22);
             this._tsmiAboutTool.Text = "关于工具";
             this._tsmiAboutTool.Click += new System.EventHandler(this._tsmiAboutTool_Click);
             // 
@@ -628,10 +629,24 @@
             this._lblLoadTypeSymbol.Image = global::Degage.DataModel.Schema.Toolbox.Properties.Resources.schema_load_database;
             this._lblLoadTypeSymbol.Location = new System.Drawing.Point(49, 11);
             this._lblLoadTypeSymbol.Name = "_lblLoadTypeSymbol";
-            this._lblLoadTypeSymbol.Size = new System.Drawing.Size(21, 19);
+            this._lblLoadTypeSymbol.Size = new System.Drawing.Size(20, 17);
             this._lblLoadTypeSymbol.TabIndex = 27;
             this._lblLoadTypeSymbol.Text = "   ";
             this._lblLoadTypeSymbol.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // _btnLookHistory
+            // 
+            this._btnLookHistory.Cursor = System.Windows.Forms.Cursors.Hand;
+            this._btnLookHistory.FlatAppearance.BorderSize = 0;
+            this._btnLookHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._btnLookHistory.Image = global::Degage.DataModel.Schema.Toolbox.Properties.Resources.history;
+            this._btnLookHistory.Location = new System.Drawing.Point(932, 36);
+            this._btnLookHistory.Name = "_btnLookHistory";
+            this._btnLookHistory.Size = new System.Drawing.Size(29, 26);
+            this._btnLookHistory.TabIndex = 33;
+            this._toolTip.SetToolTip(this._btnLookHistory, "查看历史");
+            this._btnLookHistory.UseVisualStyleBackColor = true;
+            this._btnLookHistory.Click += new System.EventHandler(this._btnLookHistory_Click);
             // 
             // _sfdSaveSchema
             // 
@@ -830,6 +845,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(964, 691);
+            this.Controls.Add(this._btnLookHistory);
             this.Controls.Add(this.label4);
             this.Controls.Add(this._flpExportTargeters);
             this.Controls.Add(this._cbConnectionString);
@@ -944,6 +960,7 @@
         private System.Windows.Forms.FlowLayoutPanel _flpExportTargeters;
         private CodeExportConfigControl _ctlCodeExportConfig;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button _btnLookHistory;
     }
 }
 

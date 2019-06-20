@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConnectionSchemaForm));
             this._labelProviderExplain = new System.Windows.Forms.Label();
             this._waitSchemProvider = new Degage.DataModel.Schema.Toolbox.WaitIndicator();
@@ -128,7 +128,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 29);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 19);
+            this.label2.Size = new System.Drawing.Size(68, 17);
             this.label2.TabIndex = 14;
             this.label2.Text = "连接字符串";
             // 
@@ -148,7 +148,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 67);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 19);
+            this.label1.Size = new System.Drawing.Size(68, 17);
             this.label1.TabIndex = 13;
             this.label1.Text = "结构提供源";
             // 
@@ -229,8 +229,8 @@
             // _dgvColumnSchema
             // 
             this._dgvColumnSchema.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this._dgvColumnSchema.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this._dgvColumnSchema.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this._dgvColumnSchema.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -244,14 +244,14 @@
             this._colLength,
             this._colNullable,
             this._colExplain});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this._dgvColumnSchema.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this._dgvColumnSchema.DefaultCellStyle = dataGridViewCellStyle6;
             this._dgvColumnSchema.Location = new System.Drawing.Point(3, 4);
             this._dgvColumnSchema.Name = "_dgvColumnSchema";
             this._dgvColumnSchema.RowHeadersVisible = false;
@@ -296,8 +296,8 @@
             // _dgvIndexColumnSchema
             // 
             this._dgvIndexColumnSchema.AllowUserToAddRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this._dgvIndexColumnSchema.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this._dgvIndexColumnSchema.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this._dgvIndexColumnSchema.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this._dgvIndexColumnSchema.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -307,14 +307,14 @@
             this._colIndexName,
             this._colIndexColumnNames,
             this._colIndexDesc});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this._dgvIndexColumnSchema.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(166)))), ((int)(((byte)(228)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this._dgvIndexColumnSchema.DefaultCellStyle = dataGridViewCellStyle8;
             this._dgvIndexColumnSchema.Location = new System.Drawing.Point(3, 153);
             this._dgvIndexColumnSchema.Name = "_dgvIndexColumnSchema";
             this._dgvIndexColumnSchema.RowHeadersVisible = false;
@@ -378,7 +378,7 @@
             this._lblLoadTypeSymbol.Image = global::Degage.DataModel.Schema.Toolbox.Properties.Resources.schema_load_database;
             this._lblLoadTypeSymbol.Location = new System.Drawing.Point(50, 109);
             this._lblLoadTypeSymbol.Name = "_lblLoadTypeSymbol";
-            this._lblLoadTypeSymbol.Size = new System.Drawing.Size(21, 19);
+            this._lblLoadTypeSymbol.Size = new System.Drawing.Size(20, 17);
             this._lblLoadTypeSymbol.TabIndex = 36;
             this._lblLoadTypeSymbol.Text = "   ";
             this._lblLoadTypeSymbol.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -388,7 +388,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 109);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 19);
+            this.label3.Size = new System.Drawing.Size(32, 17);
             this.label3.TabIndex = 32;
             this.label3.Text = "目录";
             // 
@@ -454,9 +454,9 @@
             // _btnCompare
             // 
             this._btnCompare.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._btnCompare.Location = new System.Drawing.Point(720, 412);
+            this._btnCompare.Location = new System.Drawing.Point(726, 411);
             this._btnCompare.Name = "_btnCompare";
-            this._btnCompare.Size = new System.Drawing.Size(63, 26);
+            this._btnCompare.Size = new System.Drawing.Size(65, 30);
             this._btnCompare.TabIndex = 37;
             this._btnCompare.Text = "比较";
             this._btnCompare.UseVisualStyleBackColor = true;
@@ -465,9 +465,9 @@
             // _btnCannel
             // 
             this._btnCannel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._btnCannel.Location = new System.Drawing.Point(804, 412);
+            this._btnCannel.Location = new System.Drawing.Point(804, 411);
             this._btnCannel.Name = "_btnCannel";
-            this._btnCannel.Size = new System.Drawing.Size(63, 26);
+            this._btnCannel.Size = new System.Drawing.Size(65, 30);
             this._btnCannel.TabIndex = 38;
             this._btnCannel.Text = "取消";
             this._btnCannel.UseVisualStyleBackColor = true;

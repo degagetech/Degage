@@ -94,6 +94,13 @@
     <Compile Include="AboutForm.designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Config\ConnectionHistoryConfig.cs" />
+    <Compile Include="ConnectionStringHistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnectionStringHistoryForm.Designer.cs">
+      <DependentUpon>ConnectionStringHistoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DebutAnimation.cs" />
     <Compile Include="Enums\SchemaCompareTargetType.cs" />
     <Compile Include="ExportTargeter\BaseExportTargeterControl.cs">
@@ -260,6 +267,9 @@
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConnectionStringHistoryForm.resx">
+      <DependentUpon>ConnectionStringHistoryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExportTargeter\BaseExportTargeterControl.resx">
       <DependentUpon>BaseExportTargeterControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -375,6 +385,9 @@
     <Content Include="Config\Code\TypeMaps\SqlServerTypeMap.tm.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Config\ConnectionHistory.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="logo.ico" />
     <None Include="Resources\add.png" />
     <Content Include="Resources\connect_opened.png" />
@@ -385,6 +398,7 @@
     <Content Include="Resources\difference_none.png" />
     <None Include="Resources\edit.png" />
     <Content Include="Resources\function.png" />
+    <None Include="Resources\history.png" />
     <Content Include="Resources\procedure.png" />
     <None Include="Resources\remove .png" />
     <Content Include="Resources\schema_load_database.png" />
@@ -421,7 +435,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties config_4code_4typemaps_4mysqltypemap_1tm_1json__JsonSchema="TypeMapSchema.json" config_4code_4typemaps_4typemapschema_1json__JsonSchema="http://json-schema.org/draft-04/schema" config_4code_4codetemplates_4codetemplateschema_1json__JsonSchema="http://json-schema.org/draft-04/schema" config_4code_4codetemplates_4defaultcodetemplate_1ct_1json__JsonSchema="CodeTemplateSchema.json" config_4code_4typemaps_4oracletypemap_1tm_1json__JsonSchema="TypeMapSchema.json" />
+      <UserProperties config_4code_4typemaps_4oracletypemap_1tm_1json__JsonSchema="TypeMapSchema.json" config_4code_4codetemplates_4defaultcodetemplate_1ct_1json__JsonSchema="CodeTemplateSchema.json" config_4code_4codetemplates_4codetemplateschema_1json__JsonSchema="http://json-schema.org/draft-04/schema" config_4code_4typemaps_4typemapschema_1json__JsonSchema="http://json-schema.org/draft-04/schema" config_4code_4typemaps_4mysqltypemap_1tm_1json__JsonSchema="TypeMapSchema.json" />
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.111.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.111.0\build\net45\System.Data.SQLite.Core.targets')" />

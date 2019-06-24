@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Degage.DataModel.Orm;
@@ -36,8 +37,16 @@ namespace Degage.EMS.VersionControl
 
 
             //添加数据访问服务
+            String mainConnStr = null;
+#if DEBUG
+            var dbPath = Path.Combine(AppContext.BaseDirectory,"Db", "project-infos.db");
+            mainConnStr = $"Data Source={dbPath};UTF8Encoding=True;";
+#endif
+
+#if RELEASE
             var connectionStringSection = Configuration.GetSection("ConnectionString");
-            var mainConnStr = connectionStringSection.GetValue<String>("Main");
+             mainConnStr = connectionStringSection.GetValue<String>("ProjectInfo");
+#endif
             if (String.IsNullOrWhiteSpace(mainConnStr))
             {
                 throw new Exception("Configuration is invaild:DB Connection string is not found!");
@@ -56,8 +65,20 @@ namespace Degage.EMS.VersionControl
                 }
             });
 
+            FileManagerConfig config = FileManagerConfig.Load("FileManagerConfig.json");
+            FileManager filesManager = new FileManager(config);
+            services.AddSingleton(typeof(FileManager), (p) =>
+            {
+                var manager = new FileManager(config);
+                manager.Load();
+                return manager;
+            });
 
-
+            services.AddSingleton<IdentifyFactory>((p) =>
+            {
+                IdentifyFactory identifyFactory = new IdentifyFactory();
+                return identifyFactory;
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -75,9 +96,9 @@ namespace Degage.EMS.VersionControl
             }
 
             app.UseStaticFiles();
-            app.UseCookiePolicy();
 
-            app.UseMvc();
+            //app.UseMvc();
+            app.UseMvcWithDefaultRoute();
         }
     }
 }

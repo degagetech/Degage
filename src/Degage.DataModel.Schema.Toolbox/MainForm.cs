@@ -532,6 +532,7 @@ namespace Degage.DataModel.Schema.Toolbox
         private void CloseConnection()
         {
             this.CurrentSchemaProvider.Close();
+           
             this._toolTip.SetToolTip(this._btnOpen, "打开连接");
             this._btnOpen.Image = Resources.connnect_closed;
 
@@ -910,6 +911,7 @@ namespace Degage.DataModel.Schema.Toolbox
 
         private async Task RenderingGlobalConfig(GlobalConfig config)
         {
+            this._cbSchemaProvider.Text = config.ProviderName;
             this._cbConnectionString.Text = config.ConnectionString;
             if (!String.IsNullOrEmpty(config.ConnectionString))
             {
@@ -979,6 +981,7 @@ namespace Degage.DataModel.Schema.Toolbox
             this.Cursor = Cursors.WaitCursor;
             GlobalConfig config = new GlobalConfig();
             config.ConnectionString = this._cbConnectionString.Text;
+            config.ProviderName = this._cbSchemaProvider.Text;
             config.ExcelExportConfigString = this._ctlExcelExportConfig.ExportConfigInfo();
             config.SelectExportType = this.CurrentExportType;
             if (this.CheckedTableSchemas != null)
@@ -1280,6 +1283,7 @@ namespace Degage.DataModel.Schema.Toolbox
                 this._cbConnectionString.Text = form.SelectedHistoryItem.ConnectionString;
                 this._cbSchemaProvider.Text = form.SelectedHistoryItem.ProviderName;
                 this.CloseConnection();
+                 this.ClearSchemaInfo();
             }
         }
     }

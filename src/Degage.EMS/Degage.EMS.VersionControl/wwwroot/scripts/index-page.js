@@ -4,27 +4,87 @@ var windowsHeight = document.documentElement.clientHeight;
 var windowsWidth = document.documentElement.clientWidth;
 
 //绑定中部渲染对象
-var middlerowLeftVue = new Vue(
+var projectContentVue = new Vue(
     {
         el: "#project-content",
+        mounted: async function () {
+            //加载所有项目信息
+            await this.loadProjectInfos();
+        },
         data:
         {
-
+            projectInfos: [],
+            projectQueryCondition: new ProjectInfoCondition()
         },
         methods:
         {
+            removeProject: function (id) {
+                $msgbox.showConfirm("确定删除此项目及其所有附加信息吗？", "提示", {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(async () => {
+                    var result = await $proxy.deleteProjectInfo(id);
+                    var pack = new ResponsePacket(result.data);
+                    if (pack.Success) {
+                        $msgbox.defaultShowSuccess("已删除！");
+                        var filtedInfos = this.projectInfos.filter(p => p.Id !== id);
+                        this.projectInfos = filtedInfos;
+                    }
+                    else {
+                        $msgbox.defaultShowFailed("删除失败！" + pack.Message);
+                    }
+                });
+            },
+            updateProjectInfo: function (newProjectInfo) {
+                if (!newProjectInfo.Id) {
+                    return;
+                }
+                //使用外部传进来的新的对象信息刷新旧对象的值
+                var selectedInfos = this.projectInfos.filter(p => p.Id === newProjectInfo.Id);
+                var oldInfo = null;
+                if (selectedInfos.length > 0) {
+                    oldInfo = selectedInfos[0];
+                }
+                Object.assign(oldInfo, newProjectInfo);
+            },
+            editProject: async function (id) {
+
+            },
+            loadProjectInfos: async function () {
+                var resp = await $proxy.queryProjectInfos(this.projectQueryCondition);
+                var pack = new ResponsePacket(resp.data);
+                if (pack.Success) {
+                    let infos = [];
+                    for (var item of pack.Data) {
+                        var info = new ProjectInfo(item);
+                        infos.push(info);
+                    }
+                    this.projectInfos = infos;
+                }
+            }
         }
     });
+function updateProjectInfo(projectInfo) {
+    projectContentVue.updateProjectInfo(projectInfo);
+}
+function removeProject(id) {
+    var a = 1;
+}
+function addProjectInfo(info) {
+    projectContentVue.projectInfos.push(info);
+    showInfoText("已添加项目：" + info.Title);
+}
 
-
-var fullDialogVueObj = new Vue(
+var indexFrameDialogObj = new Vue(
     {
-        el: "#fullDialog",
+        el: "#indexFrameDialog",
         data:
         {
             dialogTitle: '',
             dialogFormVisible: false,
-            fullPageAddress: '',
+            address: '',
+            isFullScreen: true,
             isAdjustedDialogSize: false
         },
         created: function () {
@@ -34,9 +94,10 @@ var fullDialogVueObj = new Vue(
         {
             dialogFormClosedHandle: function () {
                 //退出全屏
-                exitFullscreen();
+                //exitFullscreen();
             },
             dialogFormOpenedHandle: function () {
+                $('#indexDialogFrame').attr("src", this.address);
                 if (!this.isAdjustedDialogSize) {
                     var dialogBody = $(".el-dialog__body");
                     if (dialogBody !== null) {
@@ -47,15 +108,15 @@ var fullDialogVueObj = new Vue(
                         this.isAdjustedDialogSize = true;
                     }
                 }
-                $('#fullPageIframe').attr("src", this.fullPageAddress);
+
             }
         }
     }
 );
 
 
-function hasFullDialog() {
-    return fullDialogVueObj.dialogFormVisible;
+function hasIndexDialog() {
+    return indexFrameDialogObj.dialogFormVisible;
 }
 /**
  * 打开全屏模式的对话框，并导向到指定地址
@@ -63,55 +124,25 @@ function hasFullDialog() {
  * @param {boolean} request 是否请求让浏览器也进入全屏，默认请求
  * @param {string} title 对话框的标题
  */
-
-function openFullDialog(address, request, title) {
+function closeIndexDialog() {
+    indexFrameDialogObj.dialogFormVisible = false;
+}
+function openIndexDialog(address, title, isfull) {
     address = address || null;
     title = title || '';
+    isfull = isfull || true;
     //如果已经在全屏模式下
-    if (fullDialogVueObj.dialogFormVisible) {
+    if (indexFrameDialogObj.dialogFormVisible) {
         return;
     }
     if (address !== null) {
-
-        //不需要浏览器也进入全屏
-        if (request !== undefined && !request) {
-            fullDialogVueObj.fullPageAddress = address;
-            fullDialogVueObj.dialogFormVisible = true;
-            fullDialogVueObj.dialogTitle = title;
-            return;
-        }
-        $msgbox.showConfirm('系统请求进入全屏模式，是否继续？', '提示', {
-            confirmButtonText: '继续',
-            cancelButtonText: '取消',
-            distinguishCancelAndClose: true,
-            type: 'warning'
-        }).then(() => {
-            requestFullScreen();
-            fullDialogVueObj.fullPageAddress = address;
-            fullDialogVueObj.dialogFormVisible = true;
-            fullDialogVueObj.dialogTitle = title;
-        }).catch((action) => {
-            if (action === "cancel") {
-                fullDialogVueObj.fullPageAddress = address;
-                fullDialogVueObj.dialogFormVisible = true;
-                fullDialogVueObj.dialogTitle = title;
-            }
-        });
+        indexFrameDialogObj.address = address;
+        indexFrameDialogObj.dialogFormVisible = true;
+        indexFrameDialogObj.dialogTitle = title;
+        indexFrameDialogObj.isFullScreen = isfull;
         return;
     }
-
 }
-
-//此处代码用于使 iframe 框架高度充满容器剩余高度，应该置于 middlerow 容器渲染后
-function adjustePageIframeDialogBody() {
-    var bodys = $(".el-tabs__content");
-    if (bodys !== null) {
-        bodys.css('flex', '1');
-        bodys.css('margin-bottom', '10px');
-    }
-}
-adjustePageIframeDialogBody();
-
 
 /***************************************底部设置*******************************************/
 //绑定底部状态栏
@@ -120,6 +151,8 @@ var bottomrowVue = new Vue(
         el: "#status-bar",
         data:
         {
+            infoType: "info",
+            infoText: "...",
             senconds: "",
             minutes: "",
             hours: "",
@@ -131,7 +164,9 @@ var bottomrowVue = new Vue(
         }
     });
 
-
+function showInfoText(info) {
+    bottomrowVue.infoText = info;
+}
 
 
 //更新窗体底部显示的时间

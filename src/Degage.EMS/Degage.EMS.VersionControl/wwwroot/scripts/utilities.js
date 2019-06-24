@@ -1,4 +1,14 @@
 "use strict";
+Date.prototype.getDateString= function () {
+    var yy = this.getFullYear();
+    var mm = this.getMonth() + 1; // getMonth() is zero-based
+    var dd = this.getDate();
+
+    return `${yy}-${mm}-${dd}`;
+};
+
+
+
 //用于对齐数字，例如 length 传入 3，  1->001、10->010
 function formatNumber(num, length) {
     var r = "" + num;

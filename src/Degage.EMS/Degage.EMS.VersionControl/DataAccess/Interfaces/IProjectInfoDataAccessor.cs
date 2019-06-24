@@ -15,7 +15,8 @@ namespace Degage.EMS.VersionControl
         /// <returns></returns>
         Boolean UpdateProjectInfo(ProjectInfo modifyInfo);
         Boolean DeleteProjectInfo(String id);
-        List<ProjectInfo> SelectProjectInfos(ProjectInfoCondition condition);
+        Boolean RemoveProjectInfo(String id);
+        List<ProjectInfo> QueryProjectInfos(ProjectInfoCondition condition);
         ProjectInfo GetProjectInfo(String id);
     }
 }

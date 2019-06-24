@@ -7,74 +7,13 @@ using System.Threading.Tasks;
 
 namespace Degage.DataModel.Schema.Toolbox
 {
-    [TypeConverterAttribute(typeof(SerializableExpandableObjectConverter))]
-    public abstract class ConfigBase : ICustomTypeDescriptor
+   // [TypeConverterAttribute(typeof(SerializableExpandableObjectConverter))]
+    public abstract class ConfigBase
     {
-        private TypeInstanceWrapper _typeInstanceWrapper;
 
         public ConfigBase()
         {
-            _typeInstanceWrapper = new TypeInstanceWrapper(this);
-        }
-
-        public AttributeCollection GetAttributes()
-        {
-            return _typeInstanceWrapper.GetAttributes();
-        }
-
-        public String GetClassName()
-        {
-            return _typeInstanceWrapper.GetClassName();
-        }
-
-        public String GetComponentName()
-        {
-            return this._typeInstanceWrapper.GetComponentName();
-        }
-
-        public TypeConverter GetConverter()
-        {
-            return _typeInstanceWrapper.GetConverter();
-        }
-
-        public EventDescriptor GetDefaultEvent()
-        {
-            return _typeInstanceWrapper.GetDefaultEvent();
-        }
-
-        public PropertyDescriptor GetDefaultProperty()
-        {
-            return _typeInstanceWrapper.GetDefaultProperty();
-        }
-
-        public object GetEditor(Type editorBaseType)
-        {
-            return _typeInstanceWrapper.GetEditor(editorBaseType);
-        }
-
-        public EventDescriptorCollection GetEvents()
-        {
-            return _typeInstanceWrapper.GetEvents();
-        }
-
-        public EventDescriptorCollection GetEvents(Attribute[] attributes)
-        {
-            return _typeInstanceWrapper.GetEvents(attributes);
-        }
-
-        public PropertyDescriptorCollection GetProperties()
-        {
-            return _typeInstanceWrapper.GetProperties();
-        }
-
-        public PropertyDescriptorCollection GetProperties(Attribute[] attributes)
-        {
-            return _typeInstanceWrapper.GetProperties(attributes);
-        }
-
-        public object GetPropertyOwner(PropertyDescriptor pd)
-        {
-            return _typeInstanceWrapper.GetPropertyOwner(pd);
+            
         }
 
         /// <summary>

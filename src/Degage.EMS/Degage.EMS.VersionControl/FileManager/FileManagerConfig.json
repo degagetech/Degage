@@ -1,0 +1,5 @@
+{
+  "RootDirectory": "Files",
+  "ChunkMaxSize": 100,
+  "ChunkCacheMaxCount": 100
+}

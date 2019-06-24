@@ -13,12 +13,6 @@ namespace Degage.EMS.VersionControl
     [IgnoreAntiforgeryToken(Order = 1001)]
     public class IndexModel : PageModel
     {
-    
-
-        public String Account { get; set; }
-        public String Password { get; set; }
-      
-
         public IndexModel()
         {
         }

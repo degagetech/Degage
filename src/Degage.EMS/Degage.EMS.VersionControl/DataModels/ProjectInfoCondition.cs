@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Degage.EMS.VersionControl
 {
-    public class ProjectInfoCondition
+    public class ProjectInfoCondition:PageCondition
     {
         public String Id { get; set; }
         public DateTime? LastAccessTimeStart { get; set; }

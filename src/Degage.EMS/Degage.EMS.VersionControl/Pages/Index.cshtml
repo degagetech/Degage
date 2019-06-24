@@ -24,71 +24,52 @@
             -webkit-box-sizing: border-box;
             box-sizing: border-box;
         }
+        .el-card {
+           color:#7F8C8D;
+        }
     </style>
 </head>
 
 <body>
     @*<div id="toprow" class="toprow" style="display:flex;justify-content:space-between;margin-right:10px;">
-        <img src="~/resources/logo.png" style="margin-left:20px;" width="61" height="61" />
-    </div>*@
+            <img src="~/resources/logo.png" style="margin-left:20px;" width="61" height="61" />
+        </div>*@
 
 
     <div id="middlerow" class="middlerow">
         <div id="project-content" style="display:flex;flex-direction:row;flex-wrap:wrap;margin-bottom:15px;">
-            <el-card id="ver-project-1" style="width:320px;height:300px;margin-left:15px;margin-top:15px;" shadow="hover">
-                <div slot="header" style="line-height:60px;padding:0;">
-                    <el-image class="setting-avatar" src="/resources/test-app-logo1.png">
-                        <div slot="error" class="image-slot">
-                            <i class="el-icon-picture-outline"></i>
-                        </div>
-                    </el-image>
-                    <span style="margin-left:15px;">生物样本库桌面端</span>
+            <el-card v-for="projectInfo in projectInfos" :id="projectInfo.Id" style="width:320px;height:300px;margin-left:15px;margin-top:15px;" shadow="hover">
+                <div slot="header" style="line-height:60px;padding:0;margin:0;">
+                    <el-tooltip :content="projectInfo.Title">
+                        <el-image class="circle-avatar" :src="'/file/down/'+projectInfo.IconFileId">
+                            <div slot="error" class="image-slot">
+                                <i class="el-icon-picture-outline"></i>
+                            </div>
+                        </el-image>
+                    </el-tooltip>
+                    <span style="margin-left:15px;"></span>
+                    <el-tooltip content="移除此项目">
+                        <el-button v-on:click="removeProject(projectInfo.Id)"
+                                   style="float: right;margin-right:5px;margin-top:10px;"
+                                   type="danger"
+                                   icon="el-icon-minus"
+                                   circle></el-button>
+                    </el-tooltip>
                     <el-tooltip content="编辑此项目">
-                        <el-button 
-                                   onclick="openFullDialog('EditProject',false,'编辑项目')"
+                        <el-button v-on:click="editProject(projectInfo.Id)"
                                    style="float: right;margin-right:10px;margin-top:10px;"
                                    type="primary"
-                                   icon="el-icon-setting" 
+                                   icon="el-icon-setting"
                                    circle></el-button>
                     </el-tooltip>
                 </div>
                 <div style="margin:0;padding:0;display:flex;flex-direction:column;height:200px;">
-                    <div style="flex:1;">
-                        <span>
-                            生物样本库信息管理系统-WINDOWS PC 端
-                        </span><br />
+                    <div style="flex:1;margin:0;padding:0;font-size:18px;color:#409EFF;">
+                        {{projectInfo.Description}}
                     </div>
                     <div>
-                        <span>启用版本</span><span style="margin-left:15px;float:right;">1.3.12.BETA</span><br />
-                        <span>修改日期</span>  <span style="margin-left:15px;float:right;">2019-06-17</span><br />
-                    </div>
-                </div>
-            </el-card>
-            <el-card id="ver-project-2" style="width:320px;height:300px;margin-left:15px;margin-top:15px;" shadow="hover">
-                <div slot="header" style="line-height:60px;padding:0;">
-                    <el-image class="setting-avatar" src="/resources/test-app-logo1.png">
-                        <div slot="error" class="image-slot">
-                            <i class="el-icon-picture-outline"></i>
-                        </div>
-                    </el-image>
-                    <span style="margin-left:15px;">生物样本库安卓端</span>
-                    <el-tooltip content="编辑此项目">
-                        <el-button
-                                    onclick="openFullDialog('EditProject',false,'编辑项目')"
-                                   style="float: right;margin-right:10px;margin-top:10px;"
-                                   type="primary" 
-                                   icon="el-icon-setting" circle></el-button>
-                    </el-tooltip>
-                </div>
-                <div style="margin:0;padding:0;display:flex;flex-direction:column;height:200px;">
-                    <div style="flex:1;">
-                        <span>
-                            生物样本库信息管理系统-ANDROID 端
-                        </span><br />
-                    </div>
-                    <div>
-                        <span >启用版本</span><span style="margin-left:15px;float:right;">1.3.12.BETA</span><br />
-                        <span >修改日期</span><span style="margin-left:15px;float:right;">2019-06-17</span><br />
+                        <span><el-tooltip content="当前启用版本"><i class="el-icon-trophy"></i></el-tooltip> &nbsp;  {{projectInfo.CurrentVersionId}}</span><br>
+                        <span><el-tooltip content="最后修改的时间"><i class="el-icon-time"></i></el-tooltip>  &nbsp; {{projectInfo.LastAccessTime}}</span>
                     </div>
                 </div>
             </el-card>
@@ -99,32 +80,32 @@
                 <div style="margin:0;padding:0;height:200px;text-align:center;line-height:200px;">
                     <div style="line-height:110px;margin-top:40px;">
                         <el-tooltip content="点击新增一个项目">
-                            <span style="cursor:pointer;" onclick="openFullDialog('AddProject',false,'新增项目')">
+                            <span style="cursor:pointer;" onclick="openIndexDialog('AddProject')">
                                 <i class="el-icon-plus" style="font-size:108px;color:#BDC3C7;"></i>
                             </span>
                         </el-tooltip>
-                       
+
                     </div>
                 </div>
             </el-card>
         </div>
         <div style="margin:0;padding:0;">
-            <el-dialog id="fullDialog"
+            <el-dialog id="indexFrameDialog"
                        top="5vh"
                        :title="dialogTitle"
                        :visible.sync="dialogFormVisible"
                        custom-class="qms-dialog"
-                       fullscreen="true"
+                       :fullscreen="isFullScreen"
                        v-on:closed="dialogFormClosedHandle"
                        v-on:opened="dialogFormOpenedHandle">
-                <iframe id="fullPageIframe" class="middlerow-content-iframe"></iframe>
+                <iframe id="indexDialogFrame" class="middlerow-content-iframe"></iframe>
             </el-dialog>
         </div>
     </div>
 
     <div id="status-bar" class="bottomrow">
         <div class="bottomrow-left">
-
+            <span style="color:#409EFF;margin-left:15px;font-size:20px;">{{infoText}}</span>
         </div>
         <div class="bottomrow-right">
             <span class="normal-icon">

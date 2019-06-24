@@ -6,6 +6,7 @@
     padding: 0;
     --top-row-height: 61px;
     --bottom-row-height: 50px;
+    color: #409EFF;
 }
 /*全局样式配置*/
 .normal-icon {
@@ -71,7 +72,7 @@
 }
 
 /*圆形头像*/
-.setting-avatar {
+.circle-avatar {
     display: flex;
     border-radius: 50%;
     align-items: flex-end;

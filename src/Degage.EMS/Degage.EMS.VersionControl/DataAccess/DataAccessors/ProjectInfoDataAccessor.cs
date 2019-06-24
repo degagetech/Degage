@@ -20,14 +20,22 @@ namespace Degage.EMS.VersionControl
                  Where(t => t.Id == id).
                  ExecuteNonQuery(this.Connection, this.Transaction) > 0;
         }
-
+        public Boolean RemoveProjectInfo(String id)
+        {
+            return this.Options.DbProvider.
+                         Update<ProjectInfo>(()=>new ProjectInfo {
+                              
+                         }).
+                         Where(t => t.Id == id).
+                         ExecuteNonQuery(this.Connection, this.Transaction) > 0;
+        }
         public ProjectInfo GetProjectInfo(String id)
         {
             var projectInfo = this.Options.DbProvider.Select<ProjectInfo>().Where(t => t.Id == id).ToFirstOrDefault(this.Connection, this.Transaction);
             return projectInfo;
         }
 
-        public List<ProjectInfo> SelectProjectInfos(ProjectInfoCondition condition)
+        public List<ProjectInfo> QueryProjectInfos(ProjectInfoCondition condition)
         {
             List<ProjectInfo> infos = null;
             if (!String.IsNullOrEmpty(condition.Id))
@@ -60,6 +68,7 @@ namespace Degage.EMS.VersionControl
                 CurrentVersionId = modifyInfo.CurrentVersionId,
                 LastAccessTime = modifyInfo.LastAccessTime,
                 Title = modifyInfo.Title,
+                IconFileId = modifyInfo.IconFileId,
                 Description = modifyInfo.Description
             }).Where(t => t.Id == modifyInfo.Id).ExecuteNonQuery(this.Connection, this.Transaction) > 0;
         }

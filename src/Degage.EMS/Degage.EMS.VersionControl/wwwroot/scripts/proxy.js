@@ -40,19 +40,6 @@ class ServiceRequester {
 
         axiosObj.interceptors.response.use((response) => {
             //预处理
-            if (response.data !== undefined && response.data !== null) {
-                var state = response.data.State;
-                //会话无效时重定向至登录页
-                if (state !== undefined) {
-                    switch (state) {
-                        case ResponseStatusCodes.SessionExceed:
-                            {
-                                window.top = "/Login";
-                            } return response;
-                    }
-                }
-            }
-
             this.LoadingCounter--;
             if (this.LoadingCounter <= 0) {
                 msgbox.hideLoading();
@@ -95,6 +82,38 @@ class ServiceProxy {
         };
         this.Requester = $serviceRequester;
     }
+
+    /**
+     * 通过指定条件查询数据源信息
+     * @param {ProjectInfoCondition} condition 查询条件
+     * @returns {ProjectInfo[]}  ProjectInfo 信息数组
+     */
+    queryProjectInfos(condition) {
+        var para = $.param(condition);
+        return this.Requester.get("/AddProject?handler=QueryProjectInfos&" + para);
+    }
+
+    addProjectInfo(info) {
+        var formData = $utilities.createFormData(info);
+        return this.Requester.post("/AddProject?handler=AddProjectInfo",
+            formData,
+            this.PostRequestConfig
+        );
+    }
+
+
+    updateProjectInfo(newInfo) {
+        var formData = $utilities.createFormData(newInfo);
+        return this.Requester.post("/AddProject?handler=UpdateProjectInfo",
+            formData,
+            this.PostRequestConfig
+        );
+    }
+
+    deleteProjectInfo(id) {
+        return this.Requester.delete("/AddProject?handler=RemoveProjectInfo&id="+id);
+    }
+   
 
  
 }

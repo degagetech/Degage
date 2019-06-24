@@ -63,12 +63,26 @@ let MessageLevels =
 
 
 class ProjectInfo {
-    constructor() {
+    constructor(data) {
         this.Id = '';
         this.CurrentVersionId = '';
         this.Title = '';
+        this.IconFileId = '';
         this.Description = '';
         this.CreationTime = new Date();
         this.LastAccessTime = new Date();
+        if (data !== undefined) {
+            Object.assign(this, data);
+        }
+    }
+}
+
+class ProjectInfoCondition extends PageCondition
+{
+    constructor() {
+        super();
+        this.Id = '';
+        this.LastAccessTimeStart = null;
+        this.LastAccessTimeEnd = null;
     }
 }

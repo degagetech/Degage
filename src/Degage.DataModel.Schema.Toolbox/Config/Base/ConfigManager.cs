@@ -72,7 +72,7 @@ namespace Degage.DataModel.Schema.Toolbox
                 }
             }
         }
-        private static void ConfiSavePropertyAnalysis(Object target, PropertyInfo prop)
+        private static void ConfigSavePropertyAnalysis(Object target, PropertyInfo prop)
         {
             var configTag = TypeInfoProvider.GetConfigTag(prop);
             if (configTag != null)
@@ -94,7 +94,7 @@ namespace Degage.DataModel.Schema.Toolbox
                     var propertyInfos = TypeInfoProvider.GetProperties(type);
                     foreach (var cprop in propertyInfos)
                     {
-                        ConfiSavePropertyAnalysis(valueCopy, cprop);
+                        ConfigSavePropertyAnalysis(valueCopy, cprop);
                     }
                 }
             }
@@ -135,7 +135,7 @@ namespace Degage.DataModel.Schema.Toolbox
 
             foreach (var prop in propertyInfos)
             {
-                ConfiSavePropertyAnalysis(cloneTarget, prop);
+                ConfigSavePropertyAnalysis(cloneTarget, prop);
 
             }
 
@@ -146,6 +146,11 @@ namespace Degage.DataModel.Schema.Toolbox
             }
             File.WriteAllText(savePath, text, _DefaultEncodeing);
 
+        }
+
+        public static void SaveConfig<T>(Object obj, String savePath, Boolean isEncrypt = false) where T:class
+        {
+            SaveConfig(obj,typeof(T),savePath, isEncrypt);
         }
     }
 

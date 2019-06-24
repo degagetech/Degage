@@ -12,34 +12,9 @@ namespace Degage.DataModel.Schema.Toolbox
         public static Type GetType(String typeStr)
         {
             return Type.GetType(typeStr);
-            //String[] splitInfo = typeStr.Split(',');
-            //Type type = null;
-            //if (splitInfo.Length == 2)
-            //{
-            //    String assemblyFileName = splitInfo[0];
-            //    if (!assemblyFileName.EndsWith(".dll") && !assemblyFileName.EndsWith(".exe"))
-            //    {
-            //        String temp = assemblyFileName + ".exe";
-            //        if (File.Exists(temp))
-            //        {
-            //            assemblyFileName = temp;
-            //        }
-            //        else
-            //        {
-            //            assemblyFileName = ".dll";
-            //        }
-            //    }
-            //    String assemblyPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, assemblyFileName);
-            //    String typeName = splitInfo[1];
-
-            //    var assembly = Assembly.LoadFrom(assemblyPath);
-            //    type = assembly.GetType(typeName);
-            //}
-            //return type;
         }
         public static Object CreateInstance(Type type)
         {
-
             return Activator.CreateInstance(type);
 
         }

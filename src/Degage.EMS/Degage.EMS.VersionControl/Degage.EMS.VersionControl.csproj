@@ -9,12 +9,31 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="MimeTypes" Version="1.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.8.3" />
   </ItemGroup>
 
 
   <ItemGroup>
     <ProjectReference Include="..\..\Degage.DataModel.Orm\Degage.DataModel.Orm.csproj" />
+    <ProjectReference Include="..\..\Degage\Degage.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Content Update="FileManagerConfig.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Update="Db\project-infos.db">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -90,7 +90,11 @@ class ServiceProxy {
      */
     queryProjectInfos(condition) {
         var para = $.param(condition);
-        return this.Requester.get("/AddProject?handler=QueryProjectInfos&" + para);
+        return this.Requester.get("/ProjectInfoMgmt?handler=QueryProjectInfos&" + para);
+    }
+
+    getProjectInfo(id) {
+        return this.Requester.get("/ProjectInfoMgmt?handler=GetProjectInfo&id=" + id);
     }
 
     addProjectInfo(info) {
@@ -100,21 +104,25 @@ class ServiceProxy {
             this.PostRequestConfig
         );
     }
-
+    getFileDownUrl(id) {
+        return "file/down/" + id;
+    }
 
     updateProjectInfo(newInfo) {
         var formData = $utilities.createFormData(newInfo);
-        return this.Requester.post("/AddProject?handler=UpdateProjectInfo",
+        return this.Requester.post("/ProjectInfoMgmt?handler=UpdateProjectInfo",
             formData,
             this.PostRequestConfig
         );
     }
 
     deleteProjectInfo(id) {
-        return this.Requester.delete("/AddProject?handler=RemoveProjectInfo&id="+id);
+        return this.Requester.delete("/ProjectInfoMgmt?handler=RemoveProjectInfo&id="+id);
     }
    
-
+    gotoErrorPage(message) {
+        window.location = "/Error?message=" + message;
+    }
  
 }
 

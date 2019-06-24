@@ -96,6 +96,7 @@
                        :visible.sync="dialogFormVisible"
                        custom-class="qms-dialog"
                        :fullscreen="isFullScreen"
+                       v-on:open="dialogFormOpenHandle"
                        v-on:closed="dialogFormClosedHandle"
                        v-on:opened="dialogFormOpenedHandle">
                 <iframe id="indexDialogFrame" class="middlerow-content-iframe"></iframe>

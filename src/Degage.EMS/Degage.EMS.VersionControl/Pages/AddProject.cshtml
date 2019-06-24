@@ -5,14 +5,14 @@
 
 
 
-<div id="app" style="display:flex;flex-flow:row;justify-content:center;flex:1;">
+<div id="app" style="display:flex;flex-flow:row;justify-content:center;flex:1;margin-top:10px;">
     <div style="display:flex;flex-flow:column;">
         <el-form ref="form" :model="projectInfo" label-width="80px" style="width:400px;">
             <el-form-item label="项目标题">
                 <el-input v-model="projectInfo.@nameof(ProjectInfo.Title)"></el-input>
             </el-form-item>
             <el-form-item label="项目描述">
-                <el-input type="textarea" v-model="projectInfo.@nameof(ProjectInfo.Description)"></el-input>
+                <el-input type="textarea" rows="10" v-model="projectInfo.@nameof(ProjectInfo.Description)"></el-input>
             </el-form-item>
             <el-form-item label="项目图标">
                 <el-upload class="avatar-uploader"
@@ -114,6 +114,10 @@
         display: block;
     }
 </style>
+<script>
+
+
+</script>
 
 }
 

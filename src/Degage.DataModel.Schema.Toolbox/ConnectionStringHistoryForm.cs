@@ -57,7 +57,7 @@ namespace Degage.DataModel.Schema.Toolbox
         private void _btnSaveHistory_Click(Object sender, EventArgs e)
         {
             ConfigManager.SaveConfig<ConnectionHistoryConfig>(this.HistoryConfig, ConnectionHistoryConfig.FilePath);
-            MessageBox.Show(this,"已保存！");
+            MessageBox.Show(this,"已保存！","提示");
         }
     }
 }

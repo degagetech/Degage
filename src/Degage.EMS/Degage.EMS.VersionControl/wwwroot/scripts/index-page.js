@@ -48,8 +48,8 @@ var projectContentVue = new Vue(
                 }
                 Object.assign(oldInfo, newProjectInfo);
             },
-            editProject: async function (id) {
-
+            editProject:  function (id) {
+                openIndexDialog("/ProjectInfoMgmt?id=" + id);
             },
             loadProjectInfos: async function () {
                 var resp = await $proxy.queryProjectInfos(this.projectQueryCondition);
@@ -85,7 +85,8 @@ var indexFrameDialogObj = new Vue(
             dialogFormVisible: false,
             address: '',
             isFullScreen: true,
-            isAdjustedDialogSize: false
+            isAdjustedDialogSize: false,
+            isRendered: false
         },
         created: function () {
 
@@ -96,8 +97,16 @@ var indexFrameDialogObj = new Vue(
                 //退出全屏
                 //exitFullscreen();
             },
+            dialogFormOpenHandle: function () {
+                if (this.isRendered) {
+                    $('#indexDialogFrame').attr("src", this.address);
+                }
+            },
             dialogFormOpenedHandle: function () {
-                $('#indexDialogFrame').attr("src", this.address);
+                if (!this.isRendered) {
+                    $('#indexDialogFrame').attr("src", this.address);
+                    this.isRendered = true;
+                }
                 if (!this.isAdjustedDialogSize) {
                     var dialogBody = $(".el-dialog__body");
                     if (dialogBody !== null) {

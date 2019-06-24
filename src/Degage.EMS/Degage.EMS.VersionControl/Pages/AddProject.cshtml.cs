@@ -26,34 +26,6 @@ namespace Degage.EMS.VersionControl.Pages
             return await Task.FromResult(this.Page());
         }
 
-        public async Task<JsonResult> OnGetQueryProjectInfosAsync(ProjectInfoCondition condition)
-        {
-            var infos = await Task.FromResult(this.DataAccessor.QueryProjectInfos(condition));
-            return this.CreateJsonResult(true, infos);
-        }
-
-        public async Task<JsonResult> OnPostUpdateProjectInfoAsync(ProjectInfo info)
-        {
-            //参数检查
-            if (info.Title.IsNullOrEmpty())
-            {
-                return this.CreateJsonResult(false, ResponseMessages.InvaildParameter);
-            }
-            var success = await Task.FromResult(this.DataAccessor.UpdateProjectInfo(info));
-            return this.CreateJsonResult(success, success ? ResponseMessages.SuccessedOperation : ResponseMessages.DataOperateFailed);
-        }
-
-        public async Task<JsonResult> OnDeleteRemoveProjectInfoAsync(String id)
-        {
-            //参数检查
-            if (id.IsNullOrEmpty())
-            {
-                return this.CreateJsonResult(false, ResponseMessages.InvaildParameter);
-            }
-            var success = await Task.FromResult(this.DataAccessor.DeleteProjectInfo(id));
-            return this.CreateJsonResult(success, success ? ResponseMessages.SuccessedOperation : ResponseMessages.DataOperateFailed);
-        }
-
         public async Task<JsonResult> OnPostAddProjectInfoAsync([FromForm]ProjectInfo info)
         {
             //参数检查  

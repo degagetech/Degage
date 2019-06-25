@@ -221,7 +221,9 @@ namespace Degage.DataModel.Orm
                             colSchema.DbType
                     );
                 /*.................拼接更新的SQL.................*/
-                updateColumnNames.Append(OrmAssistor.BuildColumnName(colSchema, dbProvider.ConflictFreeFormat, Table<T>.Schema.TableName));
+                // updateColumnNames.Append(OrmAssistor.BuildColumnName(colSchema, dbProvider.ConflictFreeFormat, Table<T>.Schema.TableName));
+                //此处设置更新列时不在拼接表名
+                updateColumnNames.Append(OrmAssistor.BuildColumnName(colSchema, dbProvider.ConflictFreeFormat));
                 updateColumnNames.Append(SqlKeyWord.EQUAL);
                 updateColumnNames.Append(parameterName);
                 updateColumnNames.Append(SqlKeyWord.COMMA);

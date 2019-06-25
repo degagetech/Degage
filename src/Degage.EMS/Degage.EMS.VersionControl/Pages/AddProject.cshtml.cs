@@ -36,6 +36,7 @@ namespace Degage.EMS.VersionControl.Pages
             info.CreationTime = TimeAssistor.Now;
             info.LastAccessTime = TimeAssistor.Now;
             info.Id = this.IdentifyFactory.CreateId();
+            info.IsRemoved = false;
             var success = await Task.FromResult(this.DataAccessor.AddProjectInfo(info));
             if (!success)
             {

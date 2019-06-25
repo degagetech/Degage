@@ -5,49 +5,115 @@
 
 <div id="app" style="display:flex;flex-flow:row;flex:1;">
     <div style="display:flex;flex-flow:row;flex:1;">
-        <div style="display:flex;flex-flow:column;width:320px;height:100%;margin-left:15px;margin-top:15px;text-align:center;">
+        <div style="display:flex;flex-flow:column;width:320px;height:100%;margin-left:15px;text-align:center;">
             <el-form ref="form" :model="projectInfo" label-width="40px" style="width:300px;">
-                <el-form-item label="标题">
-                    <el-input v-model="projectInfo.@nameof(ProjectInfo.Title)"></el-input>
+                <el-form-item>
+                    <span slot="label"><el-tooltip content="项目标识信息"><i style="font-size:18px;" class="el-icon-collection-tag"></i></el-tooltip>&nbsp;</span>
+                    <el-input readonly v-model="projectInfo.@nameof(ProjectInfo.Id)"></el-input>
+                </el-form-item>
+                <el-form-item>
+                    <span slot="label"><el-tooltip content="项目的标题信息"><i style="font-size:18px;" class="el-icon-guide"></i></el-tooltip>&nbsp;</span>
+                    <el-tooltip content="可修改" :value="isEditMode" placement="right-end" manual>
+                        <el-input v-model="projectInfo.@nameof(ProjectInfo.Title)"></el-input>
+                    </el-tooltip>
                 </el-form-item>
                 <el-form-item label="描述">
-                    <el-input type="textarea" rows="10" v-model="projectInfo.@nameof(ProjectInfo.Description)"></el-input>
+                    <span slot="label"><el-tooltip content="项目信息的详细描述"><i style="font-size:18px;" class="el-icon-postcard"></i></el-tooltip>&nbsp;</span>
+                    <el-tooltip content="可修改" :value="isEditMode" placement="right-end" manual>
+                        <el-input type="textarea" rows="5" v-model="projectInfo.@nameof(ProjectInfo.Description)"></el-input>
+                    </el-tooltip>
+                </el-form-item>
+                <el-form-item label="版本">
+                    <span slot="label"><el-tooltip content="项目当前启用的版本"><i style="font-size:18px;" class="el-icon-trophy"></i></el-tooltip>&nbsp;</span>
+                    <el-input readonly v-model="projectInfo.@nameof(ProjectInfo.CurrentVersionDesc)"></el-input>
+                </el-form-item>
+                <el-form-item label="时间">
+                    <span slot="label"><el-tooltip content="项目最后修改的时间，例如：信息、版本"><i style="font-size:18px;" class="el-icon-time"></i></el-tooltip>&nbsp;</span>
+                    <el-input readonly v-model="projectInfo.@nameof(ProjectInfo.LastAccessTime)"></el-input>
                 </el-form-item>
                 <el-form-item style="float:left;" label="图标">
-                    <el-upload class="avatar-uploader"
-                               action="/file/upload"
-                               :show-file-list="false"
-                               :on-success="handleIconSuccess"
-                               :before-upload="beforeIconUpload">
-                        <img v-if="iconUrl" :src="iconUrl" class="avatar">
-                        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-                    </el-upload>
+                    <span slot="label"><el-tooltip content="图标信息"><i style="font-size:18px;" class="el-icon-brush"></i></el-tooltip>&nbsp;</span>
+                    <el-tooltip content="可修改" :value="isEditMode" placement="right-end" manual>
+                        <el-upload class="avatar-uploader"
+                                   action="/file/upload"
+                                   :show-file-list="false"
+                                   :on-success="handleIconSuccess"
+                                   :before-upload="beforeIconUpload">
+                            <img v-if="iconUrl" :src="iconUrl" class="avatar">
+                            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                        </el-upload>
+                    </el-tooltip>
                 </el-form-item>
             </el-form>
             <div>
-                <div style="float:left;margin-left:10px;">
-                    <el-button type="primary" v-on:click="projectAlterHandle">修 改</el-button>
+                <div v-if="isEditMode" style="float:right;margin-right:25px;">
+                    <el-button v-on:click="cancelAlter">取 消</el-button>
+                    <el-button v-on:click="saveAlter" type="primary">保 存</el-button>
+                </div>
+                <div v-if="!isEditMode" style="float:left;margin-left:10px;">
+                    <el-button type="primary" v-on:click="projectAlter">修 改</el-button>
                 </div>
             </div>
         </div>
-        <el-table ref="singleTable"
-                  :data="tableData"
+        <el-table ref="versionInfoTable"
+                  :data="versionInfos"
                   highlight-current-row
                   v-on:current-change="handleCurrentChange"
-                  style="height:100%;flex:1;margin-left:20px;">
-            <el-table-column type="index"
+                  style="height:auto;flex:1;margin-left:15px;"
+                   :row-class-name="getVersionTableRowClassName">
+            <el-table-column type="index" label="序号"
+                             width="100">
+                <template slot="header" slot-scope="scope">
+                    <span>
+                        <el-tooltip content="为项目添加一个新的版本">
+                            <el-button size="mini"
+                                       icon="el-icon-plus"
+                                       type="primary"
+                                       circle>
+                            </el-button>
+                        </el-tooltip>
+                        <el-tooltip content="启用当前选中的项目版本">
+                            <el-button size="mini"
+                                       icon="el-icon-trophy"
+                                       type="warning"
+                                       circle>
+                            </el-button>
+                        </el-tooltip>
+                    </span>
+                </template>
+            </el-table-column>
+            <el-table-column property="Major"
+                             label="主要"
                              width="50">
             </el-table-column>
-            <el-table-column property="date"
-                             label="日期"
-                             width="120">
+            <el-table-column property="Minor"
+                             label="次要"
+                             width="50">
             </el-table-column>
-            <el-table-column property="name"
-                             label="姓名"
-                             width="120">
+            <el-table-column property="Revised"
+                             label="修订" width="50">
             </el-table-column>
-            <el-table-column property="address"
-                             label="地址">
+            <el-table-column property="Type"
+                             label="类型" width="60">
+            </el-table-column>
+            <el-table-column property="LastAccessTime"
+                             label="修改时间" width="150">
+            </el-table-column>
+            <el-table-column property="Description" show-overflow-tooltip
+                             label="描述">
+            </el-table-column>
+            <el-table-column label="操作" width="100" resizable="false">
+                <template slot-scope="scope">
+                    <el-button size="mini" icon="el-icon-edit"
+                               type="warning"
+                               circle
+                               title="编辑版本信息"></el-button>
+                    <el-button size="mini"
+                               icon="el-icon-delete"
+                               type="danger"
+                               circle
+                               title="删除此版本"></el-button>
+                </template>
             </el-table-column>
         </el-table>
     </div>
@@ -55,43 +121,48 @@
 
 @section Scripts
 {
-<script>
+    <script>
     let p_projectId='@this.Model.ProjectId';
-</script>
-<script src="~/scripts/page/project-info-mgmt.js"></script>
+    </script>
+    <script src="~/scripts/page/project-info-mgmt.js"></script>
 }
 
 
 @section Contents
 {
-<style>
-    .avatar-uploader .el-upload {
-        border: 1px dashed #d9d9d9;
-        border-radius: 6px;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-    }
-
-        .avatar-uploader .el-upload:hover {
-            border-color: #409EFF;
+    <style>
+        .el-table .enabled-row {
+            background: #409EFF;
+            color:#2C3E50;
         }
 
-    .avatar-uploader-icon {
-        font-size: 28px;
-        color: #8c939d;
-        width: 100px;
-        height: 100px;
-        line-height: 100px;
-        text-align: center;
-    }
+        .avatar-uploader .el-upload {
+            border: 1px dashed #d9d9d9;
+            border-radius: 6px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .avatar {
-        width: 100px;
-        height: 100px;
-        display: block;
-    }
-</style>
+            .avatar-uploader .el-upload:hover {
+                border-color: #409EFF;
+            }
+
+        .avatar-uploader-icon {
+            font-size: 28px;
+            color: #8c939d;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            display: block;
+        }
+    </style>
 
 }
 

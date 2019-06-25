@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Degage.Extension;
 namespace Degage.EMS.VersionControl.Pages
 {
+    [IgnoreAntiforgeryToken(Order = 1001)]
     public class ProjectInfoMgmtModel : PageModel
     {
         protected ILogger<ProjectInfoMgmtModel> Logger { get; set; }
@@ -28,13 +29,7 @@ namespace Degage.EMS.VersionControl.Pages
 
         public async Task<IActionResult> OnGetAsync(String id)
         {
-            //获取项目信息
             this.ProjectId = id;
-            //var projectInfo = await Task.FromResult(this.DataAccessor.GetProjectInfo(id));
-            //if (projectInfo == null)
-            //{
-            //    return this.Redirect("/Error?message=" + "未能找到项目信息");
-            //}
             return await Task.FromResult(this.Page());
         }
 
@@ -66,7 +61,7 @@ namespace Degage.EMS.VersionControl.Pages
             {
                 return this.CreateJsonResult(false, ResponseMessages.InvaildParameter);
             }
-            var success = await Task.FromResult(this.DataAccessor.DeleteProjectInfo(id));
+            var success = await Task.FromResult(this.DataAccessor.RemoveProjectInfo(id,true));
             return this.CreateJsonResult(success, success ? ResponseMessages.SuccessedOperation : ResponseMessages.DataOperateFailed);
         }
     }

@@ -32,7 +32,7 @@
 
   <ItemGroup>
     <None Update="Db\project-infos.db">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

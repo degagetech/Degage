@@ -21,8 +21,41 @@ namespace Degage.EMS.VersionControl.Pages
             this.IdentifyFactory = identifyFactory;
         }
 
-        public void OnGet()
+        public async Task<IActionResult> OnGetAsync()
         {
+            return await Task.FromResult(this.Page());
+        }
+
+        public async Task<JsonResult> OnGetQueryVersionInfosAsync(VersionInfoCondition condition)
+        {
+            var infos = await Task.FromResult(this.DataAccessor.QueryVersionInfos(condition));
+            return this.CreateJsonResult(true, infos);
+        }
+        public async Task<JsonResult> OnGetGetVersionInfoAsync(String id)
+        {
+            var info = await Task.FromResult(this.DataAccessor.GetVersionInfo(id));
+            if (info == null)
+            {
+                return this.CreateJsonResult(false, ResponseMessages.NotFoundInfos);
+            }
+            return this.CreateJsonResult(true, info);
+        }
+
+        public async Task<JsonResult> OnPostUpdateVersionInfoAsync(ProjectVersionInfo info)
+        {
+            var success = await Task.FromResult(this.DataAccessor.UpdateVersionInfo(info));
+            return this.CreateJsonResult(success, success ? ResponseMessages.SuccessedOperation : ResponseMessages.DataOperateFailed);
+        }
+
+        public async Task<JsonResult> OnDeleteRemoveVersionInfoAsync(String id)
+        {
+            //²ÎÊý¼ì²é
+            if (id.IsNullOrEmpty())
+            {
+                return this.CreateJsonResult(false, ResponseMessages.InvaildParameter);
+            }
+            var success = await Task.FromResult(this.DataAccessor.RemoveVersionInfo(id));
+            return this.CreateJsonResult(success, success ? ResponseMessages.SuccessedOperation : ResponseMessages.DataOperateFailed);
         }
     }
 }

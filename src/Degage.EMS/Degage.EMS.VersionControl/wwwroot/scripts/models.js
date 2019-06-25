@@ -66,16 +66,51 @@ class ProjectInfo {
     constructor(data) {
         this.Id = '';
         this.CurrentVersionId = '';
+        this.CurrentVersionDesc = '';
         this.Title = '';
         this.IconFileId = '';
         this.Description = '';
         this.CreationTime = new Date();
         this.LastAccessTime = new Date();
+        this.IsRemoved = false;
         if (data !== undefined) {
             Object.assign(this, data);
         }
     }
 }
+
+class ProjectVersionInfo {
+    constructor() {
+        this.Id = '';
+        this.Major = null;
+        this.Minor =  null;
+        this.Revised =  null;
+        this.Type = '';
+        this.ProjectId = '';
+        this.Description = '';
+        this.CreationTime = new Date();
+        this.LastAccessTime = new Date();
+        this.IsEnabled = false;
+    }
+}
+
+
+class ProjectItemInfo {
+    constructor() {
+        this.Id = '';
+        this.Name = '';
+        this.VersionId = '';
+        this.ProjectId = '';
+        this.Type = '';
+        this.Path = '';
+        this.FileId = '';
+        this.Size = null;
+        this.CreationTime = new Date();
+    }
+}
+
+
+
 
 class ProjectInfoCondition extends PageCondition
 {

@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace Degage.EMS.VersionControl
 {
-    public class ProjectInfoCondition:PageCondition
+    public class VersionInfoCondition : PageCondition
     {
-        public DateTime? LastAccessTimeStart { get; set; }
-        public DateTime? LastAccessTimeEnd { get; set; }
+        public String ProjectId { get; set; }
+        public Boolean? IsEnabled { get; private set; }
         public Boolean IsRemoved { get; set; } = false;
     }
 }

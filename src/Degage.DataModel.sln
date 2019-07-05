@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Degage.DataModel.Schema.MyS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Degage.DataModel.Schema.SQLite", "Degage.DataModel.Schema.SQLite\Degage.DataModel.Schema.SQLite.csproj", "{FEE2782A-75B8-4F17-99F1-897F6E6B1B41}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Degage.DataModel.Schema.Toolbox.Mac", "Degage.DataModel.Schema.Toolbox.Mac\Degage.DataModel.Schema.Toolbox.Mac.csproj", "{3ECAA95C-1704-4B7E-A95B-D83BABC18B88}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{FEE2782A-75B8-4F17-99F1-897F6E6B1B41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEE2782A-75B8-4F17-99F1-897F6E6B1B41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEE2782A-75B8-4F17-99F1-897F6E6B1B41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ECAA95C-1704-4B7E-A95B-D83BABC18B88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ECAA95C-1704-4B7E-A95B-D83BABC18B88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ECAA95C-1704-4B7E-A95B-D83BABC18B88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ECAA95C-1704-4B7E-A95B-D83BABC18B88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

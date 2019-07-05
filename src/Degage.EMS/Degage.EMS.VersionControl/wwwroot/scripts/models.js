@@ -80,7 +80,7 @@ class ProjectInfo {
 }
 
 class ProjectVersionInfo {
-    constructor() {
+    constructor(data) {
         this.Id = '';
         this.Major = null;
         this.Minor =  null;
@@ -91,6 +91,9 @@ class ProjectVersionInfo {
         this.CreationTime = new Date();
         this.LastAccessTime = new Date();
         this.IsEnabled = false;
+        if (data) {
+            Object.assign(this, data);
+        }
     }
 }
 

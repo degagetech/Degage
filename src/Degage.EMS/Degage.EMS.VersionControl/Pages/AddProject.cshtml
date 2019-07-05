@@ -5,7 +5,7 @@
 
 
 
-<div id="app" style="display:flex;flex-flow:row;justify-content:center;flex:1;margin-top:10px;">
+<div id="app" style="display:flex;flex-flow:row;justify-content:center;flex:1;margin-top:20px;">
     <div style="display:flex;flex-flow:column;">
         <el-form ref="form" :model="projectInfo" label-width="80px" style="width:400px;">
             <el-form-item label="项目标题">
@@ -36,6 +36,7 @@
 @section Scripts
 {
 <script>
+    let p_returnUrl = '@this.Model.ReturnUrl';
     var app = new Vue({
         el: "#app",
         data:
@@ -46,16 +47,14 @@
         methods:
         {
             dialogCancelHandle: function () {
-                window.top.closeIndexDialog();
+                 window.location = p_returnUrl;
             },
             dialogConfirmHandle: async function () {
                 var resp = await $proxy.addProjectInfo(this.projectInfo);
                 var pack = new ResponsePacket(resp.data);
                 if (pack.Success) {
                     var projectInfo = new ProjectInfo(pack.Data);
-                    window.top.addProjectInfo(projectInfo);
-                    $msgbox.defaultShowSuccess("添加成功");
-                      window.top.closeIndexDialog();
+                    window.location =p_returnUrl;
                 }
                 else {
                     $msgbox.defaultShowFailed("添加失败！" + pack.Message);    

@@ -30,11 +30,11 @@ class ServiceRequester {
             return config;
         }, error => {
             //请求错误处理
-                this.LoadingCounter--;
-                if (this.LoadingCounter <= 0) {
-                    msgbox.hideLoading();
-                    this.LoadingCounter = 0;
-                }
+            this.LoadingCounter--;
+            if (this.LoadingCounter <= 0) {
+                msgbox.hideLoading();
+                this.LoadingCounter = 0;
+            }
             return Promise.reject(error);
         });
 
@@ -47,7 +47,7 @@ class ServiceRequester {
             }
             return response;
         }, (error) => {
-                this.LoadingCounter--;
+            this.LoadingCounter--;
             if (this.LoadingCounter <= 0) {
                 msgbox.hideLoading();
                 this.LoadingCounter = 0;
@@ -104,9 +104,6 @@ class ServiceProxy {
             this.PostRequestConfig
         );
     }
-    getFileDownUrl(id) {
-        return "file/down/" + id;
-    }
 
     updateProjectInfo(newInfo) {
         var formData = $utilities.createFormData(newInfo);
@@ -117,13 +114,62 @@ class ServiceProxy {
     }
 
     deleteProjectInfo(id) {
-        return this.Requester.delete("/ProjectInfoMgmt?handler=RemoveProjectInfo&id="+id);
+        return this.Requester.delete("/ProjectInfoMgmt?handler=RemoveProjectInfo&id=" + id);
     }
-   
+
+
+
+    queryVersionInfos(condition) {
+        var para = $.param(condition);
+        return this.Requester.get("/VersionInfoMgmt?handler=QueryVersionInfos&" + para);
+    }
+
+    loadProjectVersionInfos() {
+
+    }
+
+    getVersionInfo(id) {
+        return this.Requester.get("/VersionInfoMgmt?handler=GetVersionInfo&id=" + id);
+    }
+
+    addVersionInfo(info) {
+        var formData = $utilities.createFormData(info);
+        return this.Requester.post("/AddVersion?handler=AddVersionInfo",
+            formData,
+            this.PostRequestConfig
+        );
+    }
+
+    updateVersionInfo(newInfo) {
+        var formData = $utilities.createFormData(newInfo);
+        return this.Requester.post("/VersionInfoMgmt?handler=UpdateVersionInfo",
+            formData,
+            this.PostRequestConfig
+        );
+    }
+
+    deleteVersionInfo(id) {
+        return this.Requester.delete("/VersionInfoMgmt?handler=RemoveVersionInfo&id=" + id);
+    }
+
+
+
+
+
+
     gotoErrorPage(message) {
         window.location = "/Error?message=" + message;
     }
- 
+
+    getAddProjectUrl(returnUrl) {
+        return "/AddProject?returnUrl=" + returnUrl;
+    }
+    getProjectMgmtUrl(id) {
+        return "/ProjectInfoMgmt?id=" + id;
+    }
+    getFileDownUrl(id) {
+        return "file/down/" + id;
+    }
 }
 
 

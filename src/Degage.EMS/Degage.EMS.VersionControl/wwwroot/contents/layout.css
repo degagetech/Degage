@@ -1,0 +1,60 @@
+﻿body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    --top-row-height: 61px;
+    --bottom-row-height: 50px;
+    color: #409EFF;
+}
+/*全局样式配置*/
+.normal-icon {
+    font-size: 20px;
+    color: #409EFF;
+}
+
+/*主页底部内容*/
+.status-bar {
+    height: var(--bottom-row-height);
+    padding: 0;
+    border-top: 1px solid #dcdfe6;
+    display: flex;
+    justify-content: space-between;
+}
+
+.status-bar-left {
+    line-height: var(--bottom-row-height);
+    flex: 1
+}
+
+.status-bar-center {
+    flex: 2
+}
+
+.status-bar-right {
+    text-align: end;
+    display: inline;
+    padding-right: 5px;
+    line-height: var(--bottom-row-height);
+}
+
+
+
+.circle-avatar {
+    display: flex;
+    border-radius: 50%;
+    align-items: flex-end;
+    justify-content: flex-end;
+    overflow: hidden;
+    float: left;
+    margin-left: 10px;
+    margin-top: 8px;
+    width: 45px;
+    height: 45px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+}
+
+.el-textarea__inner {
+    font-family: "Microsoft";
+}

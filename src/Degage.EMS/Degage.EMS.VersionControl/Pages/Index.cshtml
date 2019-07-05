@@ -3,20 +3,9 @@
 @using System.Text
 @model Degage.EMS.VersionControl.IndexModel
 @{
-    Layout = null;
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <title>项目版本控制</title>
-    <meta charset="utf-8" />
-    <link href="~/contents/element-ui/index.css" rel="stylesheet" />
-    <link href="~/contents/element-ui/display.css" rel="stylesheet" />
-    <link href="~/contents/index-page.css" rel="stylesheet" />
-    <link href="~/contents/funciton-page.css" rel="stylesheet" />
-    <link href="~/contents/funciton-page-layout.css" rel="stylesheet" />
-    <link href="~/contents/icon-font/iconfont.css" rel="stylesheet" />
-    <link href="~/contents/icon-font/iconfont-import.css" rel="stylesheet" />
+@section Contents
+{
     <style>
         .el-card__header {
             padding: 0;
@@ -24,121 +13,143 @@
             -webkit-box-sizing: border-box;
             box-sizing: border-box;
         }
+
         .el-card {
-           color:#7F8C8D;
+            color: #7F8C8D;
+        }
+
+
+        .middlerow {
+            display: flex;
+            flex: 1;
+        }
+
+        .middlerow-left {
+            border-right: 1px solid #dcdfe6;
+            width: auto;
+        }
+
+        .middlerow-left-menu:not(.el-menu--collapse) {
+            width: 200px;
+            height: 100%;
+        }
+
+        .middlerow-left-menu {
+            border-right: 0px;
+            height: 100%;
+        }
+
+        .middlerow-right {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            width: auto;
+        }
+
+        .middlerow-right-container {
+            flex: 1;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .middlerow-right-tabs {
+            margin-top: 5px;
+            margin-left: 5px;
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+        }
+
+        .middlerow-right-tab-pane {
+            padding: 0px;
+            margin: 0px;
+            border: 0px;
+            height: 100%;
+        }
+
+        .middlerow-content-iframe {
+            display: block;
+            border: 0px;
+            padding: 0px;
+            height: 100%;
+            width: 100%;
+            margin-top: 5px;
+            margin-left: 2px;
+            margin-bottom: 0px;
+            margin-right: 0px;
         }
     </style>
-</head>
 
-<body>
-    @*<div id="toprow" class="toprow" style="display:flex;justify-content:space-between;margin-right:10px;">
-            <img src="~/resources/logo.png" style="margin-left:20px;" width="61" height="61" />
-        </div>*@
-
-
-    <div id="middlerow" class="middlerow">
-        <div id="project-content" style="display:flex;flex-direction:row;flex-wrap:wrap;margin-bottom:15px;">
-            <el-card v-for="projectInfo in projectInfos" :id="projectInfo.Id" style="width:320px;height:300px;margin-left:15px;margin-top:15px;" shadow="hover">
-                <div slot="header" style="line-height:60px;padding:0;margin:0;">
-                    <el-tooltip :content="projectInfo.Title">
-                        <el-image class="circle-avatar" :src="'/file/down/'+projectInfo.IconFileId">
-                            <div slot="error" class="image-slot">
-                                <i class="el-icon-picture-outline"></i>
-                            </div>
-                        </el-image>
+}
+<div id="middlerow" class="middlerow">
+    <div id="project-content" style="display:flex;flex-direction:row;flex-wrap:wrap;margin-bottom:15px;">
+        <el-card v-for="projectInfo in projectInfos" :id="projectInfo.Id" style="width:320px;height:300px;margin-left:15px;margin-top:15px;" shadow="hover">
+            <div slot="header" style="line-height:60px;padding:0;margin:0;">
+                <el-tooltip :content="projectInfo.Title">
+                    <el-image class="circle-avatar" :src="'/file/down/'+projectInfo.IconFileId">
+                        <div slot="error" class="image-slot">
+                            <i class="el-icon-picture-outline"></i>
+                        </div>
+                    </el-image>
+                </el-tooltip>
+                <span style="margin-left:15px;"></span>
+                <el-tooltip content="移除此项目">
+                    <el-button v-on:click="removeProject(projectInfo.Id)"
+                               style="float: right;margin-right:5px;margin-top:10px;"
+                               type="danger"
+                               icon="el-icon-minus"
+                               circle></el-button>
+                </el-tooltip>
+                <el-tooltip content="编辑此项目">
+                    <el-button v-on:click="editProject(projectInfo.Id)"
+                               style="float: right;margin-right:10px;margin-top:10px;"
+                               type="primary"
+                               icon="el-icon-setting"
+                               circle></el-button>
+                </el-tooltip>
+            </div>
+            <div style="margin:0;padding:0;display:flex;flex-direction:column;height:200px;">
+                <div style="flex:1;margin:0;padding:0;font-size:18px;color:#409EFF;">
+                    {{projectInfo.Description}}
+                </div>
+                <div>
+                    <span><el-tooltip content="项目标识信息"><i class="el-icon-collection-tag"></i></el-tooltip> &nbsp;  <span style="font-size:13px;">{{projectInfo.Id}}</span></span><br>
+                    <span><el-tooltip content="当前启用版本"><i class="el-icon-trophy"></i></el-tooltip> &nbsp;  {{projectInfo.CurrentVersionId}}</span><br>
+                    <span><el-tooltip content="最后修改的时间"><i class="el-icon-time"></i></el-tooltip>  &nbsp; {{projectInfo.LastAccessTime}}</span>
+                </div>
+            </div>
+        </el-card>
+        <el-card style="width:320px;height:300px;margin-left:15px;margin-top:15px;" shadow="hover">
+            <div slot="header" style="line-height:60px;padding:0;">
+                <span style="margin-left:15px;">新增一个项目</span>
+            </div>
+            <div style="margin:0;padding:0;height:200px;text-align:center;line-height:200px;">
+                <div style="line-height:110px;margin-top:40px;">
+                    <el-tooltip content="点击新增一个项目">
+                        <span style="cursor:pointer;" v-on:click="addProject">
+                            <i class="el-icon-plus" style="font-size:108px;color:#BDC3C7;"></i>
+                        </span>
                     </el-tooltip>
-                    <span style="margin-left:15px;"></span>
-                    <el-tooltip content="移除此项目">
-                        <el-button v-on:click="removeProject(projectInfo.Id)"
-                                   style="float: right;margin-right:5px;margin-top:10px;"
-                                   type="danger"
-                                   icon="el-icon-minus"
-                                   circle></el-button>
-                    </el-tooltip>
-                    <el-tooltip content="编辑此项目">
-                        <el-button v-on:click="editProject(projectInfo.Id)"
-                                   style="float: right;margin-right:10px;margin-top:10px;"
-                                   type="primary"
-                                   icon="el-icon-setting"
-                                   circle></el-button>
-                    </el-tooltip>
-                </div>
-                <div style="margin:0;padding:0;display:flex;flex-direction:column;height:200px;">
-                    <div style="flex:1;margin:0;padding:0;font-size:18px;color:#409EFF;">
-                        {{projectInfo.Description}}
-                    </div>
-                    <div>
-                        <span ><el-tooltip content="项目标识信息" ><i class="el-icon-collection-tag"></i></el-tooltip> &nbsp;  <span style="font-size:13px;">{{projectInfo.Id}}</span></span><br>
-                        <span><el-tooltip content="当前启用版本"><i class="el-icon-trophy"></i></el-tooltip> &nbsp;  {{projectInfo.CurrentVersionId}}</span><br>
-                        <span><el-tooltip content="最后修改的时间"><i class="el-icon-time"></i></el-tooltip>  &nbsp; {{projectInfo.LastAccessTime}}</span>
-                    </div>
-                </div>
-            </el-card>
-            <el-card style="width:320px;height:300px;margin-left:15px;margin-top:15px;" shadow="hover">
-                <div slot="header" style="line-height:60px;padding:0;">
-                    <span style="margin-left:15px;">新增一个项目</span>
-                </div>
-                <div style="margin:0;padding:0;height:200px;text-align:center;line-height:200px;">
-                    <div style="line-height:110px;margin-top:40px;">
-                        <el-tooltip content="点击新增一个项目">
-                            <span style="cursor:pointer;" onclick="openIndexDialog('AddProject')">
-                                <i class="el-icon-plus" style="font-size:108px;color:#BDC3C7;"></i>
-                            </span>
-                        </el-tooltip>
 
-                    </div>
                 </div>
-            </el-card>
-        </div>
-        <div style="margin:0;padding:0;">
-            <el-dialog id="indexFrameDialog"
-                       top="5vh"
-                       :title="dialogTitle"
-                       :visible.sync="dialogFormVisible"
-                       custom-class="qms-dialog"
-                       :fullscreen="isFullScreen"
-                       v-on:open="dialogFormOpenHandle"
-                       v-on:closed="dialogFormClosedHandle"
-                       v-on:opened="dialogFormOpenedHandle">
-                <iframe id="indexDialogFrame" class="middlerow-content-iframe"></iframe>
-            </el-dialog>
-        </div>
+            </div>
+        </el-card>
     </div>
+</div>
 
-    <div id="status-bar" class="bottomrow">
-        <div class="bottomrow-left">
-            <span style="color:#409EFF;margin-left:15px;font-size:20px;">{{infoText}}</span>
-        </div>
-        <div class="bottomrow-right">
-            <span class="normal-icon">
-                <span>{{hours}}:</span>
-                <span style="color:#87D37C;">{{minutes}}:</span>
-                <span>{{senconds}}</span>
-                <span>{{noon}}</span>
-            </span>
-        </div>
-    </div>
-</body>
-</html>
-<script src="~/scripts/vue.min.js"></script>
-<script src="~/scripts/element-ui/index.js"></script>
-<script src="~/scripts/jquery.min.js"></script>
-<script src="~/scripts/bscroll.min.js"></script>
-<script src="~/scripts/signalr/signalr.min.js"></script>
-<script src="~/scripts/lodash.js"></script>
-<script src="~/scripts/models.js"></script>
-<script src="~/scripts/utilities.js"></script>
-<script src="~/scripts/ui-common.js"></script>
-<script src="~/scripts/axios.min.js"></script>
-<script src="~/scripts/proxy.js"></script>
+@section Scripts
+{
+    <script>
+        if (window != top) {
+            top.location.href = location.href;
+        }
+    </script>
+    <script src="~/scripts/index-page.js"></script>
 
-<script>
+}
 
-    if (window != top) {
-        top.location.href = location.href;
-    }
-</script>
-<script src="~/scripts/index-page.js"></script>
 
 
 

@@ -1,0 +1,74 @@
+﻿@page
+@model Degage.EMS.VersionControl.Pages.AddVersionInfoModel
+@{
+}
+
+<div id="app" style="display:flex;flex-flow:row;justify-content:center;flex:1;margin-top:10px;">
+    <div style="display:flex;flex-flow:column;">
+        <el-form ref="form" :model="versionInfo" label-width="80px" style="width:400px;">
+            <el-form-item label="继承版本">
+                <el-input></el-input>
+            </el-form-item>
+            <el-form-item label="主版本号">
+                <el-input></el-input>
+            </el-form-item>
+            <el-form-item label="次版本号">
+                <el-input></el-input>
+            </el-form-item>
+            <el-form-item label="修订次数">
+                <el-input></el-input>
+            </el-form-item>
+            <el-form-item label="版本描述">
+                <el-input type="textarea" rows="5"></el-input>
+            </el-form-item>
+        </el-form>
+        <div>
+            <div style="float:right;">
+                <el-button v-on:click="dialogCancelHandle">取 消</el-button>
+                <el-button type="primary" v-on:click="dialogConfirmHandle">保 存</el-button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script>
+        let p_returnUrl = '@this.Model.ReturnUrl';
+        var app = new Vue({
+            el: "#app",
+            mounted: async function () {
+                   
+            },
+            data:
+            {
+                versionInfo: new ProjectVersionInfo()
+            },
+            methods:
+            {
+                dialogCancelHandle: function () {
+                 window.location = p_returnUrl;
+            },
+            dialogConfirmHandle: async function () {
+                 var resp = await $proxy.addVersionInfo(this.projectInfo);
+                var pack = new ResponsePacket(resp.data);
+                if (pack.Success) {
+                    var versionInfo = new ProjectVersionInfo(pack.Data);
+                    window.location =p_returnUrl;
+                }
+                else {
+                    $msgbox.defaultShowFailed("添加失败！" + pack.Message);
+                }
+            }
+            }
+        });
+    </script>
+}
+
+
+@section Contents
+{
+    <style>
+    </style>
+
+}
+

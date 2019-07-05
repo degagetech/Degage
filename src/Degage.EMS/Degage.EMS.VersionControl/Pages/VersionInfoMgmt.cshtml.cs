@@ -14,6 +14,7 @@ namespace Degage.EMS.VersionControl.Pages
         protected ILogger<VersionInfoMgmtModel> Logger { get; set; }
         protected IProjectInfoDataAccessor DataAccessor { get; set; }
         protected IdentifyFactory IdentifyFactory { get; set; }
+        public String VersionInfoId { get; private set; }
         public VersionInfoMgmtModel(ILogger<VersionInfoMgmtModel> logger, IProjectInfoDataAccessor accessor, IdentifyFactory identifyFactory)
         {
             this.Logger = logger;
@@ -21,11 +22,24 @@ namespace Degage.EMS.VersionControl.Pages
             this.IdentifyFactory = identifyFactory;
         }
 
-        public async Task<IActionResult> OnGetAsync()
+        public async Task<IActionResult> OnGetAsync(String id)
         {
+            this.VersionInfoId = id;
             return await Task.FromResult(this.Page());
         }
 
+        public async Task<JsonResult> OnGetLoadProjectVersionInfosAsync(String projectId)
+        {
+            if (projectId.IsNullOrEmpty())
+            {
+                return this.CreateJsonResult(false, ResponseMessages.InvaildParameter);
+            }
+
+            var condition = new VersionInfoCondition();
+            condition.ProjectId = projectId;
+            var infos = await Task.FromResult(this.DataAccessor.QueryVersionInfos(condition));
+            return this.CreateJsonResult(true, infos);
+        }
         public async Task<JsonResult> OnGetQueryVersionInfosAsync(VersionInfoCondition condition)
         {
             var infos = await Task.FromResult(this.DataAccessor.QueryVersionInfos(condition));

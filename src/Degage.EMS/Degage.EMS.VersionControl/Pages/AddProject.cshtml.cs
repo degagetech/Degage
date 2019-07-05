@@ -14,6 +14,7 @@ namespace Degage.EMS.VersionControl.Pages
         protected ILogger<AddProjectModel> Logger { get; set; }
         protected IProjectInfoDataAccessor DataAccessor { get; set; }
         protected IdentifyFactory IdentifyFactory { get; set; }
+        public String ReturnUrl { get; private set; }
         public AddProjectModel(ILogger<AddProjectModel> logger, IProjectInfoDataAccessor accessor, IdentifyFactory identifyFactory)
         {
             this.Logger = logger;
@@ -21,8 +22,9 @@ namespace Degage.EMS.VersionControl.Pages
             this.IdentifyFactory = identifyFactory;
         }
 
-        public async Task<IActionResult> OnGetAsync()
+        public async Task<IActionResult> OnGetAsync(String returnUrl)
         {
+            this.ReturnUrl = returnUrl;
             return await Task.FromResult(this.Page());
         }
 

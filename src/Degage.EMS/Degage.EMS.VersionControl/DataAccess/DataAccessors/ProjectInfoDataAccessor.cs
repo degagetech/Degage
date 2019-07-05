@@ -65,8 +65,6 @@ namespace Degage.EMS.VersionControl
         {
             return this.Options.DbProvider.Update<ProjectInfo>(() => new ProjectInfo
             {
-                CurrentVersionId = modifyInfo.CurrentVersionId,
-                LastAccessTime = modifyInfo.LastAccessTime,
                 Title = modifyInfo.Title,
                 IconFileId = modifyInfo.IconFileId,
                 Description = modifyInfo.Description

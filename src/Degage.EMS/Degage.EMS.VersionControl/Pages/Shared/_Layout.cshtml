@@ -6,26 +6,43 @@
         @if (!String.IsNullOrEmpty(ViewBag.Title))
         {
             <text>
-                版本控制 - @ViewBag.Title
+                 @ViewBag.Title
             </text>
         }
         else
         {
             <text>
-                版本控制
+                项目版本控制
             </text>
         }
     </title>
     <link href="~/contents/element-ui/index.css" rel="stylesheet" />
     <link href="~/contents/element-ui/display.css" rel="stylesheet" />
-    <link href="~/contents/funciton-page-layout.css" rel="stylesheet" />
-    <link href="~/contents/funciton-page.css" rel="stylesheet" />
     <link href="~/contents/icon-font/iconfont.css" rel="stylesheet" />
     <link href="~/contents/icon-font/iconfont-import.css" rel="stylesheet" />
+    <link href="~/contents/layout.css" rel="stylesheet" />
     @RenderSection("Contents", false)
 </head>
 <body>
+    <div id="top-bar" class="top-bar">
+        <div style="float:right;margin-top:10px;margin-bottom:10px;margin-right:15px;">
+                <span title="回到主页" style="cursor:pointer;" onclick="location='/'"><i class="el-icon-s-home"></i>  </span>
+        </div>
+    </div>
     @RenderBody()
+    <div id="status-bar" class="status-bar">
+        <div class="status-bar-left">
+            <span style="color:#409EFF;margin-left:15px;font-size:20px;">{{infoText}}</span>
+        </div>
+        <div class="status-bar-right">
+            <span class="normal-icon">
+                <span>{{hours}}:</span>
+                <span style="color:#87D37C;">{{minutes}}:</span>
+                <span>{{senconds}}</span>
+                <span>{{noon}}</span>
+            </span>
+        </div>
+    </div>
 </body>
 </html>
 <script src="~/scripts/jquery.min.js"></script>
@@ -38,4 +55,5 @@
 <script src="~/scripts/proxy.js"></script>
 <script src="~/scripts/ui-common.js"></script>
 <script src="~/scripts/ui-components/qms-base.js"></script>
+<script src="~/scripts/layout.js"></script>
 @RenderSection("Scripts", false)

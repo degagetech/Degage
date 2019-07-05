@@ -9,9 +9,8 @@
         }
         var info = new ProjectInfo(pack.Data);
         this.projectInfo = info;
-        if (info.IconFileId) {
-            this.iconUrl = $proxy.getFileDownUrl(info.IconFileId);
-        }
+        this.showProjectIcon(info.IconFileId);
+
 
 
         //加载项目版本信息
@@ -19,6 +18,7 @@
     data:
     {
         projectInfo: new ProjectInfo(),
+        tempProjectInfo: null,
         iconUrl: null,
         isEditMode: false,
         versionInfos: [{
@@ -42,11 +42,13 @@
     },
     methods:
     {
-        getVersionTableRowClassName({ row, rowIndex }) {
-            if (row.IsEnabled) {
-                return 'enabled-row';
+        showProjectIcon: function (iconFileId) {
+            if (iconFileId) {
+                this.iconUrl = $proxy.getFileDownUrl(iconFileId);
             }
-            return '';
+            else {
+                this.iconUrl = null;
+            }
         },
         handleCurrentChange: function (row) {
 
@@ -55,23 +57,25 @@
             window.top.closeIndexDialog();
         },
         cancelAlter: function () {
+            Object.assign(this.projectInfo, this.tempProjectInfo);
+            this.showProjectIcon(this.projectInfo.IconFileId);
             this.isEditMode = false;
         },
-        saveAlter: function () {
-            this.isEditMode = false;
+        saveAlter: async function () {
+            var resp = await $proxy.updateProjectInfo(this.projectInfo);
+            var pack = new ResponsePacket(resp.data);
+            if (pack.Success) {
+                $msgbox.defaultShowSuccess("已更新！");
+                this.isEditMode = false;
+            }
+            else {
+                $msgbox.defaultShowFailed("更新失败！" + pack.Message);
+            }
         },
         projectAlter: async function () {
+            this.tempProjectInfo = new ProjectInfo();
+            Object.assign(this.tempProjectInfo, this.projectInfo);
             this.isEditMode = true;
-            //var resp = await $proxy.updateProjectInfo(this.projectInfo);
-            //var pack = new ResponsePacket(resp.data);
-            //if (pack.Success) {
-            //    var projectInfo = new ProjectInfo(pack.Data);
-            //    window.top.addProjectInfo(projectInfo);
-            //    $msgbox.defaultShowSuccess("已更新！");
-            //}
-            //else {
-            //    $msgbox.defaultShowFailed("更新失败！" + pack.Message);
-            //}
         },
         handleIconSuccess: function (res, file) {
             var avatarId = res;

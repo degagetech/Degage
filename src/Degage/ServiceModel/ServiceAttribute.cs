@@ -10,9 +10,6 @@ namespace Degage.ServiceModel
     [AttributeUsage(AttributeTargets.Class|AttributeTargets.Interface, AllowMultiple = false)]
     public class ServiceAttribute : System.Attribute
     {
-        /// <summary>
-        /// 服务的名称
-        /// </summary>
         public String Name { get; set; }
     }
 }
